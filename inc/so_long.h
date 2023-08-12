@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/12 21:40:09 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/12 22:03:10 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,20 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-typedef struct s__quant
+typedef struct s_quant
 {
 	int collectibles;
 	int exit;
 	int player;
 } t_quant;
+
+typedef struct s_cell
+{
+	int val;
+	int pos;
+	// char **adj_list;
+	char *status;
+} t_cell;
 
 typedef struct s_nodes
 {

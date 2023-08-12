@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/12 16:33:04 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/12 22:08:01 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@
  * check if P is above or below or same line
  * check if the next lines are not sealed
 */
+
+void grid_detailing(char **ptr)
+{
+	t_cell ** cells;
+	
+	cells = (t_cell **)malloc(sizeof(t_cell *));
+	(void)cells;
+	(void)ptr;
+}
+
 void handle_map(char **argv)
 {
 	char **ptr;
@@ -35,4 +45,5 @@ void handle_map(char **argv)
 	line_nbr = line_counter(argv[1]);
 	ptr = map_reader(argv[1], line_nbr);
 	validate_map(ptr, line_nbr);
+	grid_detailing(ptr);
 }
