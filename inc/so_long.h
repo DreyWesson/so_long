@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/12 21:32:48 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/12 21:40:09 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 
 typedef struct s__quant
 {
-	int c;
-	int e;
-	int p;
+	int collectibles;
+	int exit;
+	int player;
 } t_quant;
 
 typedef struct s_nodes

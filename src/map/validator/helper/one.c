@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:29:43 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/12 21:37:58 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/12 21:41:03 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	validate_composition(char s, t_quant *quant)
 	else
 	{
 		if (s == 'C')
-			(*quant).c += 1;
+			(*quant).collectibles += 1;
 		else if (s == 'E')
-			(*quant).e += 1;
+			(*quant).exit += 1;
 		else if (s == 'P')
-			(*quant).p += 1;
+			(*quant).player += 1;
 	}
 }
 
@@ -65,7 +65,7 @@ t_coord	save_start(int x, int y)
 
 void	check_quant(t_quant *quant)
 {
-	if (quant->c < 1 || quant->e != 1 || quant->p != 1)
+	if (quant->collectibles < 1 || quant->exit != 1 || quant->player != 1)
 	{
 		ft_error("Invalid composition quantity");
 		exit(0);

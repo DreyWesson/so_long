@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:54:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/12 21:31:08 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/12 21:41:28 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	default_quant(t_quant *quant)
 {
-	quant->c = 0;
-	quant->e = 0;
-	quant->p = 0;
+	quant->collectibles = 0;
+	quant->exit = 0;
+	quant->player = 0;
 }
