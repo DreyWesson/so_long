@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:29:43 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/12 16:56:37 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/12 21:37:58 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/so_long.h"
 
-void	validate_composition(char s, t_qty *qty)
+void	validate_composition(char s, t_quant *quant)
 {
 	char	*set;
 
@@ -25,11 +25,11 @@ void	validate_composition(char s, t_qty *qty)
 	else
 	{
 		if (s == 'C')
-			(*qty).c += 1;
+			(*quant).c += 1;
 		else if (s == 'E')
-			(*qty).e += 1;
+			(*quant).e += 1;
 		else if (s == 'P')
-			(*qty).p += 1;
+			(*quant).p += 1;
 	}
 }
 
@@ -63,12 +63,12 @@ t_coord	save_start(int x, int y)
 	return (start_pos);
 }
 
-void	check_quant(t_qty *qty)
+void	check_quant(t_quant *quant)
 {
-	if (qty->c < 1 || qty->e != 1 || qty->p != 1)
+	if (quant->c < 1 || quant->e != 1 || quant->p != 1)
 	{
 		ft_error("Invalid composition quantity");
 		exit(0);
 	}
-	free(qty);
+	free(quant);
 }

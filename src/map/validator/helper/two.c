@@ -6,15 +6,15 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:54:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/12 16:57:00 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/12 21:31:08 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/so_long.h"
 
-void	default_quant(t_qty *qty)
+void	default_quant(t_quant *quant)
 {
-	qty->c = 0;
-	qty->e = 0;
-	qty->p = 0;
+	quant->c = 0;
+	quant->e = 0;
+	quant->p = 0;
 }

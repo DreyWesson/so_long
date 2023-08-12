@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/12 16:49:06 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/12 21:32:48 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-typedef struct s_qty
+typedef struct s__quant
 {
 	int c;
 	int e;
 	int p;
-} t_qty;
+} t_quant;
 
 typedef struct s_nodes
 {
@@ -72,10 +72,10 @@ char	**map_reader(char *s, int line_nbr);
 /**
  * MAP -> Validator
 */
-void	validate_composition(char s, t_qty *qty);
+void	validate_composition(char s, t_quant *quant);
 void validate_walls(char *s, int line_nbr, int j, int i);
 void	validate_shape(int line_nbr, int *col_nbr, int i, int j);
 t_coord	save_start(int x, int y);
-void	check_quant(t_qty *qty);
-void	default_quant(t_qty *qty);
+void	check_quant(t_quant *quant);
+void	default_quant(t_quant *quant);
 #endif
