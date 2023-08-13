@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/13 09:27:16 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/13 16:10:30 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,13 @@ void	grid_detailing(char **map, int row_nbr, int col_nbr)
 void	handle_map(char **argv)
 {
 	char	**ptr;
-	int		row_nbr;
-	int		col_nbr;
+	t_size 	*size;
 
-	col_nbr = 0;
-	row_nbr = line_counter(argv[1]);
-	ptr = map_reader(argv[1], row_nbr);
-	validate_map(ptr, row_nbr, &col_nbr);
+	size = (t_size *)malloc(sizeof(t_size));
+	size->col_nbr = 0;
+	size->row_nbr = line_counter(argv[1]);
+	ptr = map_reader(argv[1], size->row_nbr);
+	validate_map(ptr, size->row_nbr, &size->col_nbr);
 	// grid_detailing(ptr, row_nbr, col_nbr);
-
+	printf("%d %d\n", size->row_nbr, size->col_nbr);
 }
