@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:29:43 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/12 21:41:03 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/13 09:18:08 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	validate_composition(char s, t_quant *quant)
 	}
 }
 
-void validate_walls(char *s, int line_nbr, int j, int i)
+void validate_walls(char *s, int row_nbr, int j, int i)
 {
-	if (s[j] != '1' && (i == 0 || i == line_nbr - 1
+	if (s[j] != '1' && (i == 0 || i == row_nbr - 1
 			|| j == 0 || s[j + 1] == '\0'))
 	{
 		ft_error("Should be surrounded by walls");
@@ -43,11 +43,11 @@ void validate_walls(char *s, int line_nbr, int j, int i)
 	}
 }
 
-void	validate_shape(int line_nbr, int *col_nbr, int i, int j)
+void	validate_shape(int row_nbr, int *col_nbr, int i, int j)
 {
 	if (i == 0)
 		*col_nbr = j;
-	if (j == line_nbr || *col_nbr != j)
+	if (j == row_nbr || *col_nbr != j)
 	{
 		ft_error("Provide rectangular maps only");
 		exit(0);

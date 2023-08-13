@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 07:45:52 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/12 22:05:18 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/13 09:17:27 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/so_long.h"
 
-char	**map_reader(char *s, int line_nbr)
+char	**map_reader(char *s, int row_nbr)
 {
 	char	**ptr;
 	char	*str;
@@ -26,11 +26,11 @@ char	**map_reader(char *s, int line_nbr)
 		ft_error("Some error occurred");
 		exit(1);
 	}
-	ptr = (char **)ft_calloc(sizeof(char *), line_nbr + 1);
+	ptr = (char **)ft_calloc(sizeof(char *), row_nbr + 1);
 	if (!ptr)
 		return (0);
 	i = 0;
-	while (i < line_nbr)
+	while (i < row_nbr)
 	{
 		str = get_next_line(fd);
 		len = ft_strlen_ln(str);
