@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/13 09:31:04 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/13 18:35:38 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@ void	validate_map(char **map, int row_nbr, int *col_nbr)
 {
 	int		y_axis;
 	int		x_axis;
-	// int		col_nbr;
 	t_quant	*quant;
 	t_coord	start_pos;
 
 	y_axis = 0;
-	// col_nbr = 0;
 	quant = (t_quant *)malloc(sizeof(t_quant));
 	default_quant(quant);
 	while (map[y_axis])
@@ -39,6 +37,6 @@ void	validate_map(char **map, int row_nbr, int *col_nbr)
 		y_axis++;
 	}
 	(void)start_pos;
-	printf("%d %d\n", start_pos.x, start_pos.y);
+	// printf("%d %d\n", start_pos.x, start_pos.y);
 	check_quant(quant);
 }

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/13 18:16:12 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/13 22:36:06 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,42 +27,48 @@
  * check if P is above or below or same line
  * check if the next lines are not sealed
 */
-
-void	grid_detailing(char **map, t_size *size)
+t_cell create_cell(char s, int x, int y)
 {
 	t_cell	cell;
-	t_coord axis;
-	t_cell  **cells;
 
-	axis.y = 0;
-	cells = (t_cell **)malloc(sizeof(t_cell*) * size->row_nbr);
-	while (map[axis.y])
+	cell.x_axis = x;
+	cell.y_axis = y;
+	cell.val = s;
+	cell.status = READY;
+	return (cell);
+}
+
+void	set_grid(char **map, t_size *size)
+{
+	t_cell	**grid;
+	int x;
+	int y;
+
+	y = 0;
+	grid = (t_cell **)malloc(sizeof(t_cell *) * size->row_nbr);
+	while (map[y])
 	{
-		axis.x = 0;
-		cells[axis.y] = (t_cell *)malloc(sizeof(t_cell) * size->col_nbr);
-		while (map[axis.y][axis.x])
+		x = 0;
+		grid[y] = (t_cell *)malloc(sizeof(t_cell) * size->col_nbr);
+		while (map[y][x])
 		{
-			cell.pos = &axis;
-			cell.val = map[axis.y][axis.x];
-			cell.status = READY;
-			cells[axis.y][axis.x] = cell;
-			axis.x++;
+			grid[y][x] = create_cell(map[y][x], x, y);
+			x++;
 		}
-		axis.y++;
+		y++;
 	}
-	printf("%c\n", cells[3][1].val);
+	// printf("-> %c %d %d\n", grid[3][6].val, grid[3][6].x_axis, grid[3][6].y_axis);
 }
 
 void	handle_map(char **argv)
 {
 	char	**ptr;
-	t_size 	*size;
+	t_size	*size;
 
 	size = (t_size *)malloc(sizeof(t_size));
 	size->col_nbr = 0;
 	size->row_nbr = line_counter(argv[1]);
 	ptr = map_reader(argv[1], size->row_nbr);
 	validate_map(ptr, size->row_nbr, &size->col_nbr);
-	grid_detailing(ptr, size);
-	printf("%d %d\n", size->row_nbr, size->col_nbr);
+	set_grid(ptr, size);
 }

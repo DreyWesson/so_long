@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/13 18:09:45 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/13 22:15:20 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ typedef struct s_cell
 {
 	int val;
 	t_coord *pos;
+	int x_axis;
+	int y_axis;
 	// char **adj_list;
 	// char *status;
 	e_status status;
@@ -92,4 +94,5 @@ void	validate_shape(int row_nbr, int *col_nbr, int i, int j);
 t_coord	save_start(int x, int y);
 void	check_quant(t_quant *quant);
 void	default_quant(t_quant *quant);
+
 #endif
