@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/13 16:10:30 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/13 18:16:12 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,34 +28,29 @@
  * check if the next lines are not sealed
 */
 
-void	grid_detailing(char **map, int row_nbr, int col_nbr)
+void	grid_detailing(char **map, t_size *size)
 {
-	t_cell	*cell;
-	int		x_axis;
-	int		y_axis;
+	t_cell	cell;
+	t_coord axis;
 	t_cell  **cells;
 
-	x_axis = 0;
-	y_axis = 0;
-	cell = (t_cell *)malloc(sizeof(t_cell));
-	// cells = NULL;
-	while (map[y_axis])
+	axis.y = 0;
+	cells = (t_cell **)malloc(sizeof(t_cell*) * size->row_nbr);
+	while (map[axis.y])
 	{
-		x_axis = 0;
-		while (map[y_axis][x_axis])
+		axis.x = 0;
+		cells[axis.y] = (t_cell *)malloc(sizeof(t_cell) * size->col_nbr);
+		while (map[axis.y][axis.x])
 		{
-			cell->pos->x = x_axis;
-			cell->pos->y = y_axis;
-			cell->val = map[y_axis][x_axis];
-			cell->status = READY;
-			x_axis++;
+			cell.pos = &axis;
+			cell.val = map[axis.y][axis.x];
+			cell.status = READY;
+			cells[axis.y][axis.x] = cell;
+			axis.x++;
 		}
-		y_axis++;
+		axis.y++;
 	}
-	
-	(void)cells;
-	(void)row_nbr;
-	(void)col_nbr;
+	printf("%c\n", cells[3][1].val);
 }
 
 void	handle_map(char **argv)
@@ -68,6 +63,6 @@ void	handle_map(char **argv)
 	size->row_nbr = line_counter(argv[1]);
 	ptr = map_reader(argv[1], size->row_nbr);
 	validate_map(ptr, size->row_nbr, &size->col_nbr);
-	// grid_detailing(ptr, row_nbr, col_nbr);
+	grid_detailing(ptr, size);
 	printf("%d %d\n", size->row_nbr, size->col_nbr);
 }
