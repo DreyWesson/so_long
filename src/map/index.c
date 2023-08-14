@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/13 22:36:06 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/14 06:42:04 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,45 @@ t_cell create_cell(char s, int x, int y)
 	return (cell);
 }
 
-void	set_grid(char **map, t_size *size)
+void print_grid(t_cell **grid, t_size size)
 {
-	t_cell	**grid;
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
-	grid = (t_cell **)malloc(sizeof(t_cell *) * size->row_nbr);
-	while (map[y])
+	while (y < size.row_nbr)
 	{
 		x = 0;
-		grid[y] = (t_cell *)malloc(sizeof(t_cell) * size->col_nbr);
-		while (map[y][x])
+		while (x < size.col_nbr)
+		{
+			printf("[%c->(%d, %d)], ", grid[y][x].val, grid[y][x].y_axis, grid[y][x].x_axis);
+			x++;
+		}
+		printf("\n");
+		y++;
+	}
+}
+
+void	set_grid(char **map, t_size *size)
+{
+	int		x;
+	int		y;
+	t_cell	**grid;
+
+	y = 0;
+	grid = (t_cell **)ft_calloc(sizeof(t_cell *), size->row_nbr);
+	while (y < size->row_nbr)
+	{
+		x = 0;
+		grid[y] = (t_cell *)ft_calloc(sizeof(t_cell), size->col_nbr);
+		while (x < size->col_nbr)
 		{
 			grid[y][x] = create_cell(map[y][x], x, y);
 			x++;
 		}
 		y++;
 	}
-	// printf("-> %c %d %d\n", grid[3][6].val, grid[3][6].x_axis, grid[3][6].y_axis);
+	print_grid(grid, *size);
 }
 
 void	handle_map(char **argv)
