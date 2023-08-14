@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/14 08:41:03 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/14 16:48:54 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,8 @@ void	handle_map(char **argv)
 	validate_map(ptr, size->row_nbr, &size->col_nbr);
 	grid = create_grid(ptr, size);
 	print_grid(grid, *size);
+	/**
+	 * @bug -> SIZE, GRID, PTR
+	 * possible leakage
+	*/
 }

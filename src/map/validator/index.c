@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/13 18:35:38 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/14 16:50:16 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,8 @@ void	validate_map(char **map, int row_nbr, int *col_nbr)
 	(void)start_pos;
 	// printf("%d %d\n", start_pos.x, start_pos.y);
 	check_quant(quant);
+	/**
+	 * @bug -> quant
+	 * possible leakage
+	*/
 }
