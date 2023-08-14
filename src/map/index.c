@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/14 16:48:54 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/14 18:27:41 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	print_grid(t_cell **grid, t_size size)
 }
 
 
-t_cell	**create_grid(char **map, t_size *size)
+t_cell	**create_grid(char **map, t_size *size, t_nodes **list)
 {
 	int		x;
 	int		y;
@@ -80,10 +80,12 @@ t_cell	**create_grid(char **map, t_size *size)
 		while (x < size->col_nbr)
 		{
 			grid[y][x] = create_cell(map[y][x], x, y);
+			*list = create_node(&grid[y][x]);
 			x++;
 		}
 		y++;
 	}
+	(void)list;
 	return (grid);
 }
 
@@ -92,14 +94,20 @@ void	handle_map(char **argv)
 	char	**ptr;
 	t_size	*size;
 	t_cell	**grid;
+	t_nodes **list;
 
 	size = (t_size *)malloc(sizeof(t_size));
 	size->col_nbr = 0;
 	size->row_nbr = line_counter(argv[1]);
 	ptr = map_reader(argv[1], size->row_nbr);
 	validate_map(ptr, size->row_nbr, &size->col_nbr);
-	grid = create_grid(ptr, size);
-	print_grid(grid, *size);
+	// list = NULL;
+	list = (t_nodes **)ft_calloc(sizeof(t_nodes *), 1);
+
+	grid = create_grid(ptr, size, list);
+	printf("%c\n", (*list)->cell->val);
+(void)grid;
+	// print_grid(grid, *size);
 	/**
 	 * @bug -> SIZE, GRID, PTR
 	 * possible leakage

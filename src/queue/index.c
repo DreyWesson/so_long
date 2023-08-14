@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:36:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/14 16:55:51 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/14 18:16:35 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../../inc/so_long.h"
 
-t_nodes *create(t_cell *cell)
+t_nodes *create_node(t_cell *cell)
 {
 	t_nodes *node;
 
@@ -53,7 +53,7 @@ void del_node(t_nodes **head)
 	*head = tmp->next;
 }
 
-void add_tail(t_nodes **old, t_nodes *new)
+void add_tail_node(t_nodes **old, t_nodes *new)
 {
 	new->next = *old;
 	if (*old)
@@ -61,7 +61,7 @@ void add_tail(t_nodes **old, t_nodes *new)
 	*old = new;
 }
 
-void print(t_nodes *head)
+void print_node(t_nodes *head)
 {
 	t_nodes *tmp;
 
@@ -80,7 +80,7 @@ void print(t_nodes *head)
 	}
 }
 
-void add_head(t_nodes **old, t_nodes *new)
+void add_head_node(t_nodes **old, t_nodes *new)
 {
 	t_nodes *tmp;
 
