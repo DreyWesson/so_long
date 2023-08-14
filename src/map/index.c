@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/14 06:42:04 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/14 08:41:03 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,25 @@
  * 		make sure all collectibles and exit are accessible
  * 		by checking if its all surrounded by 1s
  */
+
 /**
- * When you encounter C/E make sure P can access it
- * check if P is above or below or same line
- * check if the next lines are not sealed
+ * keep all ad
 */
-t_cell create_cell(char s, int x, int y)
+
+
+
+t_cell	create_cell(char s, int x, int y)
 {
 	t_cell	cell;
 
 	cell.x_axis = x;
 	cell.y_axis = y;
 	cell.val = s;
-	cell.status = READY;
+	cell.status = RESTING;
 	return (cell);
 }
 
-void print_grid(t_cell **grid, t_size size)
+void	print_grid(t_cell **grid, t_size size)
 {
 	int	x;
 	int	y;
@@ -49,7 +51,12 @@ void print_grid(t_cell **grid, t_size size)
 		x = 0;
 		while (x < size.col_nbr)
 		{
-			printf("[%c->(%d, %d)], ", grid[y][x].val, grid[y][x].y_axis, grid[y][x].x_axis);
+			printf(
+				"[%c->(%d, %d)], ",
+				grid[y][x].val,
+				grid[y][x].y_axis,
+				grid[y][x].x_axis
+				);
 			x++;
 		}
 		printf("\n");
@@ -57,7 +64,8 @@ void print_grid(t_cell **grid, t_size size)
 	}
 }
 
-void	set_grid(char **map, t_size *size)
+
+t_cell	**create_grid(char **map, t_size *size)
 {
 	int		x;
 	int		y;
@@ -76,18 +84,20 @@ void	set_grid(char **map, t_size *size)
 		}
 		y++;
 	}
-	print_grid(grid, *size);
+	return (grid);
 }
 
 void	handle_map(char **argv)
 {
 	char	**ptr;
 	t_size	*size;
+	t_cell	**grid;
 
 	size = (t_size *)malloc(sizeof(t_size));
 	size->col_nbr = 0;
 	size->row_nbr = line_counter(argv[1]);
 	ptr = map_reader(argv[1], size->row_nbr);
 	validate_map(ptr, size->row_nbr, &size->col_nbr);
-	set_grid(ptr, size);
+	grid = create_grid(ptr, size);
+	print_grid(grid, *size);
 }

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/14 06:32:57 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/14 08:43:13 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,16 @@ typedef enum
 
 typedef enum	
 {
-	READY = 1,
+	RESTING = 1,
 	WAITING = 2,
 	VISITED = 3
 } e_status;
+
+typedef enum
+{
+	BWD = -1,
+	FWD = 1,
+} e_move;
 
 typedef struct s_quant
 {
@@ -61,12 +67,14 @@ typedef struct s_cell
 	// char **adj_list;
 	// char *status;
 	e_status status;
-} t_cell;
+}	t_cell;
 
 typedef struct s_nodes
 {
-	
-} t_nodes;
+	t_cell			*cell;
+	struct s_nodes	*next;
+	struct s_nodes	*prev;
+}	t_nodes;
 
 /**
  * UTILS FUNCTION
