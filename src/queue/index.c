@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:36:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/14 18:16:35 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/15 13:38:01 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void add_tail_node(t_nodes **old, t_nodes *new)
 	*old = new;
 }
 
-void print_node(t_nodes *head)
+void print_node(t_nodes *head, int col_nbr)
 {
 	t_nodes *tmp;
 
@@ -70,12 +70,16 @@ void print_node(t_nodes *head)
 	{
 		// printf("%s -> %d - %d\n", tmp->pos, tmp->value, tmp->status);
 		printf(
-			"value: %d, x: %d, y: %d, status: %d\n",
+			"value: %c, x: %d, y: %d, status: %d\n",
 			tmp->cell->val,
 			tmp->cell->x_axis,
 			tmp->cell->y_axis,
 			tmp->cell->status
 			);
+
+		if (col_nbr - 1 == tmp->cell->x_axis)
+			printf("\n");
+
 		tmp = tmp->next;
 	}
 }

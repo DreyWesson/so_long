@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/14 18:27:41 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/15 13:39:03 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ t_cell	**create_grid(char **map, t_size *size, t_nodes **list)
 		while (x < size->col_nbr)
 		{
 			grid[y][x] = create_cell(map[y][x], x, y);
-			*list = create_node(&grid[y][x]);
+			// *list = ;
+			add_head_node(list, create_node(&grid[y][x]));
 			x++;
 		}
 		y++;
@@ -106,10 +107,11 @@ void	handle_map(char **argv)
 
 	grid = create_grid(ptr, size, list);
 	printf("%c\n", (*list)->cell->val);
-(void)grid;
+	(void)grid;
 	// print_grid(grid, *size);
+	// print_node(*list, size->col_nbr);
 	/**
-	 * @bug -> SIZE, GRID, PTR
+	 * @bug -> SIZE, GRID, PTR, LIST
 	 * possible leakage
 	*/
 }

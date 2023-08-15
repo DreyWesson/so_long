@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/14 18:16:18 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/15 13:38:13 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	default_quant(t_quant *quant);
  * QUEUE
 */
 void	add_head_node(t_nodes **old, t_nodes *new);
-void	print_node(t_nodes *head);
+void	print_node(t_nodes *head, int col_nbr);
 void	add_tail_node(t_nodes **old, t_nodes *new);
 void	del_node(t_nodes **head);
 t_nodes	*last_node(t_nodes *head);
