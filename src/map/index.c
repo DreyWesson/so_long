@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/15 19:44:27 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/15 19:46:26 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	handle_map(char **argv)
 	char	**ptr;
 	t_size	*size;
 	t_cell	**grid;
-	t_nodes **list;
+	t_nodes	**list;
 
 	size = (t_size *)malloc(sizeof(t_size));
 	size->col_nbr = 0;
@@ -102,6 +102,7 @@ void	handle_map(char **argv)
 	validate_map(ptr, size);
 	list = (t_nodes **)ft_calloc(sizeof(t_nodes *), 1);
 	grid = create_grid(ptr, size, list);
+	// (void)grid;
 	print_grid(grid, *size);
 	print_node(*list, size->col_nbr);
 	/**
