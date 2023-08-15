@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/15 13:38:13 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/15 19:40:12 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_size
 {
 	int col_nbr;
 	int row_nbr;
+	t_coord start_pos;
 } t_size;
 
 typedef struct s_cell
@@ -87,7 +88,7 @@ int		handle_validation(int argc, char **argv);
  * MAP -> Reader
 */
 void 	handle_map(char **argv);
-void	validate_map(char **map, int row_nbr, int *col_nbr);
+void	validate_map(char **map, t_size *size);
 // void	validate_map(char **map, int row_nbr);
 int		line_counter(char *file_name);
 size_t	ft_strlen_ln(const char *str);
@@ -97,7 +98,7 @@ char	**map_reader(char *s, int row_nbr);
 */
 void	validate_composition(char s, t_quant *quant);
 void validate_walls(char *s, int row_nbr, int j, int i);
-void	validate_shape(int row_nbr, int *col_nbr, int i, int j);
+void	validate_shape(t_size *size, int i, int j);
 t_coord	save_start(int x, int y);
 void	check_quant(t_quant *quant);
 void	default_quant(t_quant *quant);

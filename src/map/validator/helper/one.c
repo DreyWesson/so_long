@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:29:43 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/13 09:18:08 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/15 19:37:54 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ void validate_walls(char *s, int row_nbr, int j, int i)
 	}
 }
 
-void	validate_shape(int row_nbr, int *col_nbr, int i, int j)
+void	validate_shape(t_size *size, int i, int j)
 {
 	if (i == 0)
-		*col_nbr = j;
-	if (j == row_nbr || *col_nbr != j)
+		size->col_nbr = j;
+	if (j == size->row_nbr || (*size).col_nbr != j)
 	{
 		ft_error("Provide rectangular maps only");
 		exit(0);

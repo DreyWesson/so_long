@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/15 13:39:03 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/15 19:44:27 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,11 @@ t_cell	**create_grid(char **map, t_size *size, t_nodes **list)
 		while (x < size->col_nbr)
 		{
 			grid[y][x] = create_cell(map[y][x], x, y);
-			// *list = ;
 			add_head_node(list, create_node(&grid[y][x]));
 			x++;
 		}
 		y++;
 	}
-	(void)list;
 	return (grid);
 }
 
@@ -101,15 +99,11 @@ void	handle_map(char **argv)
 	size->col_nbr = 0;
 	size->row_nbr = line_counter(argv[1]);
 	ptr = map_reader(argv[1], size->row_nbr);
-	validate_map(ptr, size->row_nbr, &size->col_nbr);
-	// list = NULL;
+	validate_map(ptr, size);
 	list = (t_nodes **)ft_calloc(sizeof(t_nodes *), 1);
-
 	grid = create_grid(ptr, size, list);
-	printf("%c\n", (*list)->cell->val);
-	(void)grid;
-	// print_grid(grid, *size);
-	// print_node(*list, size->col_nbr);
+	print_grid(grid, *size);
+	print_node(*list, size->col_nbr);
 	/**
 	 * @bug -> SIZE, GRID, PTR, LIST
 	 * possible leakage
