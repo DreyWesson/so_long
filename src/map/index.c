@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/15 19:46:26 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/16 22:22:02 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ t_cell	create_cell(char s, int x, int y)
 	cell.x_axis = x;
 	cell.y_axis = y;
 	cell.val = s;
-	cell.status = RESTING;
+	if (s == WALL)
+		cell.status = WALL;
+	else
+		cell.status = RESTING;
 	return (cell);
 }
 
@@ -65,7 +68,7 @@ void	print_grid(t_cell **grid, t_size size)
 }
 
 
-t_cell	**create_grid(char **map, t_size *size, t_nodes **list)
+t_cell	**create_grid(char **map, t_size *size)
 {
 	int		x;
 	int		y;
@@ -80,7 +83,6 @@ t_cell	**create_grid(char **map, t_size *size, t_nodes **list)
 		while (x < size->col_nbr)
 		{
 			grid[y][x] = create_cell(map[y][x], x, y);
-			add_head_node(list, create_node(&grid[y][x]));
 			x++;
 		}
 		y++;
@@ -88,23 +90,76 @@ t_cell	**create_grid(char **map, t_size *size, t_nodes **list)
 	return (grid);
 }
 
+void bfs(t_cell **grid,t_nodes **queue, t_cell *curr_node, t_size *size)
+{
+
+	// print_node(*queue, size->col_nbr);
+	(void)queue;
+	// (void)size;
+	// check if it's not been visited or waiting
+	// add to queue
+	// add its adjacent nodes to queue
+	// pop the visited from queue
+	// call with next on queue
+	if (!(*queue))
+		return;
+	// if its equal to resting && not a wall
+	// del_node(queue);
+	if (
+		curr_node->y_axis - 1 >= 0 
+			&& grid[curr_node->y_axis - 1][curr_node->x_axis].status == RESTING
+			&& grid[curr_node->y_axis - 1][curr_node->x_axis].val != WALL
+		) // NORTH
+	{
+		add_head_node(queue, create_node(&grid[curr_node->y_axis - 1][curr_node->x_axis]));
+	}
+	if (
+		curr_node->y_axis + 1 <= size->row_nbr 
+			&& grid[curr_node->y_axis + 1][curr_node->x_axis].status == RESTING
+			&& grid[curr_node->y_axis + 1][curr_node->x_axis].val != WALL
+		) // SOUTH
+	{
+		add_head_node(queue, create_node(&grid[curr_node->y_axis + 1][curr_node->x_axis]));
+	}
+	if (
+		curr_node->x_axis + 1 <= size->col_nbr
+			&& grid[curr_node->y_axis][curr_node->x_axis + 1].status == RESTING
+			&& grid[curr_node->y_axis][curr_node->x_axis + 1].val != WALL
+		) // EAST
+	{
+		add_head_node(queue, create_node(&grid[curr_node->y_axis][curr_node->x_axis + 1]));
+	}
+	if (
+		curr_node->x_axis - 1 >= 0
+			&& grid[curr_node->y_axis][curr_node->x_axis - 1].status == RESTING
+			&& grid[curr_node->y_axis][curr_node->x_axis - 1].val != WALL
+		) // WEST
+	{
+		add_head_node(queue, create_node(&grid[curr_node->y_axis][curr_node->x_axis - 1]));
+	}
+	curr_node->status = VISITED;
+	(void)size;
+}
+
 void	handle_map(char **argv)
 {
 	char	**ptr;
 	t_size	*size;
 	t_cell	**grid;
-	t_nodes	**list;
+	t_nodes	**queue;
 
 	size = (t_size *)malloc(sizeof(t_size));
 	size->col_nbr = 0;
 	size->row_nbr = line_counter(argv[1]);
 	ptr = map_reader(argv[1], size->row_nbr);
 	validate_map(ptr, size);
-	list = (t_nodes **)ft_calloc(sizeof(t_nodes *), 1);
-	grid = create_grid(ptr, size, list);
-	// (void)grid;
-	print_grid(grid, *size);
-	print_node(*list, size->col_nbr);
+	grid = create_grid(ptr, size);
+	queue = (t_nodes **)ft_calloc(sizeof(t_nodes *), 1);
+	grid[size->start_pos.y][size->start_pos.x].status = WAITING;
+	add_head_node(queue, create_node(&grid[size->start_pos.y][size->start_pos.x]));
+	bfs(grid, queue, &grid[size->start_pos.y][size->start_pos.x], size);
+	print_node(*queue, size->col_nbr);
+	// printf("%d %d\n",size->start_pos.y, size->start_pos.x);
 	/**
 	 * @bug -> SIZE, GRID, PTR, LIST
 	 * possible leakage

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/15 19:40:12 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/16 09:49:20 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ typedef enum
 
 typedef enum	
 {
-	RESTING = 1,
-	WAITING = 2,
-	VISITED = 3
+	RESTING = '0',
+	WALL = '1',
+	WAITING = '2',
+	VISITED = '3'
 } e_status;
 
 typedef enum

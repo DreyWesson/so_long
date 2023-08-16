@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:29:43 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/15 19:37:54 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/16 22:23:51 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ void	validate_shape(t_size *size, int i, int j)
 	}
 }
 
-t_coord	save_start(int x, int y)
+t_coord	save_start(int y, int x)
 {
 	t_coord	start_pos;
 
-	start_pos.x = x;
 	start_pos.y = y;
+	start_pos.x = x;
 	return (start_pos);
 }
 
