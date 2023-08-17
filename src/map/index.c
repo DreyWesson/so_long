@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/17 09:19:19 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/17 10:13:20 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,9 +185,10 @@ t_details set_tmp(t_nodes **queue, t_details *details)
 	return (tmp);
 }
 
-void bfs(t_cell **grid,t_nodes **queue, t_cell *curr_node, t_details *details)
+int bfs(t_cell **grid,t_nodes **queue, t_cell *curr_node, t_details *details, int *found)
 {
 	t_details tmp;
+	// int memo;
 
 	details->pos.x = curr_node->x_axis;
 	details->pos.y = curr_node->y_axis;
@@ -197,12 +198,22 @@ void bfs(t_cell **grid,t_nodes **queue, t_cell *curr_node, t_details *details)
 	handle_west(grid, queue, details);
 	curr_node->status = VISITED;
 	del_node(queue);
+	if (curr_node->val != RESTING && curr_node->val != WALL)
+	{
+		// printf("%c\n", curr_node->val);
+		// memo = 1;
+		*found += 1;
+
+
+	}
+	// else
+	// 	memo = 0;
 	if (!*queue)
-		return ;
+		return (0);
 	tmp = set_tmp(queue, details);
 	// print_node(*queue, details->col_nbr);
 	// printf("\n");
-	bfs(grid, queue, &grid[(*queue)->cell->y_axis][(*queue)->cell->x_axis], &tmp);
+	return (bfs(grid, queue, &grid[(*queue)->cell->y_axis][(*queue)->cell->x_axis], &tmp, found));
 }
 
 t_details *default_details(char *ptr)
@@ -244,6 +255,7 @@ void	handle_map(char **argv)
 	t_details	*details;
 	t_cell		**grid;
 	t_nodes		**queue;
+	int found;
 
 	queue = (t_nodes **)ft_calloc(sizeof(t_nodes *), 1);
 	details = default_details(argv[1]);
@@ -252,9 +264,11 @@ void	handle_map(char **argv)
 	grid = create_grid(ptr, details);
 	grid[details->pos.y][details->pos.x].status = WAITING;
 	add_head_node(queue, create_node(&grid[details->pos.y][details->pos.x]));
-	special_char(ptr);
-	bfs(grid, queue, &grid[details->pos.y][details->pos.x], details);
-	print_grid(grid, *details);
+	bfs(grid, queue,
+			&grid[details->pos.y][details->pos.x], details, &found);
+	if (found != special_char(ptr))
+		ft_error("Invalid path(s)");
+	// print_grid(grid, *details);
 }
 /**
  * @bug -> SIZE, GRID, PTR, QUEUE
