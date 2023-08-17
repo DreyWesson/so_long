@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/17 10:13:20 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/17 12:44:30 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_cell	create_cell(char s, int x, int y)
 	if (s == WALL)
 		cell.status = WALL;
 	else
-		cell.status = RESTING;
+		cell.status = SPACE;
 	return (cell);
 }
 
@@ -91,89 +91,35 @@ t_cell	**create_grid(char **map, t_details *details)
 	return (grid);
 }
 
-void	handle_north(t_cell **grid, t_nodes **queue, t_details *details)
+void	handle_directions(t_cell **grid, t_nodes **queue, t_details *details)
 {
 	int x;
 	int y;
 
 	x = details->pos.x;
 	y = details->pos.y;
-	if (
-		(y - 1) >= 0
-		&& grid[y - 1][x].status == RESTING
-		&& grid[y - 1][x].val != WALL
-		)
+	if (grid[y - 1][x].status == SPACE && grid[y - 1][x].val != WALL)
 	{
 		add_head_node(queue, create_node(&grid[y - 1][x]));
 		grid[y - 1][x].status = WAITING;
 	}
-}
-
-void	handle_south(t_cell **grid, t_nodes **queue, t_details *details)
-{
-	int x;
-	int y;
-	int row_nbr;
-
-	x = details->pos.x;
-	y = details->pos.y;
-	row_nbr = details->row_nbr;
-	if (
-		(y + 1) <= row_nbr 
-		&& grid[y + 1][x].status == RESTING
-		&& grid[y + 1][x].val != WALL
-		)
+	if (grid[y + 1][x].status == SPACE && grid[y + 1][x].val != WALL)
 	{
 		add_head_node(queue, create_node(&grid[y + 1][x]));
 		grid[y + 1][x].status = WAITING;
 	}
-}
-
-void	handle_west(t_cell **grid, t_nodes **queue, t_details *details)
-{
-	int x;
-	int y;
-
-	x = details->pos.x;
-	y = details->pos.y;
-	if (
-		(x - 1) >= 0
-		&& grid[y][x - 1].status == RESTING
-		&& grid[y][x - 1].val != WALL
-		)
+	if (grid[y][x - 1].status == SPACE && grid[y][x - 1].val != WALL)
 	{
 		add_head_node(queue, create_node(&grid[y][x - 1]));
 		grid[y][x - 1].status = WAITING;
 	}
-}
-
-void	handle_east(t_cell **grid, t_nodes **queue, t_details *details)
-{
-	int x;
-	int y;
-	int col_nbr;
-
-	x = details->pos.x;
-	y = details->pos.y;
-	col_nbr = details->col_nbr;
-	if ((x + 1) <= col_nbr
-		&& grid[y][x + 1].status == RESTING
-		&& grid[y][x + 1].val != WALL
-		)
+	if (grid[y][x + 1].status == SPACE && grid[y][x + 1].val != WALL)
 	{
 		add_head_node(queue, create_node(&grid[y][x + 1]));
 		grid[y][x + 1].status = WAITING;
 	}
 }
 
-// (void)size;
-// check if it's not been visited or waiting
-// add to queue
-// add its adjacent nodes to queue
-// pop the visited from queue
-// call with next on queue
-// if its equal to resting && not a wall
-// del_node(queue);
 t_details set_tmp(t_nodes **queue, t_details *details)
 {
 	t_details tmp;
@@ -188,32 +134,20 @@ t_details set_tmp(t_nodes **queue, t_details *details)
 int bfs(t_cell **grid,t_nodes **queue, t_cell *curr_node, t_details *details, int *found)
 {
 	t_details tmp;
-	// int memo;
 
 	details->pos.x = curr_node->x_axis;
 	details->pos.y = curr_node->y_axis;
-	handle_north(grid, queue, details);
-	handle_south(grid, queue, details);
-	handle_east(grid, queue, details);
-	handle_west(grid, queue, details);
+	handle_directions(grid, queue, details);
 	curr_node->status = VISITED;
 	del_node(queue);
-	if (curr_node->val != RESTING && curr_node->val != WALL)
-	{
-		// printf("%c\n", curr_node->val);
-		// memo = 1;
+	if (curr_node->val != SPACE && curr_node->val != WALL)
 		*found += 1;
-
-
-	}
-	// else
-	// 	memo = 0;
 	if (!*queue)
 		return (0);
 	tmp = set_tmp(queue, details);
 	// print_node(*queue, details->col_nbr);
 	// printf("\n");
-	return (bfs(grid, queue, &grid[(*queue)->cell->y_axis][(*queue)->cell->x_axis], &tmp, found));
+	return (bfs(grid, queue, (*queue)->cell, &tmp, found));
 }
 
 t_details *default_details(char *ptr)
@@ -239,13 +173,12 @@ int special_char(char **map)
 		x_axis = 0;
 		while (map[y_axis][x_axis])
 		{
-			if (map[y_axis][x_axis] != WALL && map[y_axis][x_axis] != RESTING)
+			if (map[y_axis][x_axis] != WALL && map[y_axis][x_axis] != SPACE)
 				sum++;
 			x_axis++;
 		}
 		y_axis++;
 	}
-	// printf("%d\n", sum);
 	return (sum);
 }
 
@@ -265,10 +198,10 @@ void	handle_map(char **argv)
 	grid[details->pos.y][details->pos.x].status = WAITING;
 	add_head_node(queue, create_node(&grid[details->pos.y][details->pos.x]));
 	bfs(grid, queue,
-			&grid[details->pos.y][details->pos.x], details, &found);
+		&grid[details->pos.y][details->pos.x], details, &found);
 	if (found != special_char(ptr))
 		ft_error("Invalid path(s)");
-	// print_grid(grid, *details);
+	print_grid(grid, *details);
 }
 /**
  * @bug -> SIZE, GRID, PTR, QUEUE
