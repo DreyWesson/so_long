@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:36:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/15 13:38:01 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/17 04:15:52 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void print_node(t_nodes *head, int col_nbr)
 	{
 		// printf("%s -> %d - %d\n", tmp->pos, tmp->value, tmp->status);
 		printf(
-			"value: %c, x: %d, y: %d, status: %d\n",
+			"value: %c, x: %d, y: %d, status: %c\n",
 			tmp->cell->val,
 			tmp->cell->x_axis,
 			tmp->cell->y_axis,

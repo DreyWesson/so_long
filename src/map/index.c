@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/16 22:50:21 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/17 04:56:02 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ t_cell	create_cell(char s, int x, int y)
 	return (cell);
 }
 
-void	print_grid(t_cell **grid, t_size size)
+void	print_grid(t_cell **grid, t_details details)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	while (y < size.row_nbr)
+	while (y < details.row_nbr)
 	{
 		x = 0;
-		while (x < size.col_nbr)
+		while (x < details.col_nbr)
 		{
 			printf(
 				"[%c->(%d, %d)], ",
@@ -68,19 +68,19 @@ void	print_grid(t_cell **grid, t_size size)
 }
 
 
-t_cell	**create_grid(char **map, t_size *size)
+t_cell	**create_grid(char **map, t_details *details)
 {
 	int		x;
 	int		y;
 	t_cell	**grid;
 
 	y = 0;
-	grid = (t_cell **)ft_calloc(sizeof(t_cell *), size->row_nbr);
-	while (y < size->row_nbr)
+	grid = (t_cell **)ft_calloc(sizeof(t_cell *), details->row_nbr);
+	while (y < details->row_nbr)
 	{
 		x = 0;
-		grid[y] = (t_cell *)ft_calloc(sizeof(t_cell), size->col_nbr);
-		while (x < size->col_nbr)
+		grid[y] = (t_cell *)ft_calloc(sizeof(t_cell), details->col_nbr);
+		while (x < details->col_nbr)
 		{
 			grid[y][x] = create_cell(map[y][x], x, y);
 			x++;
@@ -102,15 +102,16 @@ void handle_north(t_cell **grid, t_nodes **queue, t_cell *curr_node)
 	}
 }
 
-void handle_south(t_cell **grid, t_nodes **queue, t_cell *curr_node, t_size *size)
+void handle_south(t_cell **grid, t_nodes **queue, t_cell *curr_node, t_details *details)
 {
 	if (
-		curr_node->y_axis + 1 <= size->row_nbr 
+		curr_node->y_axis + 1 <= details->row_nbr 
 			&& grid[curr_node->y_axis + 1][curr_node->x_axis].status == RESTING
 			&& grid[curr_node->y_axis + 1][curr_node->x_axis].val != WALL
 		) // SOUTH
 	{
 		add_head_node(queue, create_node(&grid[curr_node->y_axis + 1][curr_node->x_axis]));
+		grid[curr_node->y_axis + 1][curr_node->x_axis].status = WAITING;
 	}
 }
 void handle_west(t_cell **grid, t_nodes **queue, t_cell *curr_node)
@@ -122,18 +123,26 @@ void handle_west(t_cell **grid, t_nodes **queue, t_cell *curr_node)
 		) // WEST
 	{
 		add_head_node(queue, create_node(&grid[curr_node->y_axis][curr_node->x_axis - 1]));
+		grid[curr_node->y_axis][curr_node->x_axis - 1].status = WAITING;
 	}
 }
 
-void handle_east(t_cell **grid, t_nodes **queue, t_cell *curr_node, t_size *size)
+void handle_east(t_cell **grid, t_nodes **queue, t_cell *curr_node, t_details *details)
 {
-	if (
-		curr_node->x_axis + 1 <= size->col_nbr
-			&& grid[curr_node->y_axis][curr_node->x_axis + 1].status == RESTING
-			&& grid[curr_node->y_axis][curr_node->x_axis + 1].val != WALL
+	int x;
+	int y;
+	int col_nbr;
+
+	x = curr_node->x_axis;
+	y = curr_node->y_axis;
+	col_nbr = details->col_nbr;
+	if ((x + 1) <= col_nbr
+			&& grid[y][x + 1].status == RESTING
+			&& grid[y][x + 1].val != WALL
 		) // EAST
 	{
-		add_head_node(queue, create_node(&grid[curr_node->y_axis][curr_node->x_axis + 1]));
+		add_head_node(queue, create_node(&grid[y][x + 1]));
+		grid[y][x + 1].status = WAITING;
 	}
 }
 
@@ -145,37 +154,39 @@ void handle_east(t_cell **grid, t_nodes **queue, t_cell *curr_node, t_size *size
 	// call with next on queue
 	// if its equal to resting && not a wall
 	// del_node(queue);
-void bfs(t_cell **grid,t_nodes **queue, t_cell *curr_node, t_size *size)
+void bfs(t_cell **grid,t_nodes **queue, t_cell *curr_node, t_details *details)
 {
+	// t_coord node_details;
 	if (!*queue)
 		return ;
 	handle_north(grid, queue, curr_node);
-	handle_south(grid, queue, curr_node, size);
-	handle_east(grid, queue, curr_node, size);
+	handle_south(grid, queue, curr_node, details);
+	handle_east(grid, queue, curr_node, details);
 	handle_west(grid, queue, curr_node);
 	curr_node->status = VISITED;
-	(void)size;
+	(void)details;
 }
 
 void	handle_map(char **argv)
 {
 	char	**ptr;
-	t_size	*size;
+	t_details	*details;
 	t_cell	**grid;
 	t_nodes	**queue;
 
-	size = (t_size *)malloc(sizeof(t_size));
+	details = (t_details *)malloc(sizeof(t_details));
 	queue = (t_nodes **)ft_calloc(sizeof(t_nodes *), 1);
-	size->col_nbr = 0;
-	size->row_nbr = line_counter(argv[1]);
-	ptr = map_reader(argv[1], size->row_nbr);
-	validate_map(ptr, size);
-	grid = create_grid(ptr, size);
-	grid[size->start_pos.y][size->start_pos.x].status = WAITING;
+	details->col_nbr = 0;
+	details->row_nbr = line_counter(argv[1]);
+	ptr = map_reader(argv[1], details->row_nbr);
+	validate_map(ptr, details);
+	grid = create_grid(ptr, details);
+	grid[details->pos.y][details->pos.x].status = WAITING;
 	add_head_node(queue,
-		create_node(&grid[size->start_pos.y][size->start_pos.x]));
-	bfs(grid, queue, &grid[size->start_pos.y][size->start_pos.x], size);
-	print_node(*queue, size->col_nbr);
+		create_node(&grid[details->pos.y][details->pos.x]));
+	bfs(grid, queue, &grid[details->pos.y][details->pos.x], details);
+	print_node(*queue, details->col_nbr);
+	printf("%c\n", grid[details->pos.y][details->pos.x].status);
 }
 	/**
 	 * @bug -> SIZE, GRID, PTR, LIST
