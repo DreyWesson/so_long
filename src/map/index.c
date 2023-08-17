@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/17 14:19:36 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/17 23:31:09 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,19 +131,19 @@ t_details set_tmp(t_nodes **queue, t_details *details)
 	return (tmp);
 }
 
-int bfs(t_cell **grid,t_nodes **queue, t_cell *curr_node, t_details *details)
+int bfs(t_cell **grid,t_nodes **queue, t_details *details)
 {
 	t_details tmp;
 	int memo;
 
-	details->pos.x = curr_node->x_axis;
-	details->pos.y = curr_node->y_axis;
+	details->pos.x = (*queue)->cell->x_axis;
+	details->pos.y = (*queue)->cell->y_axis;
 	handle_directions(grid, queue, details);
-	curr_node->status = VISITED;
-	del_node(queue);
+	(*queue)->cell->status = VISITED;
 	memo = 0;
-	if (curr_node->val != SPACE && curr_node->val != WALL)
+	if (((*queue)->cell->val != SPACE && (*queue)->cell->val != WALL))
 		memo = 1;
+	del_node(queue);
 	if (!*queue && memo == 1)
 		return (1);
 	if (!*queue)
@@ -151,7 +151,7 @@ int bfs(t_cell **grid,t_nodes **queue, t_cell *curr_node, t_details *details)
 	tmp = set_tmp(queue, details);
 	// print_node(*queue, details->col_nbr);
 	// printf("\n");
-	return (bfs(grid, queue, (*queue)->cell, &tmp) + memo);
+	return (bfs(grid, queue, &tmp) + memo);
 }
 
 t_details *default_details(char *ptr)
@@ -201,7 +201,7 @@ void	handle_map(char **argv)
 	grid = create_grid(ptr, props);
 	grid[props->pos.y][props->pos.x].status = WAITING;
 	add_head_node(queue, create_node(&grid[props->pos.y][props->pos.x]));
-	found = bfs(grid, queue, &grid[props->pos.y][props->pos.x], props);
+	found = bfs(grid, queue, props);
 	// printf("%d %d\n", found, special_char(ptr));
 	if (found != special_char(ptr))
 		ft_error("Invalid path(s)");
