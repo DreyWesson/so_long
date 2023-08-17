@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/17 04:57:20 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/17 09:11:42 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ void	validate_map(char **map, t_details *details)
 		validate_shape(details, y_axis, x_axis);
 		y_axis++;
 	}
+	// printf("%d %d %d\n", quant->collectibles, quant->exit, quant->player);
 	check_quant(quant);
 }
-	/**
-	 * @bug -> quant
-	 * possible leakage
-	*/
+/**
+ * @bug -> quant
+ * possible leakage
+*/

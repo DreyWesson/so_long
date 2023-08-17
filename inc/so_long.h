@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/17 04:56:49 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/17 09:15:47 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ typedef struct s_cell
 	int val;
 	int x_axis;
 	int y_axis;
-	// char **adj_list;
-	// char *status;
 	e_status status;
 }	t_cell;
 

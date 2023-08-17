@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/17 08:14:54 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/17 09:19:19 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,52 +174,89 @@ void	handle_east(t_cell **grid, t_nodes **queue, t_details *details)
 // call with next on queue
 // if its equal to resting && not a wall
 // del_node(queue);
+t_details set_tmp(t_nodes **queue, t_details *details)
+{
+	t_details tmp;
+
+	tmp.pos.x = (*queue)->cell->x_axis;
+	tmp.pos.y = (*queue)->cell->y_axis;
+	tmp.col_nbr = details->col_nbr;
+	tmp.row_nbr = details->row_nbr;
+	return (tmp);
+}
+
 void bfs(t_cell **grid,t_nodes **queue, t_cell *curr_node, t_details *details)
 {
 	t_details tmp;
 
-	// tmp = (t_details *)malloc(sizeof(t_details));
 	details->pos.x = curr_node->x_axis;
 	details->pos.y = curr_node->y_axis;
 	handle_north(grid, queue, details);
 	handle_south(grid, queue, details);
 	handle_east(grid, queue, details);
 	handle_west(grid, queue, details);
-	del_node(queue);
 	curr_node->status = VISITED;
+	del_node(queue);
 	if (!*queue)
 		return ;
-	tmp.pos.x = (*queue)->cell->x_axis;
-	tmp.pos.y = (*queue)->cell->y_axis;
-	tmp.col_nbr = details->col_nbr;
-	tmp.row_nbr = details->row_nbr;
-	printf("%d\n", details->col_nbr);
-	print_node(*queue, details->col_nbr);
-	printf("\n");
+	tmp = set_tmp(queue, details);
+	// print_node(*queue, details->col_nbr);
+	// printf("\n");
 	bfs(grid, queue, &grid[(*queue)->cell->y_axis][(*queue)->cell->x_axis], &tmp);
+}
+
+t_details *default_details(char *ptr)
+{
+	t_details	*details;
+
+	details = (t_details *)malloc(sizeof(t_details));
+	details->col_nbr = 0;
+	details->row_nbr = line_counter(ptr);
+	return (details);
+}
+
+int special_char(char **map)
+{
+	int	y_axis;
+	int	x_axis;
+	int	sum;
+
+	y_axis = 0;
+	sum = 0;
+	while (map[y_axis])
+	{
+		x_axis = 0;
+		while (map[y_axis][x_axis])
+		{
+			if (map[y_axis][x_axis] != WALL && map[y_axis][x_axis] != RESTING)
+				sum++;
+			x_axis++;
+		}
+		y_axis++;
+	}
+	// printf("%d\n", sum);
+	return (sum);
 }
 
 void	handle_map(char **argv)
 {
-	char	**ptr;
+	char		**ptr;
 	t_details	*details;
-	t_cell	**grid;
-	t_nodes	**queue;
+	t_cell		**grid;
+	t_nodes		**queue;
 
-	details = (t_details *)malloc(sizeof(t_details));
 	queue = (t_nodes **)ft_calloc(sizeof(t_nodes *), 1);
-	details->col_nbr = 0;
-	details->row_nbr = line_counter(argv[1]);
+	details = default_details(argv[1]);
 	ptr = map_reader(argv[1], details->row_nbr);
 	validate_map(ptr, details);
 	grid = create_grid(ptr, details);
 	grid[details->pos.y][details->pos.x].status = WAITING;
-	add_head_node(queue,
-		create_node(&grid[details->pos.y][details->pos.x]));
+	add_head_node(queue, create_node(&grid[details->pos.y][details->pos.x]));
+	special_char(ptr);
 	bfs(grid, queue, &grid[details->pos.y][details->pos.x], details);
 	print_grid(grid, *details);
 }
-	/**
-	 * @bug -> SIZE, GRID, PTR, LIST
-	 * possible leakage
-	*/
+/**
+ * @bug -> SIZE, GRID, PTR, QUEUE
+ * possible leakage
+*/
