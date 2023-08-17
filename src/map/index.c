@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/17 05:25:50 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/17 05:34:23 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	handle_north(t_cell **grid, t_nodes **queue, t_details *details)
 		)
 	{
 		add_head_node(queue, create_node(&grid[y - 1][x]));
+		grid[y - 1][x].status = WAITING;
 	}
 }
 
@@ -126,6 +127,7 @@ void	handle_south(t_cell **grid, t_nodes **queue, t_details *details)
 		grid[y + 1][x].status = WAITING;
 	}
 }
+
 void	handle_west(t_cell **grid, t_nodes **queue, t_details *details)
 {
 	int x;
@@ -181,6 +183,7 @@ void bfs(t_cell **grid,t_nodes **queue, t_cell *curr_node, t_details *details)
 	handle_south(grid, queue, details);
 	handle_east(grid, queue, details);
 	handle_west(grid, queue, details);
+	del_node(queue);
 	curr_node->status = VISITED;
 }
 
@@ -203,7 +206,7 @@ void	handle_map(char **argv)
 		create_node(&grid[details->pos.y][details->pos.x]));
 	bfs(grid, queue, &grid[details->pos.y][details->pos.x], details);
 	print_node(*queue, details->col_nbr);
-	printf("%c\n", grid[details->pos.y][details->pos.x].status);
+	// printf("%c\n", grid[2][2].val);
 }
 	/**
 	 * @bug -> SIZE, GRID, PTR, LIST
