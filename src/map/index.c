@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/17 23:31:09 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/17 23:38:46 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ t_details *default_details(char *ptr)
 	return (details);
 }
 
-int special_char(char **map)
+int	special_char(char **map)
 {
 	int	y_axis;
 	int	x_axis;
