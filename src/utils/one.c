@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:37:29 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/17 13:34:15 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/18 10:57:59 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	ft_error(char *message)
 	ft_printf("\033[1;31m" "Error\n" "\033[0m");
 	ft_printf("\033[3m\033[2;37m" " %s\n" "\033[0m", message);
 	exit(1);
-	// return (0);
 }
 
 void	ft_warning(char *message)
@@ -26,11 +25,6 @@ void	ft_warning(char *message)
 	ft_printf("\033[3m\033[2;37m" " %s\n" "\033[0m", message);
 }
 
-// void	*null_error(char *message)
-// {
-// 	ft_printf("\033[0;31m" " Error\n %s\n" "\033[0m", message);
-// 	return (0);
-// }
 static	int	ft_char_in_set(char c, char const *set)
 {
 	size_t	i;

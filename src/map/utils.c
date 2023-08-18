@@ -6,11 +6,18 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:25:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/18 06:40:31 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/18 11:40:15 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
+
+int valid_move(t_nodes **queue)
+{
+	if (((*queue)->cell->val != SPACE && (*queue)->cell->val != WALL))
+		return (1);
+	return (0);
+}
 
 int	bfs(t_cell **grid, t_nodes **queue, t_details *details)
 {
@@ -20,17 +27,10 @@ int	bfs(t_cell **grid, t_nodes **queue, t_details *details)
 	details->pos.x = (*queue)->cell->x_axis;
 	details->pos.y = (*queue)->cell->y_axis;
 	handle_directions(grid, queue, details);
-	(*queue)->cell->status = VISITED;
-	memo = 0;
-	if (((*queue)->cell->val != SPACE && (*queue)->cell->val != WALL))
-		memo = 1;
+	memo = valid_move(queue);
 	del_node(queue);
-	if (!*queue && memo == 1)
-		return (1);
 	if (!*queue)
-		return (0);
+		return (memo);
 	tmp = set_tmp(queue, details);
-	// print_node(*queue, details->col_nbr);
-	// printf("\n");
 	return (bfs(grid, queue, &tmp) + memo);
 }

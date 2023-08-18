@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/18 06:37:50 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/18 11:12:40 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,53 +20,53 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-typedef enum	
+enum	e_space_type
 {
 	EMPTY,
 	COLLECTIBLES,
 	EXIT
-} e_space_type;
+};
 
-typedef enum	
+enum	e_status
 {
 	SPACE = '0',
 	WALL = '1',
 	WAITING = '2',
 	VISITED = '3'
-} e_status;
+};
 
-typedef enum
+enum e_move
 {
 	BWD = -1,
 	FWD = 1,
-} e_move;
+};
 
 typedef struct s_quant
 {
-	int collectibles;
-	int exit;
-	int player;
-} t_quant;
+	int	collectibles;
+	int	exit;
+	int	player;
+}	t_quant;
 
 typedef struct s_coord
 {
-	int x;
-	int y;
-} t_coord;
+	int	x;
+	int	y;
+}	t_coord;
 
 typedef struct s_details
 {
-	int col_nbr;
-	int row_nbr;
-	t_coord pos;
-} t_details;
+	int		col_nbr;
+	int		row_nbr;
+	t_coord	pos;
+}	t_details;
 
 typedef struct s_cell
 {
-	int val;
-	int x_axis;
-	int y_axis;
-	e_status status;
+	int			val;
+	int			x_axis;
+	int			y_axis;
+	char		status;
 }	t_cell;
 
 typedef struct s_nodes
@@ -107,8 +107,9 @@ t_details	set_tmp(t_nodes **queue, t_details *details);
 int			special_char(char **map);
 t_cell		**create_grid(char **map, t_details *details);
 void		handle_directions(t_cell **grid,
-				t_nodes **queue, 	t_details *details);
-int			bfs(t_cell **grid,t_nodes **queue, t_details *details);
+				t_nodes **queue, t_details *details);
+int			bfs(t_cell **grid, t_nodes **queue, t_details *details);
+void		direction_math(t_cell **grid, t_nodes **queue, int y, int x);
 /**
  * QUEUE
 */
