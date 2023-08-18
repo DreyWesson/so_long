@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:29:43 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/17 04:57:59 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/18 06:40:54 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	validate_composition(char s, t_quant *quant)
 	}
 }
 
-void validate_walls(char *s, int row_nbr, int j, int i)
+void	validate_walls(char *s, int row_nbr, int j, int i)
 {
 	if (s[j] != '1' && (i == 0 || i == row_nbr - 1
 			|| j == 0 || s[j + 1] == '\0'))
