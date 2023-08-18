@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   two.c                                              :+:      :+:    :+:   */
+/*   ft_free2d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/18 11:08:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/18 12:54:56 by doduwole         ###   ########.fr       */
+/*   Created: 2023/08/18 13:02:50 by doduwole          #+#    #+#             */
+/*   Updated: 2023/08/18 13:15:43 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/so_long.h"
+#include "libft.h"
 
-void	print_node(t_nodes *head, int col_nbr)
+void	ft_free2d(char **ptr)
 {
-	t_nodes	*tmp;
+	int	i;
 
-	tmp = head;
-	while (tmp)
-	{
-		printf(
-			"value: %c, x: %d, y: %d, status: %c\n",
-			tmp->cell->val,
-			tmp->cell->x_axis,
-			tmp->cell->y_axis,
-			tmp->cell->status
-			);
-		if (col_nbr - 1 == tmp->cell->x_axis)
-			printf("\n");
-		tmp = tmp->next;
-	}
+	i = 0;
+	while (ptr[i])
+		free(ptr[i++]);
+	free(ptr);
 }

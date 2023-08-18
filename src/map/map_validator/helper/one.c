@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:29:43 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/18 06:40:54 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/18 12:32:32 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,4 @@ void	check_quant(t_quant *quant)
 		ft_error("Invalid composition quantity");
 		exit(0);
 	}
-	free(quant);
 }

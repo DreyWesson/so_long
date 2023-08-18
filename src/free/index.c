@@ -5,32 +5,54 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/18 14:21:40 by doduwole         ###   ########.fr       */
+/*   Created: 2023/08/18 14:17:33 by doduwole          #+#    #+#             */
+/*   Updated: 2023/08/18 14:22:41 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-void	handle_map(char **argv)
+void	free_grid(t_cell **grid, int row_nbr)
 {
-	char		**ptr;
-	t_details	*props;
-	t_cell		**grid;
-	t_nodes		**queue;
+	int	i;
 
-	queue = (t_nodes **)ft_calloc(sizeof(t_nodes *), 1);
-	props = default_details(argv[1]);
-	ptr = map_reader(argv[1], props->row_nbr);
-	validate_map(ptr, props);
-	grid = create_grid(ptr, props);
-	grid[props->pos.y][props->pos.x].status = WAITING;
-	add_head_node(queue, create_node(&grid[props->pos.y][props->pos.x]));
-	if (validate_paths(grid, queue) != special_char(ptr))
-		ft_error("Invalid path(s)");
-
+	i = 0;
+	while (i < row_nbr)
+	{
+		free(grid[i]);
+		i++;
+	}
+	free(grid);
 }
-/**
- * @bug -> PROPS[✅], GRID[✅], PTR[✅], QUEUE[✅]
- * possible leakage
-*/
+
+void	free_list(t_nodes **head_ref)
+{
+	t_nodes	*tmp;
+
+	if (!head_ref)
+		return ;
+	while (*head_ref)
+	{
+		tmp = (*head_ref)->next;
+		free(*head_ref);
+		*head_ref = tmp;
+	}
+}
+
+int	count_row(char **grid)
+{
+	int		y;
+
+	y = 0;
+	while (grid[y])
+		y++;
+	return (y);
+}
+
+void	free_all(char **ptr, t_cell **grid, t_nodes **queue, t_details	*props)
+{
+	free_grid(grid, count_row(ptr));
+	ft_free2d(ptr);
+	free_list(queue);
+	free(props);
+}

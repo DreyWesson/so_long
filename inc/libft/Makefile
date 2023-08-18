@@ -19,6 +19,7 @@ GETNEXTLNDIR = get_next_ln
 
 SRCS = $(wildcard *.c ${PRINTFDIR}/*.c ${CONVERSIONSDIR}/*.c ${UTILSDIR}/*.c ${GETNEXTLNDIR}/*.c)
 
+
 OBJS = $(SRCS:.c=.o)
 
 BONUS =	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c\

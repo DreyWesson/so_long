@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:36:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/18 11:23:20 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/18 12:47:41 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,15 @@ void	del_node(t_nodes **head)
 {
 	t_nodes	*tmp;
 
-	tmp = *head;
 	if (!(*head)->next)
 	{
 		*head = NULL;
 		return ;
 	}
-	/**
-	 * @bug -> previous head
-	 * possible leakage
-	*/
-	*head = tmp->next;
+	tmp = (*head)->next;
 	(*head)->prev = NULL;
+	(*head)->next = NULL;
+	*head = tmp;
 }
 
 void	add_tail_node(t_nodes **old, t_nodes *new)
