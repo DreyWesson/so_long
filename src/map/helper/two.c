@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:28:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/18 11:24:37 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/18 11:45:35 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ void	direction_math(t_cell **grid, t_nodes **queue, int y, int x)
 	}
 }
 
-void	handle_directions(t_cell **grid, t_nodes **queue, t_details *details)
+void	handle_directions(t_cell **grid, t_nodes **queue)
 {
 	int	x;
 	int	y;
 
-	x = details->pos.x;
-	y = details->pos.y;
+	x = (*queue)->cell->x_axis;
+	y = (*queue)->cell->y_axis;
 	direction_math(grid, queue, y - 1, x);
 	direction_math(grid, queue, y + 1, x);
 	direction_math(grid, queue, y, x - 1);
