@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/18 11:51:11 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/18 12:03:13 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ t_details	set_tmp(t_nodes **queue, t_details *details);
 int			special_char(char **map);
 t_cell		**create_grid(char **map, t_details *details);
 void		handle_directions(t_cell **grid, t_nodes **queue);
-int			bfs(t_cell **grid, t_nodes **queue);
+int			validate_paths(t_cell **grid, t_nodes **queue);
 void		direction_math(t_cell **grid, t_nodes **queue, int y, int x);
 /**
  * QUEUE
