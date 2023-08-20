@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 07:45:52 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/13 09:17:27 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:41:55 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	**map_reader(char *s, int row_nbr)
 	}
 	ptr = (char **)ft_calloc(sizeof(char *), row_nbr + 1);
 	if (!ptr)
-		return (0);
+		return (NULL);
 	i = 0;
 	while (i < row_nbr)
 	{

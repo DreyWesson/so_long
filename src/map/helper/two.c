@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:28:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/18 14:01:16 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:44:37 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_cell	**create_grid(char **map, t_details *details)
 	return (grid);
 }
 
-void	direction_math(t_cell **grid, t_nodes **queue, int y, int x)
+void	adjacency_math(t_cell **grid, t_nodes **queue, int y, int x)
 {
 	if (grid[y][x].status == SPACE && grid[y][x].val != WALL)
 	{
@@ -43,16 +43,16 @@ void	direction_math(t_cell **grid, t_nodes **queue, int y, int x)
 	}
 }
 
-void	handle_directions(t_cell **grid, t_nodes **queue)
+void	handle_adjacency(t_cell **grid, t_nodes **queue)
 {
 	int	x;
 	int	y;
 
 	x = (*queue)->cell->x_axis;
 	y = (*queue)->cell->y_axis;
-	direction_math(grid, queue, y - 1, x);
-	direction_math(grid, queue, y + 1, x);
-	direction_math(grid, queue, y, x - 1);
-	direction_math(grid, queue, y, x + 1);
+	adjacency_math(grid, queue, y - 1, x);
+	adjacency_math(grid, queue, y + 1, x);
+	adjacency_math(grid, queue, y, x - 1);
+	adjacency_math(grid, queue, y, x + 1);
 	(*queue)->cell->status = VISITED;
 }

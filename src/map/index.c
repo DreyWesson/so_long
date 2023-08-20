@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/18 14:21:40 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:45:57 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ void	handle_map(char **argv)
 	grid[props->pos.y][props->pos.x].status = WAITING;
 	add_head_node(queue, create_node(&grid[props->pos.y][props->pos.x]));
 	if (validate_paths(grid, queue) != special_char(ptr))
+	{
+		free_all(ptr, grid, queue, props);
 		ft_error("Invalid path(s)");
-
+	}
 }
 /**
  * @bug -> PROPS[✅], GRID[✅], PTR[✅], QUEUE[✅]

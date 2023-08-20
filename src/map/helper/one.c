@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:24:00 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/18 06:29:44 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/20 20:38:40 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,16 @@ t_cell	create_cell(char s, int x, int y)
 	return (cell);
 }
 
-t_details *default_details(char *ptr)
+t_details	*default_details(char *ptr)
 {
 	t_details	*details;
 
 	details = (t_details *)malloc(sizeof(t_details));
+	if (!details)
+	{
+		ft_error("Malloc error");
+		exit(1);
+	}
 	details->col_nbr = 0;
 	details->row_nbr = line_counter(ptr);
 	return (details);
