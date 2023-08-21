@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:28:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/20 20:44:37 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/21 14:37:54 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ t_cell	**create_grid(char **map, t_details *details)
 		}
 		y++;
 	}
+	grid[details->pos.y][details->pos.x].status = WAITING;
+
 	return (grid);
 }
 
