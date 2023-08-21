@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/21 14:16:14 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/21 15:12:52 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
+
+# ifndef SIZE
+#  define SIZE 60
+#  define ESC_KEY 53
+#  define KEY_W 13
+#  define KEY_S 1
+#  define KEY_D 2
+#  define KEY_A 0
+# endif
 
 enum	e_space_type
 {
@@ -33,12 +42,6 @@ enum	e_status
 	WALL = '1',
 	WAITING = '2',
 	VISITED = '3'
-};
-
-enum e_move
-{
-	BWD = -1,
-	FWD = 1,
 };
 
 typedef struct s_quant
@@ -76,17 +79,25 @@ typedef struct s_nodes
 	struct s_nodes	*prev;
 }	t_nodes;
 
+typedef struct s_game
+{
+	void *mlx;
+	void *window;
+	t_details props;
+
+}	t_game;
+
 /**
  * UTILS FUNCTION
 */
 int			ft_error(char *message);
 void		ft_warning(char *message);
 int			ft_trim(char const *s1, char const *set);
-int			handle_validation(int argc, char **argv);
+int			handle_validation(int argc, char **argv, t_game *game);
 /**
  * MAP -> Reader
 */
-void		handle_map(char **argv);
+void		handle_map(char **argv, t_game *game);
 void		validate_map(char **map, t_details *details);
 int			line_counter(char *file_name);
 size_t		ft_strlen_ln(const char *str);
@@ -97,7 +108,7 @@ char		**map_reader(char *s, int row_nbr);
 void		validate_composition(char s, t_quant *quant);
 void		validate_walls(char *s, int row_nbr, int j, int i);
 void		validate_shape(t_details *details, int i, int j);
-t_coord		save_start(int x, int y);
+void		save_start(int x, int y, t_details *details);
 void		check_quant(t_quant *quant);
 void		default_quant(t_quant *quant);
 t_cell		create_cell(char s, int x, int y);

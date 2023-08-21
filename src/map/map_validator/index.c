@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/18 12:32:36 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/21 15:01:21 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	validate_map(char **map, t_details *details)
 			validate_composition(map[y_axis][x_axis], quant);
 			validate_walls(map[y_axis], details->row_nbr, x_axis, y_axis);
 			if (map[y_axis][x_axis] == 'P')
-				details->pos = save_start(y_axis, x_axis);
+				save_start(y_axis, x_axis, details);
 			x_axis++;
 		}
 		validate_shape(details, y_axis, x_axis);

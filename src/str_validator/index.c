@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:39:31 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/21 14:21:31 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/21 14:46:55 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	is_valid(char *str)
 	return (res);
 }
 
-int	handle_validation(int argc, char **argv)
+int	handle_validation(int argc, char **argv, t_game *game)
 {
 	if (argc == 1)
 		return (ft_error("Too few argument"));
@@ -49,6 +49,6 @@ int	handle_validation(int argc, char **argv)
 		ft_warning("Processing the first argument only");
 	if (!is_valid(argv[1]))
 		return (ft_error("Expecting a .ber file"));
-	handle_map(argv);
+	handle_map(argv, game);
 	return (1);
 }
