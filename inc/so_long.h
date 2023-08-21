@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/20 20:47:47 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/21 14:16:14 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ t_coord		save_start(int x, int y);
 void		check_quant(t_quant *quant);
 void		default_quant(t_quant *quant);
 t_cell		create_cell(char s, int x, int y);
-t_details	*default_details(char *ptr);
+t_details	default_details(char *ptr);
 void		print_grid(t_cell **grid, t_details details);
 t_details	set_tmp(t_nodes **queue, t_details *details);
 int			special_char(char **map);

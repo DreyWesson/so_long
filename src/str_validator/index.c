@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:39:31 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/18 15:42:47 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/21 14:21:31 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ int	handle_validation(int argc, char **argv)
 		ft_warning("Processing the first argument only");
 	if (!is_valid(argv[1]))
 		return (ft_error("Expecting a .ber file"));
+	handle_map(argv);
 	return (1);
 }

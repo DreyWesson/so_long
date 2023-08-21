@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:05:51 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/18 15:28:31 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/21 14:21:24 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,5 @@ int	main(int argc, char **argv)
 {
 	if (!handle_validation(argc, argv))
 		return (0);
-	handle_map(argv);
 	return (0);
 }
