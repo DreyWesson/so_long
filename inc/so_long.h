@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/22 20:07:50 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/22 20:13:44 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ t_details	set_tmp(t_nodes **queue, t_details *details);
 int			special_char(char **map);
 t_cell		**create_grid(char **map, t_details *details, t_game *game);
 void		handle_adjacency(t_cell **grid, t_nodes **queue);
-int			validate_paths(t_cell **grid, t_nodes **queue);
+int			validate_paths(t_cell **grid, t_nodes **queue, t_cell *cell);
 void		adjacency_math(t_cell **grid, t_nodes **queue, int y, int x);
 /**
  * QUEUE
