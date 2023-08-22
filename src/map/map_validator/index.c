@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/22 21:31:54 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/22 21:32:44 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	validate_map(char **map, t_details *details, t_game *game, t_nodes **queue)
 				save_start(y_axis, x_axis, details);
 			x_axis++;
 		}
-		validate_shape(details, y_gaaaxis, x_axis);
+		validate_shape(details, y_axis, x_axis);
 		y_axis++;
 	}
 	check_quant(quant, details);
