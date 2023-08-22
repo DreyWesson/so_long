@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:25:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/22 20:21:26 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/22 21:25:01 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,18 @@ int	valid_move(t_nodes **queue)
 	return (0);
 }
 
-int	validate_paths(t_cell **grid, t_nodes **queue, t_cell *cell)
+int	validate_paths(t_cell **grid, t_nodes **queue, t_details details)
 {
 	int	memo;
 
-	if (cell && cell->val == 'P')
-		add_head_node(queue, create_node(cell));
+	if (grid[details.pos.y][details.pos.x].val == 'P')
+		add_head_node(queue, create_node(&grid[details.pos.y][details.pos.x]));
 	handle_adjacency(grid, queue);
 	memo = valid_move(queue);
 	del_node(queue);
 	if (!*queue)
 		return (memo);
-	return (validate_paths(grid, queue, NULL) + memo);
+	details.pos.x = (*queue)->cell->x_axis;
+	details.pos.y = (*queue)->cell->y_axis;
+	return (validate_paths(grid, queue, details) + memo);
 }

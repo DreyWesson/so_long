@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/22 20:13:44 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/22 21:12:39 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ int			handle_validation(int argc, char **argv, t_game *game);
  * MAP -> Reader
 */
 void		handle_map(char **argv, t_game *game);
-t_cell		**validate_map(char **map, t_details *details, t_game *game);
+int		validate_map(char **map, t_details *details, t_game *game, t_nodes **queue);
 int			line_counter(char *file_name);
 size_t		ft_strlen_ln(const char *str);
 char		**map_reader(char *s, int row_nbr);
@@ -166,7 +166,7 @@ t_details	set_tmp(t_nodes **queue, t_details *details);
 int			special_char(char **map);
 t_cell		**create_grid(char **map, t_details *details, t_game *game);
 void		handle_adjacency(t_cell **grid, t_nodes **queue);
-int			validate_paths(t_cell **grid, t_nodes **queue, t_cell *cell);
+int			validate_paths(t_cell **grid, t_nodes **queue, t_details details);
 void		adjacency_math(t_cell **grid, t_nodes **queue, int y, int x);
 /**
  * QUEUE

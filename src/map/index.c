@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/22 20:22:52 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/22 21:31:21 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 int	start(t_game *game)
 {
 	// game->collects = 0;
-	game->moves = 0;
+	// game->moves = 0;
 	game->window = mlx_new_window(game->mlx, IMG_SIZE * game->props.col_nbr, IMG_SIZE * game->props.row_nbr, "Ajala Travel");
 	// mlx_hook(game->window, 17, 0, end_program, game);
 	// open_images(game);
@@ -35,20 +35,14 @@ void	handle_map(char **argv, t_game *game)
 {
 	char		**ptr;
 	t_details	props;
-	t_cell		**grid;
+	// t_cell		**grid;
 	t_nodes		**queue;
 
 	queue = (t_nodes **)ft_calloc(sizeof(t_nodes *), 1);
 	props = default_details(argv[1]);
 	ptr = map_reader(argv[1], props.row_nbr);
-	grid = validate_map(ptr, &props, game);
-	if (validate_paths(grid, queue, &grid[props.pos.y][props.pos.x]) != special_char(ptr))
-	{
-		free_all(ptr, grid, queue);
-		ft_error("Invalid path(s)");
-	}
-	free_list(queue);
-	start(game);
+	validate_map(ptr, &props, game, queue);
+	// start(game);
 }
 /// @brief
 /**

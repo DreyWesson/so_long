@@ -6,17 +6,18 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/22 20:08:57 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/22 21:31:54 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/so_long.h"
 
-t_cell	**validate_map(char **map, t_details *details, t_game *game)
+int	validate_map(char **map, t_details *details, t_game *game, t_nodes **queue)
 {
 	int		y_axis;
 	int		x_axis;
 	t_quant	*quant;
+	t_cell	**grid;
 
 	y_axis = 0;
 	quant = (t_quant *)malloc(sizeof(t_quant));
@@ -32,11 +33,14 @@ t_cell	**validate_map(char **map, t_details *details, t_game *game)
 				save_start(y_axis, x_axis, details);
 			x_axis++;
 		}
-		validate_shape(details, y_axis, x_axis);
+		validate_shape(details, y_gaaaxis, x_axis);
 		y_axis++;
 	}
 	check_quant(quant, details);
-	return (create_grid(map, details, game));
+	grid = create_grid(map, details, game);
+	if (validate_paths(grid, queue, *details) != special_char(map))
+		return (ft_error("Invalid path(s)"));
+	return (1);
 }
 /**
  * @bug -> quant
