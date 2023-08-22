@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:17:33 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/18 15:21:58 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/22 19:32:12 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,9 @@ int	count_row(char **grid)
 	return (y);
 }
 
-void	free_all(char **ptr, t_cell **grid, t_nodes **queue, t_details	*props)
+void	free_all(char **ptr, t_cell **grid, t_nodes **queue)
 {
 	free_grid(grid, count_row(ptr));
 	ft_free2d(ptr);
 	free_list(queue);
-	free(props);
 }

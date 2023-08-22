@@ -6,13 +6,14 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:28:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/21 14:37:54 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/22 20:06:26 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/so_long.h"
 
-t_cell	**create_grid(char **map, t_details *details)
+
+t_cell	**create_grid(char **map, t_details *details, t_game *game)
 {
 	int		x;
 	int		y;
@@ -32,13 +33,15 @@ t_cell	**create_grid(char **map, t_details *details)
 		y++;
 	}
 	grid[details->pos.y][details->pos.x].status = WAITING;
-
+	game->wndw_size.x = x * IMG_SIZE;
+	game->wndw_size.y = y * IMG_SIZE;
+	game->props = *details;
 	return (grid);
 }
 
 void	adjacency_math(t_cell **grid, t_nodes **queue, int y, int x)
 {
-	if (grid[y][x].status == SPACE && grid[y][x].val != WALL)
+	if (grid[y][x].status == SPACE && grid[y][x].val != BLOCK)
 	{
 		add_head_node(queue, create_node(&grid[y][x]));
 		grid[y][x].status = WAITING;

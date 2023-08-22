@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:29:43 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/21 15:00:35 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/22 19:16:20 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,12 @@ void	save_start(int y, int x, t_details *details)
 	details->pos.x = x;
 }
 
-void	check_quant(t_quant *quant)
+void	check_quant(t_quant *quant, t_details *details)
 {
 	if (quant->collectibles < 1 || quant->exit != 1 || quant->player != 1)
 	{
 		ft_error("Invalid composition quantity");
 		exit(0);
 	}
+	details->burger_nbr = quant->collectibles;
 }

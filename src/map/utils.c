@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:25:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/20 20:47:00 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/22 20:08:27 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	valid_move(t_nodes **queue)
 {
-	if (((*queue)->cell->val != SPACE && (*queue)->cell->val != WALL))
+	if (((*queue)->cell->val != SPACE && (*queue)->cell->val != BLOCK))
 		return (1);
 	return (0);
 }

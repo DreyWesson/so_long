@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/21 15:12:52 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/22 20:07:50 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,31 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-# ifndef SIZE
-#  define SIZE 60
-#  define ESC_KEY 53
-#  define KEY_W 13
-#  define KEY_S 1
-#  define KEY_D 2
-#  define KEY_A 0
+# ifndef IMG_SIZE
+#  define IMG_SIZE 42
+// #  define ESC_KEY 53
+// #  define KEY_W 13
+// #  define KEY_S 1
+// #  define KEY_D 2
+// #  define KEY_A 0
 # endif
-
-enum	e_space_type
-{
-	EMPTY,
-	COLLECTIBLES,
-	EXIT
-};
 
 enum	e_status
 {
 	SPACE = '0',
-	WALL = '1',
+	BLOCK = '1',
 	WAITING = '2',
 	VISITED = '3'
 };
+
+typedef enum e_tiletype
+{
+	EMPTY = '0',
+	WALL = '1',
+	COLLECTABLE = 'C',
+	PLAYER = 'P',
+	EXIT = 'E',
+}	t_tiletype;
 
 typedef struct s_quant
 {
@@ -51,25 +53,33 @@ typedef struct s_quant
 	int	player;
 }	t_quant;
 
-typedef struct s_coord
+typedef struct s_axis
 {
 	int	x;
 	int	y;
-}	t_coord;
+}	t_axis;
 
 typedef struct s_details
 {
 	int		col_nbr;
 	int		row_nbr;
-	t_coord	pos;
+	int		burger_nbr;
+	t_axis	pos;
 }	t_details;
 
 typedef struct s_cell
 {
-	int			val;
+	char		val;
 	int			x_axis;
 	int			y_axis;
 	char		status;
+	t_tiletype	type;
+	t_tiletype	og_type;
+	t_axis		position;
+	struct s_cell	*up;
+	struct s_cell	*down;
+	struct s_cell	*left;
+	struct s_cell	*right;
 }	t_cell;
 
 typedef struct s_nodes
@@ -79,12 +89,50 @@ typedef struct s_nodes
 	struct s_nodes	*prev;
 }	t_nodes;
 
+
+typedef struct s_tile
+{
+	t_tiletype		type;
+	t_tiletype		og_type;
+	t_axis			position;
+	struct s_tile	*up;
+	struct s_tile	*down;
+	struct s_tile	*left;
+	struct s_tile	*right;
+}	t_tile;
+
+typedef struct s_player
+{
+	t_tile	*tile;
+	void	*current_img;
+	int		framecount;
+	int		idle_frames;
+	void	*idle_img_0;
+	void	*idle_img_1;
+	int		action_frames;
+	void	*action_img;
+}	t_player;
+
 typedef struct s_game
 {
-	void *mlx;
-	void *window;
-	t_details props;
+	void 			*mlx;
+	void 			*window;
+	t_axis			wndw_size;
+	t_player		player;
+	// int				collects;
+	int				moves;
+	t_tile			**tilemap;
+	int				og_collects;
+	t_details		props;
 
+	// t_vector		img_size;
+	// t_wall_img		wall_imgs;
+	// t_collect_img	collects_imgs;
+	// void			*door_open_img;
+	// void			*door_close_img;
+	// t_effect		effect;
+	// void			*red_panel;
+	// void			*white_panel;
 }	t_game;
 
 /**
@@ -98,7 +146,7 @@ int			handle_validation(int argc, char **argv, t_game *game);
  * MAP -> Reader
 */
 void		handle_map(char **argv, t_game *game);
-void		validate_map(char **map, t_details *details);
+t_cell		**validate_map(char **map, t_details *details, t_game *game);
 int			line_counter(char *file_name);
 size_t		ft_strlen_ln(const char *str);
 char		**map_reader(char *s, int row_nbr);
@@ -109,14 +157,14 @@ void		validate_composition(char s, t_quant *quant);
 void		validate_walls(char *s, int row_nbr, int j, int i);
 void		validate_shape(t_details *details, int i, int j);
 void		save_start(int x, int y, t_details *details);
-void		check_quant(t_quant *quant);
+void		check_quant(t_quant *quant, t_details *details);
 void		default_quant(t_quant *quant);
 t_cell		create_cell(char s, int x, int y);
 t_details	default_details(char *ptr);
 void		print_grid(t_cell **grid, t_details details);
 t_details	set_tmp(t_nodes **queue, t_details *details);
 int			special_char(char **map);
-t_cell		**create_grid(char **map, t_details *details);
+t_cell		**create_grid(char **map, t_details *details, t_game *game);
 void		handle_adjacency(t_cell **grid, t_nodes **queue);
 int			validate_paths(t_cell **grid, t_nodes **queue);
 void		adjacency_math(t_cell **grid, t_nodes **queue, int y, int x);
@@ -135,7 +183,6 @@ t_nodes		*create_node(t_cell *cell);
 int			count_row(char **grid);
 void		free_list(t_nodes **head_ref);
 void		free_grid(t_cell **grid, int row_nbr);
-void		free_all(char **ptr, t_cell **grid, t_nodes	**queue,
-				t_details	*props);
+void		free_all(char **ptr, t_cell **grid, t_nodes	**queue);
 
 #endif

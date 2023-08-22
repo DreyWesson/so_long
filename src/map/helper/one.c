@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:24:00 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/21 14:15:52 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/22 17:39:30 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ t_cell	create_cell(char s, int x, int y)
 	cell.x_axis = x;
 	cell.y_axis = y;
 	cell.val = s;
-	if (s == WALL)
+	cell.og_type = s;
+	cell.position.x = x * IMG_SIZE;
+	cell.position.y = y * IMG_SIZE;
+	if (s == BLOCK)
 		cell.status = WALL;
 	else
-		cell.status = SPACE;
+		cell.status = EMPTY;
 	return (cell);
 }
 
@@ -84,7 +87,7 @@ int	special_char(char **map)
 		x_axis = 0;
 		while (map[y_axis][x_axis])
 		{
-			if (map[y_axis][x_axis] != WALL && map[y_axis][x_axis] != SPACE)
+			if (map[y_axis][x_axis] != BLOCK && map[y_axis][x_axis] != SPACE)
 				sum++;
 			x_axis++;
 		}
