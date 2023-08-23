@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:29:43 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/22 19:16:20 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/23 02:22:58 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/so_long.h"
 
-void	validate_composition(char s, t_quant *quant)
+int	validate_composition(char s, t_quant *quant)
 {
 	char	*set;
 
@@ -20,7 +20,7 @@ void	validate_composition(char s, t_quant *quant)
 	if (!ft_strchr(set, s))
 	{
 		ft_error("Invalid composition");
-		exit(0);
+		return (0);
 	}
 	else
 	{
@@ -31,27 +31,30 @@ void	validate_composition(char s, t_quant *quant)
 		else if (s == 'P')
 			(*quant).player += 1;
 	}
+	return (1);
 }
 
-void	validate_walls(char *s, int row_nbr, int j, int i)
+int	validate_walls(char *s, int row_nbr, int j, int i)
 {
 	if (s[j] != '1' && (i == 0 || i == row_nbr - 1
 			|| j == 0 || s[j + 1] == '\0'))
 	{
 		ft_error("Should be surrounded by walls");
-		exit(0);
+		return (0);
 	}
+	return (1);
 }
 
-void	validate_shape(t_details *details, int i, int j)
+int	validate_shape(t_details *details, int i, int j)
 {
 	if (i == 0)
 		details->col_nbr = j;
 	if (j == details->row_nbr || (*details).col_nbr != j)
 	{
 		ft_error("Provide rectangular maps only");
-		exit(0);
+		return (0);
 	}
+	return (1);
 }
 
 void	save_start(int y, int x, t_details *details)
