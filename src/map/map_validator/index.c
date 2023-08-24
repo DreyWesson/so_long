@@ -6,11 +6,42 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/23 02:36:42 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:50:35 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/so_long.h"
+
+void save_adjacent(t_details details, t_cell **grid)
+{
+	int		x;
+	int		y;
+
+	y = 0;
+	while (y < details.row_nbr)
+	{
+		x = 0;
+		while (x < details.col_nbr)
+		{
+			if (grid[y][x].down)
+				printf("CURRENT = %c, (y: %d, x: %d) %c", grid[y][x].val, grid[y][x].y_axis, grid[y][x].x_axis, grid[y][x].down->val);
+			// if (grid[y][x].up)
+			// 	printf("UP = %d, (y: %d, x: %d)	", grid[y][x].down->val, grid[y][x].up->y_axis, grid[y][x].up->x_axis);
+			// if (grid[y][x].down)
+			// 	printf("DOWN = %c, (y: %d, x: %d)\n", grid[y][x].down->val, grid[y][x].up->y_axis, grid[y][x].up->x_axis);
+			// if (grid[y][x].left)
+			// 	printf("LEFT = %d, (y: %d, x: %d)\n", grid[y][x].left->val, grid[y][x].up->y_axis, grid[y][x].up->x_axis);
+			// if (grid[y][x].right)
+			// 	printf("RIGHT = %d, (y: %d, x: %d)\n", grid[y][x].right->val, grid[y][x].up->y_axis, grid[y][x].up->x_axis);
+		// printf("\n");
+
+			x++;
+		}
+		// printf("\n\n");
+		y++;
+	}
+	(void)grid;
+}
 
 int	validate_map(char **map, t_details *details, t_game *game, t_nodes **queue)
 {
@@ -40,10 +71,11 @@ int	validate_map(char **map, t_details *details, t_game *game, t_nodes **queue)
 	check_quant(&quant, details);
 	grid = create_grid(map, details, game);
 	if (validate_paths(grid, queue, *details) != special_char(map))
-	{
-		free_grid(grid, details->row_nbr);
-		return (ft_error("Invalid path(s)"));
-	}
+		return (free_grid(grid, details->row_nbr),ft_error("Invalid path(s)"));
+	save_adjacent(*details, grid);
+	// print_grid(grid, *details);
+	game->collects = details->burger_nbr;
+	game->grid = grid;
 	return (1);
 }
 /**

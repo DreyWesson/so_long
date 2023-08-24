@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   two.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 17:05:51 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/24 07:35:12 by doduwole         ###   ########.fr       */
+/*   Created: 2023/08/24 08:57:02 by doduwole          #+#    #+#             */
+/*   Updated: 2023/08/24 08:57:44 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/so_long.h"
+#include "../../inc/so_long.h"
 
-int	main(int argc, char **argv)
+/* Places and starts the "particles" effect */
+void	effect_anim(t_effect *effect, t_axis pos)
 {
-	t_game	game;
+	effect->counter = 0;
+	effect->pos = pos;
+}
 
-	handle_validation(argc, argv, &game);
-	// printf("%d %d\n", game.wndw_size.x, game.wndw_size.x);
-	mlx_hook(game.window, 2, 0, input, (void *)&game);
-	mlx_loop_hook(game.mlx, update, (void *)&game);
-	mlx_loop(game.mlx);
-	return (0);
+/* Starts the action pose animation of the player */
+void	action_anim(t_player *player)
+{
+	player->framecount = 0;
+	player->current_img = player->action_img;
 }

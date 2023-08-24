@@ -6,11 +6,12 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:28:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/22 20:06:26 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:42:48 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/so_long.h"
+
 
 
 t_cell	**create_grid(char **map, t_details *details, t_game *game)
@@ -27,6 +28,7 @@ t_cell	**create_grid(char **map, t_details *details, t_game *game)
 		grid[y] = (t_cell *)ft_calloc(sizeof(t_cell), details->col_nbr);
 		while (x < details->col_nbr)
 		{
+			/// @remark save adjacent cells here
 			grid[y][x] = create_cell(map[y][x], x, y);
 			x++;
 		}
@@ -36,28 +38,32 @@ t_cell	**create_grid(char **map, t_details *details, t_game *game)
 	game->wndw_size.x = x * IMG_SIZE;
 	game->wndw_size.y = y * IMG_SIZE;
 	game->props = *details;
+	game->player.tile = &grid[details->pos.y][details->pos.x];
 	return (grid);
 }
 
-void	adjacency_math(t_cell **grid, t_nodes **queue, int y, int x)
+t_cell	*adjacency_math(t_cell **grid, t_nodes **queue, int y, int x)
 {
+	// if it's not equal to block only is enough
 	if (grid[y][x].status == SPACE && grid[y][x].val != BLOCK)
 	{
 		add_head_node(queue, create_node(&grid[y][x]));
 		grid[y][x].status = WAITING;
+		return (&grid[y][x]);
 	}
+	return (NULL);
 }
 
 void	handle_adjacency(t_cell **grid, t_nodes **queue)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 
 	x = (*queue)->cell->x_axis;
 	y = (*queue)->cell->y_axis;
-	adjacency_math(grid, queue, y - 1, x);
-	adjacency_math(grid, queue, y + 1, x);
-	adjacency_math(grid, queue, y, x - 1);
-	adjacency_math(grid, queue, y, x + 1);
+	grid[y][x].up = adjacency_math(grid, queue, y - 1, x);
+	grid[y][x].down = adjacency_math(grid, queue, y + 1, x);
+	grid[y][x].left = adjacency_math(grid, queue, y, x - 1);
+	grid[y][x].right = adjacency_math(grid, queue, y, x + 1);
 	(*queue)->cell->status = VISITED;
 }
