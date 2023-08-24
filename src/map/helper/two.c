@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:28:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/24 18:39:37 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/24 18:47:17 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,5 @@ void	handle_adjacency(t_cell **grid, t_nodes **queue)
 	grid[y][x].down = adjacency_math(grid, queue, y + 1, x);
 	grid[y][x].left = adjacency_math(grid, queue, y, x - 1);
 	grid[y][x].right = adjacency_math(grid, queue, y, x + 1);
-	// printf("%c (%d, %d) ", grid[y][x].val, y, x);
-	// if (grid[y][x].down)
-	// 	printf("DOWN: %c ", grid[y][x].down->val);
-	// if (grid[y][x].up)
-	// 	printf("UP: %c ", grid[y][x].up->val);
-	// if (grid[y][x].left)
-	// 	printf("LEFT: %c ", grid[y][x].left->val);
-	// if (grid[y][x].right)
-	// 	printf("RIGHT: %c", grid[y][x].right->val);
-	// printf("\n");
 	(*queue)->cell->status = VISITED;
 }

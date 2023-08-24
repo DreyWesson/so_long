@@ -6,43 +6,11 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/24 18:44:06 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/24 18:51:02 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/so_long.h"
-
-void save_adjacent(t_details details, t_cell **grid)
-{
-	int		x;
-	int		y;
-
-	y = 0;
-	while (y < details.row_nbr)
-	{
-		x = 0;
-		while (x < details.col_nbr)
-		{
-			if (y > 0 && x > 0)
-			{
-				printf("%c (%d, %d) ", grid[y][x].val, y, x);
-				if (grid[y][x].down)
-					printf("DOWN: %c ", grid[y][x].down->val);
-				if (grid[y][x].up)
-					printf("UP: %c ", grid[y][x].up->val);
-				if (grid[y][x].left)
-					printf("LEFT: %c ", grid[y][x].left->val);
-				if (grid[y][x].right)
-					printf("RIGHT: %c", grid[y][x].right->val);
-				printf("\n");
-			}
-			x++;
-		}
-		printf("\n\n");
-		y++;
-	}
-	(void)grid;
-}
 
 int	validate_map(char **map, t_details *details, t_game *game, t_nodes **queue)
 {
@@ -73,7 +41,7 @@ int	validate_map(char **map, t_details *details, t_game *game, t_nodes **queue)
 	grid = create_grid(map, details, game);
 	if (validate_paths(grid, queue, *details) != special_char(map))
 		return (free_grid(grid, details->row_nbr),ft_error("Invalid path(s)"));
-	save_adjacent(*details, grid);
+	print_adjacent(*details, grid);
 	// print_grid(grid, *details);
 	game->collects = details->burger_nbr;
 	game->grid = grid;

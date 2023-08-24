@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:24:00 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/24 17:55:24 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/24 18:55:39 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ t_cell	create_cell(char s, int x, int y)
 	cell.og_type = s;
 	cell.position.x = x * IMG_SIZE;
 	cell.position.y = y * IMG_SIZE;
+	cell.up = NULL;
+	cell.down = NULL;
+	cell.left = NULL;
+	cell.right = NULL;
 	if (s == BLOCK)
 		cell.status = WALL;
 	else
@@ -95,4 +99,37 @@ int	special_char(char **map)
 		y_axis++;
 	}
 	return (sum);
+}
+
+void print_helper(t_cell cell)
+{
+		printf("%c (%d, %d) ", cell.val, cell.y_axis, cell.x_axis);
+	if (cell.down)
+		printf("DOWN: %c ", cell.down->val);
+	if (cell.up)
+		printf("UP: %c ", cell.up->val);
+	if (cell.left)
+		printf("LEFT: %c ", cell.left->val);
+	if (cell.right)
+		printf("RIGHT: %c", cell.right->val);
+	printf("\n");
+}
+
+void	print_adjacent(t_details details, t_cell **grid)
+{
+	int		x;
+	int		y;
+
+	y = 0;
+	while (y < details.row_nbr)
+	{
+		x = 0;
+		while (x < details.col_nbr)
+		{
+			print_helper(grid[y][x]);
+			x++;
+		}
+		printf("\n\n");
+		y++;
+	}
 }
