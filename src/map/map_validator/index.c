@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/24 17:50:35 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/24 18:44:06 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,22 @@ void save_adjacent(t_details details, t_cell **grid)
 		x = 0;
 		while (x < details.col_nbr)
 		{
-			if (grid[y][x].down)
-				printf("CURRENT = %c, (y: %d, x: %d) %c", grid[y][x].val, grid[y][x].y_axis, grid[y][x].x_axis, grid[y][x].down->val);
-			// if (grid[y][x].up)
-			// 	printf("UP = %d, (y: %d, x: %d)	", grid[y][x].down->val, grid[y][x].up->y_axis, grid[y][x].up->x_axis);
-			// if (grid[y][x].down)
-			// 	printf("DOWN = %c, (y: %d, x: %d)\n", grid[y][x].down->val, grid[y][x].up->y_axis, grid[y][x].up->x_axis);
-			// if (grid[y][x].left)
-			// 	printf("LEFT = %d, (y: %d, x: %d)\n", grid[y][x].left->val, grid[y][x].up->y_axis, grid[y][x].up->x_axis);
-			// if (grid[y][x].right)
-			// 	printf("RIGHT = %d, (y: %d, x: %d)\n", grid[y][x].right->val, grid[y][x].up->y_axis, grid[y][x].up->x_axis);
-		// printf("\n");
-
+			if (y > 0 && x > 0)
+			{
+				printf("%c (%d, %d) ", grid[y][x].val, y, x);
+				if (grid[y][x].down)
+					printf("DOWN: %c ", grid[y][x].down->val);
+				if (grid[y][x].up)
+					printf("UP: %c ", grid[y][x].up->val);
+				if (grid[y][x].left)
+					printf("LEFT: %c ", grid[y][x].left->val);
+				if (grid[y][x].right)
+					printf("RIGHT: %c", grid[y][x].right->val);
+				printf("\n");
+			}
 			x++;
 		}
-		// printf("\n\n");
+		printf("\n\n");
 		y++;
 	}
 	(void)grid;
