@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/24 16:20:57 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/25 06:26:07 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int	end_program(t_game *game)
 
 
 /* Sets the frames of all animatios */
-// static void	anim_setup(t_game *game)
-// {
-// 	game->player.idle_frames = 17;
-// 	game->player.action_frames = 10;
-// 	game->collects_imgs.anim_frames = 25;
-// 	game->effect.frames = 7;
-// }
+static void	anim_setup(t_game *game)
+{
+	game->player.idle_frames = 17;
+	game->player.action_frames = 10;
+	game->collects_imgs.anim_frames = 25;
+	game->effect.frames = 7;
+}
 
 void	start(t_game *game)
 {
@@ -54,7 +54,7 @@ void	handle_map(char **argv, t_game *game)
 	validate_map(ptr, &props, game, queue);
 	free_list(queue);
 	ft_free2d(ptr);
-	// anim_setup(game);
+	anim_setup(game);
 	start(game);
 
 }
