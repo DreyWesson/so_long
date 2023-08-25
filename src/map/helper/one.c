@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:24:00 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/24 18:55:39 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/25 05:19:20 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,18 +101,12 @@ int	special_char(char **map)
 	return (sum);
 }
 
-void print_helper(t_cell cell)
+void	print_helper(t_cell *cell, t_compass arrow)
 {
-		printf("%c (%d, %d) ", cell.val, cell.y_axis, cell.x_axis);
-	if (cell.down)
-		printf("DOWN: %c ", cell.down->val);
-	if (cell.up)
-		printf("UP: %c ", cell.up->val);
-	if (cell.left)
-		printf("LEFT: %c ", cell.left->val);
-	if (cell.right)
-		printf("RIGHT: %c", cell.right->val);
-	printf("\n");
+	if (cell == NULL)
+		return ;
+	printf("%c-> %c (%d, %d)	|	", arrow, cell->val,
+		cell->y_axis, cell->x_axis);
 }
 
 void	print_adjacent(t_details details, t_cell **grid)
@@ -126,7 +120,13 @@ void	print_adjacent(t_details details, t_cell **grid)
 		x = 0;
 		while (x < details.col_nbr)
 		{
-			print_helper(grid[y][x]);
+			printf("%c (%d, %d)	|	", grid[y][x].val,
+				grid[y][x].y_axis, grid[y][x].x_axis);
+			print_helper(grid[y][x].up, UP);
+			print_helper(grid[y][x].down, DOWN);
+			print_helper(grid[y][x].left, LEFT);
+			print_helper(grid[y][x].right, RIGHT);
+			printf("\n");
 			x++;
 		}
 		printf("\n\n");

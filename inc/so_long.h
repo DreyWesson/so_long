@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/24 18:46:50 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/24 22:47:26 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ typedef struct s_details
 
 typedef struct s_cell
 {
-	char		val;
-	int			x_axis;
-	int			y_axis;
-	char		status;
-	t_tiletype	type;
-	t_tiletype	og_type;
-	t_axis		position;
+	char			val;
+	int				x_axis;
+	int				y_axis;
+	char			status;
+	t_tiletype		type;
+	t_tiletype		og_type;
+	t_axis			position;
 	struct s_cell	*up;
 	struct s_cell	*down;
 	struct s_cell	*left;

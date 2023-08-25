@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/24 18:51:02 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/25 05:51:12 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,7 @@ int	validate_map(char **map, t_details *details, t_game *game, t_nodes **queue)
 	grid = create_grid(map, details, game);
 	if (validate_paths(grid, queue, *details) != special_char(map))
 		return (free_grid(grid, details->row_nbr),ft_error("Invalid path(s)"));
-	print_adjacent(*details, grid);
-	// print_grid(grid, *details);
-	game->collects = details->burger_nbr;
-	game->grid = grid;
+	print_adjacent(*details, game->grid);
 	return (1);
 }
 /**
