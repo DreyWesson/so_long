@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:30:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 15:57:25 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:15:14 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	reset(t_game *game)
 		y++;
 	}
 	game->moves = 0;
-	game->collects = game->og_collects;
+	game->collects = game->props.burger_nbr;
 	mlx_put_image_to_window(game->mlx, game->window, game->white_panel, 0, 0);
 	return (0);
 }

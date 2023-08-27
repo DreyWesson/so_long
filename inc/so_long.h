@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 16:04:10 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:16:52 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,9 +195,7 @@ typedef struct s_game
 	int				collects;
 	t_cell			**grid;
 	int				moves;
-	int				og_collects;
 	t_details		props;
-
 	t_axis			img_size;
 	t_wall_img		wall_imgs;
 	t_collect_img	collects_imgs;
