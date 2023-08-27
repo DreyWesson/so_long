@@ -6,23 +6,22 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:30:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/24 09:32:29 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/25 12:30:57 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-// /* Returns the game to its original state */
 int	reset(t_game *game)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 
 	y = 0;
-	while (game->grid[y] != NULL)
+	while (y < game->props.row_nbr)
 	{
 		x = 0;
-		while (game->grid[y][x].type != 0)
+		while (x < game->props.col_nbr)
 		{
 			game->grid[y][x].type = game->grid[y][x].og_type;
 			if (game->grid[y][x].type == PLAYER)
@@ -36,6 +35,31 @@ int	reset(t_game *game)
 	mlx_put_image_to_window(game->mlx, game->window, game->white_panel, 0, 0);
 	return (0);
 }
+
+// /* Returns the game to its original state */
+// int	reset(t_game *game)
+// {
+// 	int	x;
+// 	int	y;
+
+// 	y = 0;
+// 	while (game->grid[y] != NULL)
+// 	{
+// 		x = 0;
+// 		while (game->grid[y][x].type != 0)
+// 		{
+// 			game->grid[y][x].type = game->grid[y][x].og_type;
+// 			if (game->grid[y][x].type == PLAYER)
+// 				game->player.tile = &game->grid[y][x];
+// 			x++;
+// 		}
+// 		y++;
+// 	}
+// 	game->moves = 0;
+// 	game->collects = game->og_collects;
+// 	mlx_put_image_to_window(game->mlx, game->window, game->white_panel, 0, 0);
+// 	return (0);
+// }
 
 void	remove_player(t_game *game)
 {

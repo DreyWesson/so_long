@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:29:39 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/24 09:34:37 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/27 09:24:48 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,9 @@
 * Called once each frame */
 int	update(t_game *game)
 {
-	(void)game;
 	// player_animation(&game->player);
 	// collec_animation(&game->collects_imgs);
 	// effect_animation(&game->effect);
-	// // enemy_animation(&game->enemy_imgs);
-	// render(*game);
+	render(*game);
 	return (1);
 }

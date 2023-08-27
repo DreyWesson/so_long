@@ -6,6 +6,8 @@
         "unordered_map": "c",
         "chrono": "c",
         "so_long.h": "c",
-        "sstream": "c"
+        "sstream": "c",
+        "*.xpm": "c",
+        "*.png": "c"
     }
 }

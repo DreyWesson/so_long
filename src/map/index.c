@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/25 06:26:07 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/27 11:49:24 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 int	end_program(t_game *game)
 {
 	free_grid(game->grid, game->props.row_nbr);
+	game->grid = NULL;
 	exit(0);
 }
 
@@ -35,11 +36,13 @@ void	start(t_game *game)
 	game->collects = 0;
 	game->moves = 0;
 	game->mlx = mlx_init();
-	game->window = mlx_new_window(game->mlx, IMG_SIZE * game->props.col_nbr, IMG_SIZE * game->props.row_nbr, "Ajala Travel");
+	game->window = mlx_new_window(game->mlx, game->wndw_size.x + IMG_SIZE / 2,
+			game->wndw_size.y + IMG_SIZE / 2, "Ajala Travel");
 
 	mlx_hook(game->window, 17, 0, end_program, game);
 	open_images(game);
-	// return (1);
+	game->white_panel = new_panel(game, new_color(80, 200, 120, 0));
+	game->red_panel = new_panel(game, new_color(197, 4, 4, 0));
 }
 
 void	handle_map(char **argv, t_game *game)

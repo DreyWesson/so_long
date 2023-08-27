@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/24 22:47:26 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/27 12:16:20 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-# ifndef IMG_SIZE
-#  define IMG_SIZE 42
-// #  define ESC_KEY 53
-// #  define KEY_W 13
-// #  define KEY_S 1
-// #  define KEY_D 2
-// #  define KEY_A 0
-# endif
+#  define IMG_SIZE 64
 
 enum	e_status
 {
@@ -54,6 +47,9 @@ typedef enum e_compass
 	RIGHT = 'R'
 }	t_compass;
 
+/* An image that covers the whole window */
+
+
 typedef struct s_quant
 {
 	int	collectibles;
@@ -67,6 +63,24 @@ typedef struct s_axis
 	int	y;
 }	t_axis;
 
+typedef struct s_panel
+{
+	void		*pointer;
+	char		*pixels;
+	t_axis		size;
+	int			bpp;
+	int			line_size;
+	int			endian;
+}	t_panel;
+
+/* Color */
+typedef struct s_color
+{
+	int	r;
+	int	g;
+	int	b;
+	int	a;
+}	t_color;
 typedef struct s_dir
 {
 	t_axis		coord;
@@ -179,9 +193,8 @@ typedef struct s_game
 	t_axis			wndw_size;
 	t_player		player;
 	int				collects;
-	int				moves;
-	t_tile			**tilemap;
 	t_cell			**grid;
+	int				moves;
 	int				og_collects;
 	t_details		props;
 
@@ -256,17 +269,24 @@ int			input(int key, t_game *game);
 void		remove_player(t_game *game);
 int			reset(t_game *game);
 int			update(t_game *game);
+
+
 void		render(t_game game);
-
-
-
-t_bool		draw_corner(t_tile tile, t_game game, t_axis pos);
-t_bool		draw_sides(t_tile tile, t_game game, t_axis pos);
-void		draw_wall(t_tile tile, t_game game, t_axis pos);
+t_bool		draw_corner(t_cell cell, t_game game, t_axis pos);
+t_bool		draw_sides(t_cell cell, t_game game, t_axis pos);
+void		draw_wall(t_cell cell, t_game game, t_axis pos);
 void		effect_anim(t_effect *effect, t_axis pos);
 void		action_anim(t_player *player);
 t_bool		move_to(t_game *game, t_cell *tile);
 int			end_program(t_game *game);
 void		open_images(t_game *game);
+
+
+void		color_panel(t_panel *panel, t_color color);
+t_color		new_color(int r, int g, int b, int a);
+void		*new_panel(t_game *game, t_color color);
+void		open_wallimgs_down(t_game *game);
+void		open_wallimgs_up(t_game *game);
+
 
 #endif

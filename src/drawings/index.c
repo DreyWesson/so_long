@@ -6,86 +6,99 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:28:12 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/24 09:25:11 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/27 09:55:02 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-// t_bool	draw_corner(t_tile tile, t_game game, t_axis pos)
-// {
-// 	if (tile.position.x == 0
-// 		&& tile.position.y == 0)
-// 		mlx_put_image_to_window(game.mlx, game.window,
-// 			game.wall_imgs.up_left, pos.x, pos.y);
-// 	else if (tile.position.x == 0
-// 		&& tile.position.y == game.wndw_size.y - IMG_SIZE)
-// 		mlx_put_image_to_window(game.mlx, game.window,
-// 			game.wall_imgs.down_left, pos.x, pos.y);
-// 	else if (tile.position.x == game.wndw_size.x - IMG_SIZE
-// 		&& tile.position.y == 0)
-// 		mlx_put_image_to_window(game.mlx, game.window,
-// 			game.wall_imgs.up_right, pos.x, pos.y);
-// 	else if (tile.position.x == game.wndw_size.x - IMG_SIZE
-// 		&& tile.position.y == game.wndw_size.y - IMG_SIZE)
-// 		mlx_put_image_to_window(game.mlx, game.window,
-// 			game.wall_imgs.down_right, pos.x, pos.y);
-// 	else
-// 		return (FALSE);
-// 	return (TRUE);
-// }
+t_bool	draw_corner(t_cell cell, t_game game, t_axis pos)
+{
+	if (cell.position.x == 0
+		&& cell.position.y == 0)
+		{
+			mlx_put_image_to_window(game.mlx, game.window,
+			game.wall_imgs.up_left, pos.x, pos.y);
+		}
+	else if (cell.position.x == 0
+		&& cell.position.y == game.wndw_size.y - IMG_SIZE)
+		mlx_put_image_to_window(game.mlx, game.window,
+			game.wall_imgs.down_left, pos.x, pos.y);
+	else if (cell.position.x == game.wndw_size.x - IMG_SIZE
+		&& cell.position.y == 0)
+		mlx_put_image_to_window(game.mlx, game.window,
+			game.wall_imgs.up_right, pos.x, pos.y);
+	else if (cell.position.x == game.wndw_size.x - IMG_SIZE
+		&& cell.position.y == game.wndw_size.y - IMG_SIZE)
+		mlx_put_image_to_window(game.mlx, game.window,
+			game.wall_imgs.down_right, pos.x, pos.y);
+	else
+		return (FALSE);
+	return (TRUE);
+}
 
-// t_bool	draw_sides(t_tile tile, t_game game, t_axis pos)
-// {
-// 	if (tile.position.x == 0)
-// 		mlx_put_image_to_window(game.mlx, game.window,
-// 			game.wall_imgs.left, pos.x, pos.y);
-// 	else if (tile.position.x == game.wndw_size.x - IMG_SIZE)
-// 		mlx_put_image_to_window(game.mlx, game.window,
-// 			game.wall_imgs.right, pos.x, pos.y);
-// 	else if (tile.position.y == 0)
-// 		mlx_put_image_to_window(game.mlx, game.window,
-// 			game.wall_imgs.up, pos.x, pos.y);
-// 	else if (tile.position.y == game.wndw_size.y - IMG_SIZE)
-// 		mlx_put_image_to_window(game.mlx, game.window,
-// 			game.wall_imgs.down, pos.x, pos.y);
-// 	else
-// 		return (FALSE);
-// 	return (TRUE);
-// }
+t_bool	draw_sides(t_cell cell, t_game game, t_axis pos)
+{
+	if (cell.position.x == 0)
+		mlx_put_image_to_window(game.mlx, game.window,
+			game.wall_imgs.left, pos.x, pos.y);
+	else if (cell.position.x == game.wndw_size.x - IMG_SIZE)
+		mlx_put_image_to_window(game.mlx, game.window,
+			game.wall_imgs.right, pos.x, pos.y);
+	else if (cell.position.y == 0)
+		mlx_put_image_to_window(game.mlx, game.window,
+			game.wall_imgs.up, pos.x, pos.y);
+	else if (cell.position.y == game.wndw_size.y - IMG_SIZE)
+		mlx_put_image_to_window(game.mlx, game.window,
+			game.wall_imgs.down, pos.x, pos.y);
+	else
+		return (FALSE);
+	return (TRUE);
+}
 
 // /* Draws the corresponding sprite for the wall at <pos> */
-// void	draw_wall(t_tile tile, t_game game, t_axis pos)
-// {
-// 	if (draw_corner(tile, game, pos))
-// 		return ;
-// 	else if (draw_sides(tile, game, pos))
-// 		return ;
-// 	mlx_put_image_to_window(game.mlx, game.window,
-// 		game.wall_imgs.block, pos.x, pos.y);
-// }
+void	draw_wall(t_cell cell, t_game game, t_axis pos)
+{
+	if (draw_corner(cell, game, pos))
+		return ;
+	else if (draw_sides(cell, game, pos))
+		return ;
+	mlx_put_image_to_window(game.mlx, game.window,
+		game.wall_imgs.block, pos.x, pos.y);
+}
 
 // /* Draws the corresponding image of the tile type */
-// static void	draw_image(t_tile tile, t_game game, t_axis pos)
-// {
-// 	if (tile.type == WALL)
-// 		draw_wall(tile, game, pos);
-// 	else if (tile.type == EXIT)
-// 	{
-// 		if (game.collects != 0)
-// 			mlx_put_image_to_window(game.mlx, game.window,
-// 				game.door_open_img, pos.x, pos.y);
-// 		if (game.collects == 0)
-// 			mlx_put_image_to_window(game.mlx, game.window,
-// 				game.door_close_img, pos.x, pos.y);
-// 	}
-// 	else if (tile.type == COLLECTABLE)
-// 		mlx_put_image_to_window(game.mlx, game.window,
-// 			game.collects_imgs.current_img, pos.x, pos.y);
-// 	else if (tile.type == PLAYER)
-// 		mlx_put_image_to_window(game.mlx, game.window,
-// 			game.player.current_img, pos.x, pos.y);
-// }
+static void	draw_image(t_cell cell, t_game game, t_axis pos)
+{
+	if (cell.type == WALL){
+		draw_wall(cell, game, pos);
+		// printf("2. debug\n");
+	}
+	else if (cell.type == EXIT)
+	{
+		// printf("2. debug\n");
+		if (game.collects != 0)
+			mlx_put_image_to_window(game.mlx, game.window,
+				game.door_open_img, pos.x, pos.y);
+		if (game.collects == 0)
+			mlx_put_image_to_window(game.mlx, game.window,
+				game.door_close_img, pos.x, pos.y);
+	}
+	else if (cell.type == COLLECTABLE)
+	{
+		// printf("3. debug\n");
+		mlx_put_image_to_window(game.mlx, game.window,
+			game.collects_imgs.current_img, pos.x, pos.y);
+
+	}
+	else if (cell.type == PLAYER)
+	{
+		// printf("4. debug\n");
+		mlx_put_image_to_window(game.mlx, game.window,
+			game.player.current_img, pos.x, pos.y);
+
+	}
+}
 
 // /* If the effect counter is less than its animation frames, draws it */
 // static void	draw_effect(t_game game)
@@ -120,23 +133,44 @@
 // /* Puts the tile map on the window */
 // void	render(t_game game)
 // {
-// 	t_tile	tile;
+// 	t_cell	tile;
 // 	int		x;
 // 	int		y;
-
 // 	mlx_clear_window(game.mlx, game.window);
 // 	y = 0;
-// 	while (game.tilemap[y] != NULL)
+// 	while (game.grid[y] != NULL)
 // 	{
 // 		x = 0;
-// 		while (game.tilemap[y][x].type != 0)
+// 		while (game.grid[y][x].type != 0)
 // 		{
-// 			tile = game.tilemap[y][x];
+// 			tile = game.grid[y][x];
 // 			draw_image(tile, game, tile.position);
-// 			draw_effect(game);
+// 			// draw_effect(game);
 // 			x++;
 // 		}
 // 		y++;
 // 	}
-// 	draw_text(game);
+// 	// draw_text(game);
 // }
+
+void	render(t_game game)
+{
+	int		x;
+	int		y;
+
+	y = 0;
+
+	mlx_clear_window(game.mlx, game.window);
+	while (y < game.props.row_nbr)
+	{
+		x = 0;
+		while (x < game.props.col_nbr)
+		{
+			draw_image(game.grid[y][x], game, game.grid[y][x].position);
+			// draw_effect(game);
+			x++;
+		}
+		y++;
+	}
+	// draw_text(game);
+}

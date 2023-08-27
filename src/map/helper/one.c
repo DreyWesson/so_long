@@ -6,11 +6,24 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:24:00 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/25 05:19:20 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/25 08:24:09 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/so_long.h"
+
+// t_tiletype	define_tiletype(char definer)
+// {
+// 	if (definer == '1')
+// 		return (WALL);
+// 	if (definer == 'C')
+// 		return (COLLECTABLE);
+// 	if (definer == 'P')
+// 		return (PLAYER);
+// 	if (definer == 'E')
+// 		return (EXIT);
+// 	return (EMPTY);
+// }
 
 t_cell	create_cell(char s, int x, int y)
 {
@@ -19,7 +32,8 @@ t_cell	create_cell(char s, int x, int y)
 	cell.x_axis = x;
 	cell.y_axis = y;
 	cell.val = s;
-	cell.og_type = s;
+	cell.type = s;
+	cell.og_type = cell.type;
 	cell.position.x = x * IMG_SIZE;
 	cell.position.y = y * IMG_SIZE;
 	cell.up = NULL;

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/25 06:33:23 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/25 08:06:15 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	validate_map(char **map, t_details *details, t_game *game, t_nodes **queue)
 		return (free_grid(grid, details->row_nbr),ft_error("Invalid path(s)"));
 	// print_grid(grid, *details);
 	// print_adjacent(*details, game->grid);
-	// printf(")))))------> %c\n", game->player.tile->val);
 	return (1);
 }
 /**
