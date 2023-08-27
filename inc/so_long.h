@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 15:46:12 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/27 16:04:10 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,5 +289,8 @@ void		*new_panel(t_game *game, t_color color);
 void		open_wallimgs_down(t_game *game);
 void		open_wallimgs_up(t_game *game);
 
+void	player_imgs_error(t_game game);
+void	collect_imgs_error(t_game game);
+void	door_imgs_error(t_game game);
 
 #endif

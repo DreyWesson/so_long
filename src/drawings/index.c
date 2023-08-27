@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:28:12 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 15:47:44 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/27 16:01:33 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,11 @@ static void	draw_image(t_game game)
 			mlx_put_image_to_window(game.mlx, game.window,
 				game.door_open_img, pos.x, pos.y);
 		if (game.collects == 0)
+		{
 			mlx_put_image_to_window(game.mlx, game.window,
 				game.door_close_img, pos.x, pos.y);
+
+		}
 	}
 	else if (cell.type == COLLECTABLE)
 		mlx_put_image_to_window(game.mlx, game.window,
