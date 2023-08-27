@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 22:16:52 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:20:11 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ typedef struct s_cell
 	int				y_axis;
 	char			status;
 	t_tiletype		type;
-	t_tiletype		og_type;
+	t_tiletype		mem_type;
 	t_axis			position;
 	struct s_cell	*up;
 	struct s_cell	*down;
@@ -121,7 +121,7 @@ typedef struct s_nodes
 typedef struct s_tile
 {
 	t_tiletype		type;
-	t_tiletype		og_type;
+	t_tiletype		mem_type;
 	t_axis			position;
 	struct s_tile	*up;
 	struct s_tile	*down;

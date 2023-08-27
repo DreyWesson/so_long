@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 22:16:37 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:21:12 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,7 @@ void	handle_map(char **argv, t_game *game)
 	start(game);
 
 }
-/// @brief
-/**
- * remember ANIME_SETUP tiletype, og_type, collects, player
-*/
+
 /**
  * // free_all(ptr, grid, queue, &props);
  * @bug -> PROPS[✅], GRID[✅], PTR[✅], QUEUE[✅]

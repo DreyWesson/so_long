@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:30:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 22:15:14 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:19:24 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	reset(t_game *game)
 		x = 0;
 		while (x < game->props.col_nbr)
 		{
-			game->grid[y][x].type = game->grid[y][x].og_type;
+			game->grid[y][x].type = game->grid[y][x].mem_type;
 			if (game->grid[y][x].type == PLAYER)
 				game->player.tile = &game->grid[y][x];
 			x++;
