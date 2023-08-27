@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:30:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/25 12:30:57 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/27 15:24:12 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,6 @@ int	input(int key, t_game *game)
 	else
 		return (0);
 	if (moved)
-		printf("Moves -> %02d\n", ++game->moves);
+		printf("Steps: %02d\n", ++game->moves);
 	return (1);
 }

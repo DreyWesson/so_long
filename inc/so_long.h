@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 12:16:20 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/27 15:46:12 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,6 +206,7 @@ typedef struct s_game
 	t_effect		effect;
 	void			*red_panel;
 	void			*white_panel;
+	t_cell			current_cell;
 }	t_game;
 
 /**
@@ -272,9 +273,9 @@ int			update(t_game *game);
 
 
 void		render(t_game game);
-t_bool		draw_corner(t_cell cell, t_game game, t_axis pos);
-t_bool		draw_sides(t_cell cell, t_game game, t_axis pos);
-void		draw_wall(t_cell cell, t_game game, t_axis pos);
+t_bool		draw_corner(t_game game);
+t_bool		draw_sides(t_game game);
+void		draw_wall(t_game game);
 void		effect_anim(t_effect *effect, t_axis pos);
 void		action_anim(t_player *player);
 t_bool		move_to(t_game *game, t_cell *tile);
