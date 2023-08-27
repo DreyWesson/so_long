@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 22:20:11 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:43:05 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,7 +218,7 @@ int			handle_validation(int argc, char **argv, t_game *game);
  * MAP -> Reader
 */
 void		handle_map(char **argv, t_game *game);
-int			validate_map(char **map, t_details *details,
+t_cell		**validate_map(char **map, t_details *details,
 				t_game *game, t_nodes **queue);
 int			line_counter(char *file_name);
 size_t		ft_strlen_ln(const char *str);
@@ -290,5 +290,6 @@ void		open_wallimgs_up(t_game *game);
 void	player_imgs_error(t_game game);
 void	collect_imgs_error(t_game game);
 void	door_imgs_error(t_game game);
+void	game_init(t_game *game, t_cell	**grid, t_details details);
 
 #endif

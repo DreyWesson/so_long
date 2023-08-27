@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/25 08:06:15 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:45:41 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/so_long.h"
 
-int	validate_map(char **map, t_details *details, t_game *game, t_nodes **queue)
+t_cell	**validate_map(char **map, t_details *details, t_game *game, t_nodes **queue)
 {
 	int		y_axis;
 	int		x_axis;
@@ -40,10 +40,14 @@ int	validate_map(char **map, t_details *details, t_game *game, t_nodes **queue)
 	check_quant(&quant, details);
 	grid = create_grid(map, details, game);
 	if (validate_paths(grid, queue, *details) != special_char(map))
-		return (free_grid(grid, details->row_nbr),ft_error("Invalid path(s)"));
+	{
+		free_grid(grid, details->row_nbr);
+		ft_error("Invalid path(s)");
+		return (NULL);
+	}
 	// print_grid(grid, *details);
 	// print_adjacent(*details, game->grid);
-	return (1);
+	return (grid);
 }
 /**
  * @bug -> quant

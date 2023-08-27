@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 22:21:12 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:42:39 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,15 @@ void	handle_map(char **argv, t_game *game)
 	char		**ptr;
 	t_details	props;
 	t_nodes		**queue;
+	t_cell		**grid;
 
 	queue = (t_nodes **)ft_calloc(sizeof(t_nodes *), 1);
 	props = default_details(argv[1]);
 	ptr = map_reader(argv[1], props.row_nbr);
-	validate_map(ptr, &props, game, queue);
+	grid = validate_map(ptr, &props, game, queue);
 	free_list(queue);
 	ft_free2d(ptr);
+	game_init(game, grid, props);
 	anim_setup(game);
 	start(game);
 
