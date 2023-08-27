@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 11:49:24 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:12:18 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static void	anim_setup(t_game *game)
 
 void	start(t_game *game)
 {
-	game->collects = 0;
 	game->moves = 0;
+	// game->collects = game->props.burger_nbr;
 	game->mlx = mlx_init();
 	game->window = mlx_new_window(game->mlx, game->wndw_size.x + IMG_SIZE / 2,
 			game->wndw_size.y + IMG_SIZE / 2, "Ajala Travel");

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:32:27 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/24 09:43:19 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:04:39 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 void	pick_collect(t_game *game, t_cell *tile)
 {
 	tile->type = EMPTY;
+	printf("->%d\n", game->collects);
 	game->collects--;
 	effect_anim(&game->effect, tile->position);
 	action_anim(&game->player);
