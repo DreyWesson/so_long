@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 22:45:41 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 10:46:58 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/so_long.h"
 
-t_cell	**validate_map(char **map, t_details *details, t_game *game, t_nodes **queue)
+t_cell	**validate_map(char **map, t_details *details, t_nodes **queue)
 {
 	int		y_axis;
 	int		x_axis;
@@ -38,7 +38,7 @@ t_cell	**validate_map(char **map, t_details *details, t_game *game, t_nodes **qu
 		y_axis++;
 	}
 	check_quant(&quant, details);
-	grid = create_grid(map, details, game);
+	grid = create_grid(map, details);
 	if (validate_paths(grid, queue, *details) != special_char(map))
 	{
 		free_grid(grid, details->row_nbr);

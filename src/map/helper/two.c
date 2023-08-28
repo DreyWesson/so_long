@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:28:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 22:46:54 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 10:45:38 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ void	game_init(t_game *game, t_cell	**grid, t_details details)
 	game->wndw_size.x = details.col_nbr * IMG_SIZE;
 	game->wndw_size.y = details.row_nbr * IMG_SIZE;
 	game->props = details;
+	game->moves = 0;
 	game->player.tile = &grid[details.pos.y][details.pos.x];
 	game->collects = details.burger_nbr;
 	game->grid = grid;
 }
 
-t_cell	**create_grid(char **map, t_details *details, t_game *game)
+t_cell	**create_grid(char **map, t_details *details)
 {
 	int		x;
 	int		y;

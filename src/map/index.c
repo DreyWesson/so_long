@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 22:42:39 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 10:47:20 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	anim_setup(t_game *game)
 
 void	start(t_game *game)
 {
-	game->moves = 0;
+	// game->moves = 0;
 	// game->collects = game->props.burger_nbr;
 	game->mlx = mlx_init();
 	game->window = mlx_new_window(game->mlx, game->wndw_size.x + IMG_SIZE / 2,
@@ -55,17 +55,10 @@ void	handle_map(char **argv, t_game *game)
 	queue = (t_nodes **)ft_calloc(sizeof(t_nodes *), 1);
 	props = default_details(argv[1]);
 	ptr = map_reader(argv[1], props.row_nbr);
-	grid = validate_map(ptr, &props, game, queue);
+	grid = validate_map(ptr, &props, queue);
 	free_list(queue);
 	ft_free2d(ptr);
 	game_init(game, grid, props);
 	anim_setup(game);
 	start(game);
-
 }
-
-/**
- * // free_all(ptr, grid, queue, &props);
- * @bug -> PROPS[✅], GRID[✅], PTR[✅], QUEUE[✅]
- * possible leakage
-*/
