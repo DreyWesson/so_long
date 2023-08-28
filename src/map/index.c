@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/28 10:47:20 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:06:30 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,11 @@ static void	anim_setup(t_game *game)
 
 void	start(t_game *game)
 {
-	// game->moves = 0;
-	// game->collects = game->props.burger_nbr;
 	game->mlx = mlx_init();
-	game->window = mlx_new_window(game->mlx, game->wndw_size.x + IMG_SIZE / 2,
-			game->wndw_size.y + IMG_SIZE / 2, "Ajala Travel");
-
+	game->window = mlx_new_window(game->mlx,
+			game->wndw_size.x + IMG_SIZE / 2,
+			game->wndw_size.y + IMG_SIZE / 2,
+			"Ajala Travel");
 	mlx_hook(game->window, 17, 0, end_program, game);
 	open_images(game);
 	game->white_panel = new_panel(game, new_color(80, 200, 120, 0));

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:29:39 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 16:24:35 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:04:08 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@
 static void	player_animation(t_player *player)
 {
 	if (player->current_img == player->action_img
-		&& player->framecount >= player->action_frames)
+		&& player->frame_count >= player->action_frames)
 		player->current_img = player->idle_img_1;
-	else if (player->framecount == player->idle_frames)
+	else if (player->frame_count == player->idle_frames)
 		player->current_img = player->idle_img_0;
-	else if (player->framecount >= player->idle_frames * 2)
+	else if (player->frame_count >= player->idle_frames * 2)
 	{
 		player->current_img = player->idle_img_1;
-		player->framecount = 0;
+		player->frame_count = 0;
 	}
-	player->framecount += 1;
+	player->frame_count += 1;
 }
 
-static void	collec_animation(t_collect_img *img)
+static void	collectible_animation(t_collect_img *img)
 {
 	static int	frame;
 
@@ -55,7 +55,7 @@ static void	effect_animation(t_effect *effect)
 int	update(t_game *game)
 {
 	player_animation(&game->player);
-	collec_animation(&game->collects_imgs);
+	collectible_animation(&game->collects_imgs);
 	effect_animation(&game->effect);
 	render(*game);
 	return (1);

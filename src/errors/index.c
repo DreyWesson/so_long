@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:05:13 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 16:26:55 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:18:39 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	door_imgs_error(t_game game)
 		exit(1);
 }
 
-void	collect_imgs_error(t_game game)
+void	collectible_imgs_error(t_game game)
 {
 	if (!game.collects_imgs.img_0)
 		printf("plant_03.xpm file not opening\n");

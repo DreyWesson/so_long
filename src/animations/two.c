@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 08:57:02 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/24 08:57:44 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:04:25 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ void	effect_anim(t_effect *effect, t_axis pos)
 /* Starts the action pose animation of the player */
 void	action_anim(t_player *player)
 {
-	player->framecount = 0;
+	player->frame_count = 0;
 	player->current_img = player->action_img;
 }

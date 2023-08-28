@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/28 10:47:29 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:32:10 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ typedef struct s_player
 {
 	t_cell	*tile;
 	void	*current_img;
-	int		framecount;
+	int		frame_count;
 	int		idle_frames;
 	void	*idle_img_0;
 	void	*idle_img_1;
@@ -144,14 +144,14 @@ typedef struct s_player
 typedef struct s_wall_img
 {
 	void	*block;
-	void	*up_left;
-	void	*up;
-	void	*up_right;
-	void	*right;
-	void	*down_right;
-	void	*down;
-	void	*down_left;
-	void	*left;
+	void	*north_west;
+	void	*north;
+	void	*north_east;
+	void	*east;
+	void	*south_east;
+	void	*south;
+	void	*south_west;
+	void	*west;
 }	t_wall_img;
 
 typedef struct s_effect
@@ -234,8 +234,7 @@ void		default_quant(t_quant *quant);
 t_cell		create_cell(char s, int x, int y);
 t_details	default_details(char *ptr);
 void		print_grid(t_cell **grid, t_details details);
-void print_adjacent(t_details details, t_cell **grid);
-t_details	set_tmp(t_nodes **queue, t_details *details);
+void 		print_adjacent(t_details details, t_cell **grid);
 int			special_char(char **map);
 t_cell		**create_grid(char **map, t_details *details);
 void		handle_adjacency(t_cell **grid, t_nodes **queue);
@@ -283,11 +282,11 @@ void		open_images(t_game *game);
 void		color_panel(t_panel *panel, t_color color);
 t_color		new_color(int r, int g, int b, int a);
 void		*new_panel(t_game *game, t_color color);
-void		open_wallimgs_down(t_game *game);
-void		open_wallimgs_up(t_game *game);
+void		south_wall(t_game *game);
+void		north_wall(t_game *game);
 
 void	player_imgs_error(t_game game);
-void	collect_imgs_error(t_game game);
+void	collectible_imgs_error(t_game game);
 void	door_imgs_error(t_game game);
 void	game_init(t_game *game, t_cell	**grid, t_details details);
 

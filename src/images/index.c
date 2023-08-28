@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 09:08:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 20:04:01 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:18:49 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-static void	open_door_imgs(t_game *game)
+static void	door_imgs(t_game *game)
 {
 	game->door_open_img = mlx_xpm_file_to_image(game->mlx,
 			"./sprites/door_01.xpm",
@@ -23,7 +23,7 @@ static void	open_door_imgs(t_game *game)
 	door_imgs_error(*game);
 }
 
-static void	open_collect_imgs(t_game *game)
+static void	collectible_imgs(t_game *game)
 {
 	game->collects_imgs.img_0 = mlx_xpm_file_to_image(game->mlx,
 			"./sprites/plant_03.xpm",
@@ -35,10 +35,10 @@ static void	open_collect_imgs(t_game *game)
 	game->effect.img = mlx_xpm_file_to_image(game->mlx,
 			"./sprites/effect_w.xpm",
 			&game->img_size.x, &game->img_size.y);
-	collect_imgs_error(*game);
+	collectible_imgs_error(*game);
 }
 
-static void	open_player_imgs(t_game *game)
+static void	player_imgs(t_game *game)
 {
 	game->player.idle_img_0 = mlx_xpm_file_to_image(game->mlx,
 			"./sprites/player_01.xpm", &game->img_size.x, &game->img_size.y);
@@ -52,9 +52,9 @@ static void	open_player_imgs(t_game *game)
 
 void	open_images(t_game *game)
 {
-	open_wallimgs_up(game);
-	open_wallimgs_down(game);
-	open_player_imgs(game);
-	open_collect_imgs(game);
-	open_door_imgs(game);
+	north_wall(game);
+	south_wall(game);
+	player_imgs(game);
+	collectible_imgs(game);
+	door_imgs(game);
 }
