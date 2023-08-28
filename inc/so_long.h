@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/28 11:32:10 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:38:57 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-#  define IMG_SIZE 64
+# define IMG_SIZE 64
 
 enum	e_status
 {
@@ -47,9 +47,6 @@ typedef enum e_compass
 	RIGHT = 'R'
 }	t_compass;
 
-/* An image that covers the whole window */
-
-
 typedef struct s_quant
 {
 	int	collectibles;
@@ -67,10 +64,10 @@ typedef struct s_panel
 {
 	void		*pointer;
 	char		*pixels;
-	t_axis		size;
 	int			bpp;
 	int			line_size;
 	int			endian;
+	t_axis		size;
 }	t_panel;
 
 /* Color */
@@ -120,9 +117,9 @@ typedef struct s_nodes
 
 typedef struct s_tile
 {
+	t_axis			position;
 	t_tiletype		type;
 	t_tiletype		mem_type;
-	t_axis			position;
 	struct s_tile	*up;
 	struct s_tile	*down;
 	struct s_tile	*left;
@@ -131,7 +128,6 @@ typedef struct s_tile
 
 typedef struct s_player
 {
-	t_cell	*tile;
 	void	*current_img;
 	int		frame_count;
 	int		idle_frames;
@@ -139,6 +135,7 @@ typedef struct s_player
 	void	*idle_img_1;
 	int		action_frames;
 	void	*action_img;
+	t_cell	*tile;
 }	t_player;
 
 typedef struct s_wall_img
@@ -157,9 +154,9 @@ typedef struct s_wall_img
 typedef struct s_effect
 {
 	void		*img;
-	t_axis		pos;
 	int			frames;
 	int			counter;
+	t_axis		pos;
 }	t_effect;
 
 typedef struct s_coll_img
@@ -190,20 +187,20 @@ typedef struct s_game
 {
 	void			*mlx;
 	void			*window;
-	t_axis			wndw_size;
-	t_player		player;
 	int				collects;
-	t_cell			**grid;
 	int				moves;
+	void			*door_open_img;
+	void			*door_close_img;
+	void			*red_panel;
+	void			*white_panel;
 	t_details		props;
+	t_player		player;
+	t_cell			**grid;
+	t_effect		effect;
+	t_axis			wndw_size;
 	t_axis			img_size;
 	t_wall_img		wall_imgs;
 	t_collect_img	collects_imgs;
-	void			*door_open_img;
-	void			*door_close_img;
-	t_effect		effect;
-	void			*red_panel;
-	void			*white_panel;
 	t_cell			current_cell;
 }	t_game;
 
@@ -257,17 +254,10 @@ int			count_row(char **grid);
 void		free_list(t_nodes **head_ref);
 void		free_grid(t_cell **grid, int row_nbr);
 void		free_all(char **ptr, t_cell **grid, t_nodes	**queue);
-
-
-
-
-
 int			input(int key, t_game *game);
 void		remove_player(t_game *game);
 int			reset(t_game *game);
 int			update(t_game *game);
-
-
 void		render(t_game game);
 t_bool		draw_corner(t_game game);
 t_bool		draw_sides(t_game game);
@@ -277,17 +267,14 @@ void		action_anim(t_player *player);
 t_bool		move_to(t_game *game, t_cell *tile);
 int			end_program(t_game *game);
 void		open_images(t_game *game);
-
-
 void		color_panel(t_panel *panel, t_color color);
 t_color		new_color(int r, int g, int b, int a);
 void		*new_panel(t_game *game, t_color color);
 void		south_wall(t_game *game);
 void		north_wall(t_game *game);
-
-void	player_imgs_error(t_game game);
-void	collectible_imgs_error(t_game game);
-void	door_imgs_error(t_game game);
-void	game_init(t_game *game, t_cell	**grid, t_details details);
+void		player_imgs_error(t_game game);
+void		collectible_imgs_error(t_game game);
+void		door_imgs_error(t_game game);
+void		game_init(t_game *game, t_cell	**grid, t_details details);
 
 #endif
