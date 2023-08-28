@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:13:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/28 11:34:49 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:57:06 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-t_bool	draw_corner(t_game game)
+int	draw_corner(t_game game)
 {
 	t_cell	cell;
 	t_axis	pos;
@@ -36,11 +36,11 @@ t_bool	draw_corner(t_game game)
 		mlx_put_image_to_window(game.mlx, game.window,
 			game.wall_imgs.south_east, pos.x, pos.y);
 	else
-		return (FALSE);
-	return (TRUE);
+		return (0);
+	return (1);
 }
 
-t_bool	draw_sides(t_game game)
+int	draw_sides(t_game game)
 {
 	t_cell	cell;
 	t_axis	pos;
@@ -60,8 +60,8 @@ t_bool	draw_sides(t_game game)
 		mlx_put_image_to_window(game.mlx, game.window,
 			game.wall_imgs.south, pos.x, pos.y);
 	else
-		return (FALSE);
-	return (TRUE);
+		return (0);
+	return (1);
 }
 
 // /* Draws the corresponding sprite for the wall at <pos> */

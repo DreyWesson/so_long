@@ -6,11 +6,11 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:05:51 by doduwole          #+#    #+#             */
-/*   Updated: 2023/05/27 07:24:17 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 12:01:40 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#include "./mlx/mlx.h"
 #include <math.h>
 #include "./inc/so_long.h"
 

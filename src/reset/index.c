@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:30:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 22:19:24 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:57:33 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	remove_player(t_game *game)
 /* Input management. Called each time a key is pressed. */
 int	input(int key, t_game *game)
 {
-	t_bool	moved;
+	int	moved;
 
 	if (key == ESC)
 		end_program(game);

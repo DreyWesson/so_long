@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:25:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/24 16:18:27 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 12:33:24 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	valid_move(t_nodes **queue)
 	return (0);
 }
 
-int	validate_paths(t_cell **grid, t_nodes **queue, t_details details)
+int	check_paths(t_cell **grid, t_nodes **queue, t_details details)
 {
 	int	memo;
 
@@ -32,5 +32,20 @@ int	validate_paths(t_cell **grid, t_nodes **queue, t_details details)
 		return (memo);
 	details.pos.x = (*queue)->cell->x_axis;
 	details.pos.y = (*queue)->cell->y_axis;
-	return (validate_paths(grid, queue, details) + memo);
+	return (check_paths(grid, queue, details) + memo);
+}
+
+t_cell	**validate_paths(t_cell **grid, t_nodes **queue,
+	t_details details, char **map)
+{
+	int	collectibles;
+
+	collectibles = special_char(map);
+	if (check_paths(grid, queue, details) != collectibles)
+	{
+		ft_error("Invalid path(s)");
+		free_grid(grid, details.row_nbr);
+		return (NULL);
+	}
+	return (grid);
 }

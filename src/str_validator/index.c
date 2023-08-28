@@ -6,11 +6,11 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 14:39:31 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 08:48:12 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:49:31 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../../inc/so_long.h"
 
 int	is_valid(char *str)
 {

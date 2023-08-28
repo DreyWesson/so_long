@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:29:39 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/28 11:04:08 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:53:29 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ static void	effect_animation(t_effect *effect)
 		effect->counter++;
 }
 
-/* Calculates all animations and render.
-* Called once each frame */
+// Calculates all animations and render.
 int	update(t_game *game)
 {
 	player_animation(&game->player);

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/28 11:38:57 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 12:32:19 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-# define IMG_SIZE 64
+# define IMG_SIZE 58
 
 enum	e_status
 {
@@ -177,12 +177,6 @@ enum e_keycode
 	ESC = 53
 };
 
-typedef enum e_bool
-{
-	TRUE = 1,
-	FALSE = 0
-}	t_bool;
-
 typedef struct s_game
 {
 	void			*mlx;
@@ -235,7 +229,10 @@ void 		print_adjacent(t_details details, t_cell **grid);
 int			special_char(char **map);
 t_cell		**create_grid(char **map, t_details *details);
 void		handle_adjacency(t_cell **grid, t_nodes **queue);
-int			validate_paths(t_cell **grid, t_nodes **queue, t_details details);
+t_cell		**validate_paths(t_cell **grid, t_nodes **queue,
+				t_details	details, char **map);
+int			check_paths(t_cell **grid, t_nodes **queue, t_details details);
+
 t_cell		*adjacency_math(t_cell **grid,
 				t_nodes **queue, int y, int x);
 /**
@@ -259,12 +256,12 @@ void		remove_player(t_game *game);
 int			reset(t_game *game);
 int			update(t_game *game);
 void		render(t_game game);
-t_bool		draw_corner(t_game game);
-t_bool		draw_sides(t_game game);
+int			draw_corner(t_game game);
+int			draw_sides(t_game game);
+int			move_to(t_game *game, t_cell *tile);
 void		draw_wall(t_game game);
-void		effect_anim(t_effect *effect, t_axis pos);
-void		action_anim(t_player *player);
-t_bool		move_to(t_game *game, t_cell *tile);
+void		effect_anime(t_effect *effect, t_axis pos);
+void		action_anime(t_player *player);
 int			end_program(t_game *game);
 void		open_images(t_game *game);
 void		color_panel(t_panel *panel, t_color color);

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/28 11:06:30 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 12:31:00 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	handle_map(char **argv, t_game *game)
 	grid = validate_map(ptr, &props, queue);
 	free_list(queue);
 	ft_free2d(ptr);
+	if (!grid)
+		exit(1);
 	game_init(game, grid, props);
 	anim_setup(game);
 	start(game);

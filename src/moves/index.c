@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:32:27 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/28 10:48:34 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:57:18 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	pick_collect(t_game *game, t_cell *tile)
 {
 	tile->type = EMPTY;
 	game->collects--;
-	effect_anim(&game->effect, tile->position);
-	action_anim(&game->player);
+	effect_anime(&game->effect, tile->position);
+	action_anime(&game->player);
 }
 
 void	move_to_exit(t_game *game, t_cell *tile)
 {
-	effect_anim(&game->effect, tile->position);
+	effect_anime(&game->effect, tile->position);
 	mlx_put_image_to_window(game->mlx, game->window, game->white_panel, 0, 0);
 	remove_player(game);
 	game->collects = -1;
@@ -36,7 +36,7 @@ void	move_to_empty(t_game *game, t_cell *tile)
 	game->player.tile = tile;
 }
 
-t_bool	move_to(t_game *game, t_cell *tile)
+int	move_to(t_game *game, t_cell *tile)
 {
 
 	if (tile->type == EMPTY)
@@ -46,7 +46,7 @@ t_bool	move_to(t_game *game, t_cell *tile)
 	else if (tile->type == EXIT && game->collects <= 0)
 		move_to_exit(game, tile);
 	else
-		return (FALSE);
-	return (TRUE);
+		return (0);
+	return (1);
 }
 
