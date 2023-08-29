@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:29:39 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/28 11:53:29 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 02:01:02 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	collectible_animation(t_collect_img *img)
 	frame += 1;
 }
 
-static void	effect_animation(t_effect *effect)
+static void	timeout_animation(t_effect *effect)
 {
 	if (effect->counter < effect->frames)
 		effect->counter++;
@@ -55,7 +55,7 @@ int	update(t_game *game)
 {
 	player_animation(&game->player);
 	collectible_animation(&game->collects_imgs);
-	effect_animation(&game->effect);
+	timeout_animation(&game->effect);
 	render(*game);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/28 12:33:46 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/28 15:08:59 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,3 @@ t_cell	**validate_map(char **map, t_details *details, t_nodes **queue)
 	check_quant(&quant, details);
 	return (validate_paths(create_grid(map, details), queue, *details, map));
 }
-/**
- * @bug -> quant
- * possible leakage
-*/

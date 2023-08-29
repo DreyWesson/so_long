@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/28 12:32:19 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 02:41:13 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,7 @@ typedef struct s_game
 	void			*door_open_img;
 	void			*door_close_img;
 	void			*red_panel;
-	void			*white_panel;
+	void			*green_panel;
 	t_details		props;
 	t_player		player;
 	t_cell			**grid;
@@ -267,11 +267,17 @@ void		open_images(t_game *game);
 void		color_panel(t_panel *panel, t_color color);
 t_color		new_color(int r, int g, int b, int a);
 void		*new_panel(t_game *game, t_color color);
-void		south_wall(t_game *game);
-void		north_wall(t_game *game);
+void		south_wall(t_game *game, int *x, int *y);
+void		north_wall(t_game *game, int *x, int *y);
 void		player_imgs_error(t_game game);
 void		collectible_imgs_error(t_game game);
 void		door_imgs_error(t_game game);
 void		game_init(t_game *game, t_cell	**grid, t_details details);
+void		west_wall_error(t_wall_img wall);
+void		east_wall_error(t_wall_img wall);
+void		west_wall(t_game *game, int *x, int *y);
+void		east_wall(t_game *game, int *x, int *y);
+void		south_wall_error(t_wall_img wall);
+void		north_wall_error(t_wall_img wall);
 
 #endif

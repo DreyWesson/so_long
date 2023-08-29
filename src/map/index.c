@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/28 12:31:00 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 02:10:16 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	end_program(t_game *game)
 	exit(0);
 }
 
-
-
 /* Sets the frames of all animatios */
 static void	anim_setup(t_game *game)
 {
@@ -33,14 +31,14 @@ static void	anim_setup(t_game *game)
 
 void	start(t_game *game)
 {
+	int size;
+
+	size = game->wndw_size.x + IMG_SIZE / 2;
 	game->mlx = mlx_init();
-	game->window = mlx_new_window(game->mlx,
-			game->wndw_size.x + IMG_SIZE / 2,
-			game->wndw_size.y + IMG_SIZE / 2,
-			"Ajala Travel");
+	game->window = mlx_new_window(game->mlx, size, size, "Ajala Travel");
 	mlx_hook(game->window, 17, 0, end_program, game);
 	open_images(game);
-	game->white_panel = new_panel(game, new_color(80, 200, 120, 0));
+	game->green_panel = new_panel(game, new_color(80, 200, 120, 0));
 	game->red_panel = new_panel(game, new_color(197, 4, 4, 0));
 }
 
@@ -48,17 +46,19 @@ void	handle_map(char **argv, t_game *game)
 {
 	char		**ptr;
 	t_details	props;
-	t_nodes		**queue;
+	t_nodes		*queue;
 	t_cell		**grid;
 
-	queue = (t_nodes **)ft_calloc(sizeof(t_nodes *), 1);
 	props = default_details(argv[1]);
 	ptr = map_reader(argv[1], props.row_nbr);
-	grid = validate_map(ptr, &props, queue);
-	free_list(queue);
+	grid = validate_map(ptr, &props, &queue);
+	free(queue);
 	ft_free2d(ptr);
 	if (!grid)
+	{
+		free(grid);
 		exit(1);
+	}
 	game_init(game, grid, props);
 	anim_setup(game);
 	start(game);
