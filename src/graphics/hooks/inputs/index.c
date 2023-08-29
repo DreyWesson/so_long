@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 03:02:51 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 17:15:41 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 22:28:09 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	input(int key, t_game *game)
 	if (game->player.tile == NULL)
 		return (0);
 	if (key == KEY_UP)
-		moved = move_to(game, game->player.tile->up);
+		moved = move_player(game, game->player.tile->up);
 	else if (key == KEY_DOWN)
-		moved = move_to(game, game->player.tile->down);
+		moved = move_player(game, game->player.tile->down);
 	else if (key == KEY_LEFT)
-		moved = move_to(game, game->player.tile->left);
+		moved = move_player(game, game->player.tile->left);
 	else if (key == KEY_RIGHT)
-		moved = move_to(game, game->player.tile->right);
+		moved = move_player(game, game->player.tile->right);
 	else
 		return (0);
 	if (moved)

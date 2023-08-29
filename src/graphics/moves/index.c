@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:32:27 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 22:14:59 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 22:30:11 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/so_long.h"
 
-void	pick_collect(t_game *game, t_cell *tile)
+void	to_collectible(t_game *game, t_cell *tile)
 {
 	tile->type = EMPTY;
 	game->collects--;
@@ -20,7 +20,7 @@ void	pick_collect(t_game *game, t_cell *tile)
 	action_anime(&game->player);
 }
 
-void	move_to_exit(t_game *game, t_cell *tile)
+void	to_exit(t_game *game, t_cell *tile)
 {
 	effect_anime(&game->effect, tile->position);
 	remove_player(game);
@@ -29,7 +29,7 @@ void	move_to_exit(t_game *game, t_cell *tile)
 	end_program(game);
 }
 
-void	move_to_empty(t_game *game, t_cell *tile)
+void	to_empty(t_game *game, t_cell *tile)
 {
 	tile->type = PLAYER;
 	if (game->player.tile->type != EXIT)
@@ -37,14 +37,14 @@ void	move_to_empty(t_game *game, t_cell *tile)
 	game->player.tile = tile;
 }
 
-int	move_to(t_game *game, t_cell *tile)
+int	move_player(t_game *game, t_cell *tile)
 {
 	if (tile->type == EMPTY)
-		move_to_empty(game, tile);
+		to_empty(game, tile);
 	else if (tile->type == COLLECTABLE)
-		pick_collect(game, tile);
+		to_collectible(game, tile);
 	else if (tile->type == EXIT && game->collects <= 0)
-		move_to_exit(game, tile);
+		to_exit(game, tile);
 	else
 		return (0);
 	return (1);

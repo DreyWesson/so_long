@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 17:01:13 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 22:27:30 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ typedef struct s_details
 	int		burger_nbr;
 	t_axis	pos;
 }	t_details;
-
 
 typedef struct s_cell
 {
@@ -158,8 +157,6 @@ typedef struct s_effect
 	t_axis		pos;
 }	t_effect;
 
-
-
 enum e_keycode
 {
 	KEY_UP = 13,
@@ -217,7 +214,7 @@ void		default_quant(t_quant *quant);
 t_cell		create_cell(char s, int x, int y);
 t_details	default_details(char *ptr);
 void		print_grid(t_cell **grid, t_details details);
-void 		print_adjacent(t_details details, t_cell **grid);
+void		print_adjacent(t_details details, t_cell **grid);
 int			special_char(char **map);
 t_cell		**create_grid(char **map, t_details *details);
 void		handle_adjacency(t_cell **grid, t_nodes **queue);
@@ -251,7 +248,7 @@ int			update(t_game *game);
 void		render(t_game game);
 int			draw_corner(t_game game);
 int			draw_sides(t_game game);
-int			move_to(t_game *game, t_cell *tile);
+int			move_player(t_game *game, t_cell *tile);
 void		draw_wall(t_game game);
 void		effect_anime(t_effect *effect, t_axis pos);
 void		action_anime(t_player *player);
