@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:13:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 17:15:09 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 22:04:21 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,7 @@ void	draw_wall(t_game game)
 
 	cell = game.current_cell;
 	pos = cell.position;
-	if (draw_corner(game))
-		return ;
-	else if (draw_sides(game))
+	if (draw_corner(game) || draw_sides(game))
 		return ;
 	mlx_put_image_to_window(game.mlx, game.window,
 		game.wall_imgs.block, pos.x, pos.y);
