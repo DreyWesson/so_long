@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:05:13 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/28 11:18:39 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 13:11:24 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	ft_warning(char *message)
 void	door_imgs_error(t_game game)
 {
 	if (!game.door_close_img)
-		printf("door_01.xpm file not opening\n");
+		printf("door_open.xpm file not opening\n");
 	if (!game.door_open_img)
-		printf("door_02.xpm file not opening\n");
+		printf("door_close.xpm file not opening\n");
 	if (!game.door_close_img || !game.door_open_img)
 		exit(1);
 }
@@ -38,11 +38,11 @@ void	door_imgs_error(t_game game)
 void	collectible_imgs_error(t_game game)
 {
 	if (!game.collects_imgs.img_0)
-		printf("plant_03.xpm file not opening\n");
+		printf("plant_01.xpm file not opening\n");
 	if (!game.collects_imgs.img_1)
-		printf("plant_04.xpm file not opening\n");
+		printf("plant_02.xpm file not opening\n");
 	if (!game.effect.img)
-		printf("effect_w.xpm file not opening\n");
+		printf("jump_plant.xpm file not opening\n");
 	if (!game.collects_imgs.img_0 || !game.collects_imgs.img_1
 		|| !game.effect.img)
 		exit(1);
