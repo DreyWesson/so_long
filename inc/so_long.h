@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 14:02:14 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:19:46 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,15 @@ typedef struct s_player
 	t_cell	*tile;
 }	t_player;
 
+typedef struct s_coll_img
+{
+	void	*current_img;
+	int		anim_frames;
+	void	*img_0;
+	void	*img_1;
+	void	*img_2;
+}	t_collect_img;
+
 typedef struct s_wall_img
 {
 	void	*block;
@@ -149,14 +158,7 @@ typedef struct s_effect
 	t_axis		pos;
 }	t_effect;
 
-typedef struct s_coll_img
-{
-	void	*current_img;
-	int		anim_frames;
-	void	*img_0;
-	void	*img_1;
-	void	*img_2;
-}	t_collect_img;
+
 
 enum e_keycode
 {
