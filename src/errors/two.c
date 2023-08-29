@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 02:25:36 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 12:01:49 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 13:08:03 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	south_wall_error(t_wall_img wall)
 		printf("south_wall.xpm file not opening\n");
 	if (!wall.south_west)
 		printf("south_west.xpm file not opening\n");
-	// if (!wall.south_east || !wall.south || !wall.south_west)
-	// 	exit(1);
+	if (!wall.south_east || !wall.south || !wall.south_west)
+		exit(1);
 }
 
 void	north_wall_error(t_wall_img wall)
@@ -34,10 +34,8 @@ void	north_wall_error(t_wall_img wall)
 		printf("north.xpm file not opening\n");
 	if (!wall.north_east)
 		printf("north_east.xpm file not opening\n");
-	if (!wall.east)
-		printf("east_wall.xpm file not opening\n");
-	// if (!wall.block || !wall.north_west || !wall.north || !wall.north_east)
-	// 	exit(1);
+	if (!wall.block || !wall.north_west || !wall.north || !wall.north_east)
+		exit(1);
 }
 
 void	east_wall_error(t_wall_img wall)
