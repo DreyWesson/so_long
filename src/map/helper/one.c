@@ -6,13 +6,11 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:24:00 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 22:22:18 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:14:43 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/so_long.h"
-
-
 
 t_cell	create_cell(char s, int x, int y)
 {
@@ -68,28 +66,6 @@ void	print_grid(t_cell **grid, t_details details)
 		printf("\n\n");
 		y++;
 	}
-}
-
-int	special_char(char **map)
-{
-	int	y_axis;
-	int	x_axis;
-	int	sum;
-
-	y_axis = 0;
-	sum = 0;
-	while (map[y_axis])
-	{
-		x_axis = 0;
-		while (map[y_axis][x_axis])
-		{
-			if (map[y_axis][x_axis] != BLOCK && map[y_axis][x_axis] != SPACE)
-				sum++;
-			x_axis++;
-		}
-		y_axis++;
-	}
-	return (sum);
 }
 
 void	print_helper(t_cell *cell, t_compass arrow)

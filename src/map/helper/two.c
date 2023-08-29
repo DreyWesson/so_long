@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:28:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 14:59:17 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:14:53 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	game_init(t_game *game, t_cell	**grid, t_details details)
 {
 	int	row;
-	int col;
+	int	col;
 
 	game->window_size.x = details.col_nbr * IMG_SIZE;
 	game->window_size.y = details.row_nbr * IMG_SIZE;
@@ -28,8 +28,6 @@ void	game_init(t_game *game, t_cell	**grid, t_details details)
 	col = game->window_size.x + IMG_SIZE / 2;
 	row = game->window_size.y + IMG_SIZE / 2;
 	game->window = mlx_new_window(game->mlx, col, row, "Ajala Travel");
-	printf("debug -> %d\n", game->window_size.x);
-
 }
 
 t_cell	**create_grid(char **map, t_details *details)
@@ -77,4 +75,26 @@ void	handle_adjacency(t_cell **grid, t_nodes **queue)
 	grid[y][x].left = adjacency_math(grid, queue, y, x - 1);
 	grid[y][x].right = adjacency_math(grid, queue, y, x + 1);
 	(*queue)->cell->status = VISITED;
+}
+
+int	special_char(char **map)
+{
+	int	y_axis;
+	int	x_axis;
+	int	sum;
+
+	y_axis = 0;
+	sum = 0;
+	while (map[y_axis])
+	{
+		x_axis = 0;
+		while (map[y_axis][x_axis])
+		{
+			if (map[y_axis][x_axis] != BLOCK && map[y_axis][x_axis] != SPACE)
+				sum++;
+			x_axis++;
+		}
+		y_axis++;
+	}
+	return (sum);
 }

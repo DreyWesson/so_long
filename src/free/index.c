@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:17:33 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/28 15:00:47 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:07:48 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	free_list(t_nodes **head_ref)
 
 int	count_row(char **grid)
 {
-	int		y;
+	int	y;
 
 	y = 0;
 	while (grid[y])

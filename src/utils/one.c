@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:37:29 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 16:06:01 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:12:57 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,3 @@ int	ft_trim(char const *s1, char const *set)
 		start++;
 	return (start);
 }
-

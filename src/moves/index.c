@@ -6,10 +6,9 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:32:27 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 14:02:27 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:12:32 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../inc/so_long.h"
 
@@ -27,6 +26,7 @@ void	move_to_exit(t_game *game, t_cell *tile)
 	remove_player(game);
 	game->collects = -1;
 }
+
 void	move_to_empty(t_game *game, t_cell *tile)
 {
 	tile->type = PLAYER;
@@ -37,7 +37,6 @@ void	move_to_empty(t_game *game, t_cell *tile)
 
 int	move_to(t_game *game, t_cell *tile)
 {
-
 	if (tile->type == EMPTY)
 		move_to_empty(game, tile);
 	else if (tile->type == COLLECTABLE)
@@ -48,4 +47,3 @@ int	move_to(t_game *game, t_cell *tile)
 		return (0);
 	return (1);
 }
-

@@ -6,13 +6,12 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:28:12 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 13:46:15 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 15:06:54 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-// /* Draws the corresponding image of the tile type */
 static void	draw_image(t_game game)
 {
 	t_cell	cell;
@@ -39,7 +38,6 @@ static void	draw_image(t_game game)
 			game.player.current_img, pos.x, pos.y);
 }
 
-// when effect counter is less than its animation frames, draws it
 static void	draw_effect(t_game game)
 {
 	if (game.effect.counter < game.effect.frames)
@@ -55,9 +53,9 @@ static void	draw_text(t_game game)
 
 	str = ft_itoa(game.moves);
 	mlx_string_put(game.mlx, game.window,
-			game.window_size.x - IMG_SIZE / 2.3,
-			IMG_SIZE - IMG_SIZE / 1.5,
-			15921152, str);
+		game.window_size.x - IMG_SIZE / 2.3,
+		IMG_SIZE - IMG_SIZE / 1.5,
+		15921152, str);
 	free(str);
 }
 
