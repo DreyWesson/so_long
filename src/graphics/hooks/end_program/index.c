@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:30:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 17:15:32 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 22:05:36 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	end_program(t_game *game)
 {
 	free_grid(game->grid, game->props.row_nbr);
 	game->grid = NULL;
+	free(game->mlx);
 	exit(0);
 }
 
