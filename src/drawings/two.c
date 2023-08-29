@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:13:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/28 11:57:06 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 07:45:00 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ int	draw_corner(t_game game)
 		mlx_put_image_to_window(game.mlx, game.window,
 			game.wall_imgs.north_west, pos.x, pos.y);
 	else if (cell.position.x == 0
-		&& cell.position.y == game.wndw_size.y - IMG_SIZE)
+		&& cell.position.y == game.window_size.y - IMG_SIZE)
 		mlx_put_image_to_window(game.mlx, game.window,
 			game.wall_imgs.south_west, pos.x, pos.y);
-	else if (cell.position.x == game.wndw_size.x - IMG_SIZE
+	else if (cell.position.x == game.window_size.x - IMG_SIZE
 		&& cell.position.y == 0)
 		mlx_put_image_to_window(game.mlx, game.window,
 			game.wall_imgs.north_east, pos.x, pos.y);
-	else if (cell.position.x == game.wndw_size.x - IMG_SIZE
-		&& cell.position.y == game.wndw_size.y - IMG_SIZE)
+	else if (cell.position.x == game.window_size.x - IMG_SIZE
+		&& cell.position.y == game.window_size.y - IMG_SIZE)
 		mlx_put_image_to_window(game.mlx, game.window,
 			game.wall_imgs.south_east, pos.x, pos.y);
 	else
@@ -50,13 +50,13 @@ int	draw_sides(t_game game)
 	if (cell.position.x == 0)
 		mlx_put_image_to_window(game.mlx, game.window,
 			game.wall_imgs.west, pos.x, pos.y);
-	else if (cell.position.x == game.wndw_size.x - IMG_SIZE)
+	else if (cell.position.x == game.window_size.x - IMG_SIZE)
 		mlx_put_image_to_window(game.mlx, game.window,
 			game.wall_imgs.east, pos.x, pos.y);
 	else if (cell.position.y == 0)
 		mlx_put_image_to_window(game.mlx, game.window,
 			game.wall_imgs.north, pos.x, pos.y);
-	else if (cell.position.y == game.wndw_size.y - IMG_SIZE)
+	else if (cell.position.y == game.window_size.y - IMG_SIZE)
 		mlx_put_image_to_window(game.mlx, game.window,
 			game.wall_imgs.south, pos.x, pos.y);
 	else

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 03:11:33 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 07:43:05 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,7 @@ typedef struct s_game
 	t_player		player;
 	t_cell			**grid;
 	t_effect		effect;
-	t_axis			wndw_size;
+	t_axis			window_size;
 	t_axis			img_size;
 	t_wall_img		wall_imgs;
 	t_collect_img	collects_imgs;
@@ -252,6 +252,7 @@ int			count_row(char **grid);
 void		free_list(t_nodes **head_ref);
 void		free_grid(t_cell **grid, int row_nbr);
 void		free_all(char **ptr, t_cell **grid, t_nodes	**queue);
+void		start(t_game *game, t_cell **grid, t_details props);
 int			input(int key, t_game *game);
 void		remove_player(t_game *game);
 int			reset(t_game *game);

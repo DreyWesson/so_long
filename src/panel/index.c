@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 07:04:47 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/25 07:13:31 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 07:48:05 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,15 @@ void	color_panel(t_panel *panel, t_color color)
 /* Returns a colored image of the same size as the window */
 void	*new_panel(t_game *game, t_color color)
 {
+	int		x;
+	int		y;
 	t_panel	panel;
 
-	panel.pointer = mlx_new_image(game->mlx,
-			game->wndw_size.x, game->wndw_size.y);
-	panel.size.x = game->wndw_size.x;
-	panel.size.y = game->wndw_size.y;
+	x = game->window_size.x;
+	y = game->window_size.y;
+	panel.pointer = mlx_new_image(game->mlx, x, y);
+	panel.size.x = x;
+	panel.size.y = y;
 	color_panel(&panel, color);
 	return (panel.pointer);
 }

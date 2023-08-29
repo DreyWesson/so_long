@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:28:12 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/27 22:02:39 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 07:44:13 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ static void	draw_text(t_game game)
 	str = ft_itoa(game.moves);
 	if (game.collects >= 0)
 		mlx_string_put(game.mlx, game.window,
-			game.wndw_size.x - IMG_SIZE / 2.3,
+			game.window_size.x - IMG_SIZE / 2.3,
 			IMG_SIZE - IMG_SIZE / 1.5,
 			-1, str);
 	else
 		mlx_string_put(game.mlx, game.window,
-			game.wndw_size.x - IMG_SIZE / 2.3,
+			game.window_size.x - IMG_SIZE / 2.3,
 			IMG_SIZE - IMG_SIZE / 1.5,
 			15921152, str);
 	free(str);

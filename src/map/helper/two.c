@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:28:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/28 10:45:38 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 07:51:25 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,20 @@
 
 void	game_init(t_game *game, t_cell	**grid, t_details details)
 {
-	game->wndw_size.x = details.col_nbr * IMG_SIZE;
-	game->wndw_size.y = details.row_nbr * IMG_SIZE;
+	int	size;
+
+	game->window_size.x = details.col_nbr * IMG_SIZE;
+	game->window_size.y = details.row_nbr * IMG_SIZE;
 	game->props = details;
 	game->moves = 0;
 	game->player.tile = &grid[details.pos.y][details.pos.x];
 	game->collects = details.burger_nbr;
 	game->grid = grid;
+	game->mlx = mlx_init();
+	size = game->window_size.x + IMG_SIZE / 2;
+	game->window = mlx_new_window(game->mlx, size, size, "Ajala Travel");
+	game->green_panel = new_panel(game, new_color(80, 200, 120, 0));
+	game->red_panel = new_panel(game, new_color(197, 4, 4, 0));
 }
 
 t_cell	**create_grid(char **map, t_details *details)
