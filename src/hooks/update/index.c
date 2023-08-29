@@ -6,12 +6,12 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:29:39 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 02:01:02 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 03:00:16 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../../inc/so_long.h"
+#include "../../../inc/so_long.h"
 
 static void	player_animation(t_player *player)
 {

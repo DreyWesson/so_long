@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 02:41:13 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 03:11:33 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,6 +216,7 @@ char		**map_reader(char *s, int row_nbr);
 /**
  * MAP -> Validator
 */
+int			is_valid(char *str);
 int			validate_composition(char s, t_quant *quant);
 int			validate_walls(char *s, int row_nbr, int j, int i);
 int			validate_shape(t_details *details, int i, int j);

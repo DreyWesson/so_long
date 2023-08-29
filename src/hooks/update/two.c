@@ -6,11 +6,11 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 08:57:02 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/28 11:54:09 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 03:00:24 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/so_long.h"
+#include "../../../inc/so_long.h"
 
 /* Places and starts the "particles" effect */
 void	effect_anime(t_effect *effect, t_axis pos)
