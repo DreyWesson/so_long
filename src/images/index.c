@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 09:08:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 02:47:55 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 02:49:36 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ void	open_images(t_game *game)
 
 	x = &game->img_size.x;
 	y = &game->img_size.y;
-	north_wall(game, x, y);
-	south_wall(game, x, y);
 	west_wall(game, x, y);
 	east_wall(game, x, y);
+	north_wall(game, x, y);
+	south_wall(game, x, y);
+	door_imgs(game, x, y);
 	player_imgs(game, x, y);
 	collectible_imgs(game, x, y);
-	door_imgs(game, x, y);
 }

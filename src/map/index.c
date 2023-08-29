@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 02:10:16 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 02:56:01 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	start(t_game *game)
 	size = game->wndw_size.x + IMG_SIZE / 2;
 	game->mlx = mlx_init();
 	game->window = mlx_new_window(game->mlx, size, size, "Ajala Travel");
-	mlx_hook(game->window, 17, 0, end_program, game);
 	open_images(game);
 	game->green_panel = new_panel(game, new_color(80, 200, 120, 0));
 	game->red_panel = new_panel(game, new_color(197, 4, 4, 0));
