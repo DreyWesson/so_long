@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 11:59:05 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:02:14 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,6 @@ typedef struct s_axis
 	int	x;
 	int	y;
 }	t_axis;
-
-typedef struct s_panel
-{
-	void		*pointer;
-	char		*pixels;
-	int			bpp;
-	int			line_size;
-	int			endian;
-	t_axis		size;
-}	t_panel;
 
 /* Color */
 typedef struct s_color
@@ -186,8 +176,6 @@ typedef struct s_game
 	int				moves;
 	void			*door_open_img;
 	void			*door_close_img;
-	void			*red_panel;
-	void			*green_panel;
 	t_details		props;
 	t_player		player;
 	t_cell			**grid;
@@ -267,9 +255,6 @@ void		effect_anime(t_effect *effect, t_axis pos);
 void		action_anime(t_player *player);
 int			end_program(t_game *game);
 void		open_images(t_game *game);
-void		color_panel(t_panel *panel, t_color color);
-t_color		new_color(int r, int g, int b, int a);
-void		*new_panel(t_game *game, t_color color);
 void		south_wall(t_game *game, int *x, int *y);
 void		north_wall(t_game *game, int *x, int *y);
 void		player_imgs_error(t_game game);

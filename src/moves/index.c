@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:32:27 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 02:10:37 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:02:27 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	pick_collect(t_game *game, t_cell *tile)
 void	move_to_exit(t_game *game, t_cell *tile)
 {
 	effect_anime(&game->effect, tile->position);
-	mlx_put_image_to_window(game->mlx, game->window, game->green_panel, 0, 0);
 	remove_player(game);
 	game->collects = -1;
 }
