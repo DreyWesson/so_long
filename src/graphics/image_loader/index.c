@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 09:08:40 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 17:16:57 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 23:08:32 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	player_imgs(t_game *game, int *x, int *y)
 	player_imgs_error(*game);
 }
 
-void	open_images(t_game *game)
+void	load_images(t_game *game)
 {
 	int	*x;
 	int	*y;

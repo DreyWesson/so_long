@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 22:54:25 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 23:14:09 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,6 +243,7 @@ void		free_all(char **ptr, t_cell **grid, t_nodes	**queue);
 void		start(t_game *game, t_cell **grid, t_details props);
 int			input(int key, t_game *game);
 void		remove_player(t_game *game);
+void		build_graphics(t_game *game, t_cell **grid, t_details props);
 int			reset(t_game *game);
 int			update(t_game *game);
 void		render(t_game game);
@@ -256,7 +257,7 @@ void		draw_wall(t_game game, t_axis pos);
 void		effect_anime(t_effect *effect, t_axis pos);
 void		action_anime(t_player *player);
 int			end_program(t_game *game);
-void		open_images(t_game *game);
+void		load_images(t_game *game);
 void		south_wall(t_game *game, int *x, int *y);
 void		north_wall(t_game *game, int *x, int *y);
 void		player_imgs_error(t_game game);

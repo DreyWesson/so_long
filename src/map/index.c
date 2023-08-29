@@ -6,27 +6,11 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 23:03:12 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 23:13:14 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
-
-/* Sets the frames of all animatios */
-static void	anim_setup(t_game *game)
-{
-	game->player.idle_frames = 20;
-	game->player.action_frames = 7;
-	game->collects_imgs.anim_frames = 32;
-	game->effect.frames = 7;
-}
-
-void	start(t_game *game, t_cell **grid, t_details props)
-{
-	game_init(game, grid, props);
-	anim_setup(game);
-	open_images(game);
-}
 
 void	handle_map(char **argv, t_game *game)
 {
@@ -45,7 +29,7 @@ void	handle_map(char **argv, t_game *game)
 		free(grid);
 		exit(1);
 	}
-	start(game, grid, props);
+	build_graphics(game, grid, props);
 }
 
 int	handle_validation(int argc, char **argv, t_game *game)
