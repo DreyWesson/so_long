@@ -6,11 +6,11 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 07:33:36 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 12:05:03 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:17:10 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/so_long.h"
+#include "../../../inc/so_long.h"
 
 void	west_wall(t_game *game, int *x, int *y)
 {

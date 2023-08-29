@@ -6,11 +6,11 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:28:12 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 15:06:54 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:14:59 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/so_long.h"
+#include "../../../inc/so_long.h"
 
 static void	draw_image(t_game game)
 {

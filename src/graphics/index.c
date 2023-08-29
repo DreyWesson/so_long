@@ -5,45 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/24 07:30:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 15:08:52 by doduwole         ###   ########.fr       */
+/*   Created: 2023/08/29 17:13:24 by doduwole          #+#    #+#             */
+/*   Updated: 2023/08/29 17:14:31 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../inc/so_long.h"
+#include "../../inc/so_long.h"
 
-int	end_program(t_game *game)
+void	game_init(t_game *game, t_cell	**grid, t_details details)
 {
-	free_grid(game->grid, game->props.row_nbr);
-	game->grid = NULL;
-	exit(0);
-}
+	int	row;
+	int	col;
 
-int	reset(t_game *game)
-{
-	int		x;
-	int		y;
-
-	y = 0;
-	while (y < game->props.row_nbr)
-	{
-		x = 0;
-		while (x < game->props.col_nbr)
-		{
-			game->grid[y][x].type = game->grid[y][x].mem_type;
-			if (game->grid[y][x].type == PLAYER)
-				game->player.tile = &game->grid[y][x];
-			x++;
-		}
-		y++;
-	}
+	game->window_size.x = details.col_nbr * IMG_SIZE;
+	game->window_size.y = details.row_nbr * IMG_SIZE;
+	game->props = details;
 	game->moves = 0;
-	game->collects = game->props.burger_nbr;
-	return (0);
-}
-
-void	remove_player(t_game *game)
-{
-	game->player.tile->type = EMPTY;
-	game->player.tile = NULL;
+	game->player.tile = &grid[details.pos.y][details.pos.x];
+	game->collects = details.burger_nbr;
+	game->grid = grid;
+	game->mlx = mlx_init();
+	col = game->window_size.x + IMG_SIZE / 2;
+	row = game->window_size.y + IMG_SIZE / 2;
+	game->window = mlx_new_window(game->mlx, col, row, "Ajala Travel");
 }

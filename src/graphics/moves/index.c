@@ -6,11 +6,11 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:32:27 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 15:12:32 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:17:27 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/so_long.h"
+#include "../../../inc/so_long.h"
 
 void	pick_collect(t_game *game, t_cell *tile)
 {
