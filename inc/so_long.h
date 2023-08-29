@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 07:43:05 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 11:59:05 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-# define IMG_SIZE 58
+# define IMG_SIZE 60
 
 enum	e_status
 {
@@ -165,6 +165,7 @@ typedef struct s_coll_img
 	int		anim_frames;
 	void	*img_0;
 	void	*img_1;
+	void	*img_2;
 }	t_collect_img;
 
 enum e_keycode

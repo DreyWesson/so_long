@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 07:33:36 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 02:43:27 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 12:05:03 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ void	south_wall(t_game *game, int *x, int *y)
 
 void	north_wall(t_game *game, int *x, int *y)
 {
-	game->wall_imgs.block = mlx_xpm_file_to_image(game->mlx,
-			"./inc/sprites/wall_02.xpm", x, y);
-	game->wall_imgs.north_west = mlx_xpm_file_to_image(game->mlx,
-			"./inc/sprites/north_west.xpm", x, y);
 	game->wall_imgs.north = mlx_xpm_file_to_image(game->mlx,
 			"./inc/sprites/north_wall.xpm", x, y);
+	game->wall_imgs.block = mlx_xpm_file_to_image(game->mlx,
+			"./inc/sprites/wall.xpm", x, y);
+	game->wall_imgs.north_west = mlx_xpm_file_to_image(game->mlx,
+			"./inc/sprites/north_west.xpm", x, y);
 	game->wall_imgs.north_east = mlx_xpm_file_to_image(game->mlx,
 			"./inc/sprites/north_east.xpm", x, y);
 	north_wall_error(game->wall_imgs);
