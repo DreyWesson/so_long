@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 22:27:30 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 22:54:25 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,10 +246,13 @@ void		remove_player(t_game *game);
 int			reset(t_game *game);
 int			update(t_game *game);
 void		render(t_game game);
-int			draw_corner(t_game game);
-int			draw_sides(t_game game);
+int			draw_corner(t_game game, t_axis pos);
+int			draw_sides(t_game game, t_axis pos);
+void		draw_doors(t_game game, t_axis pos);
+void		draw_collectible(t_game game, t_axis pos);
+void		draw_player(t_game game, t_axis pos);
 int			move_player(t_game *game, t_cell *tile);
-void		draw_wall(t_game game);
+void		draw_wall(t_game game, t_axis pos);
 void		effect_anime(t_effect *effect, t_axis pos);
 void		action_anime(t_player *player);
 int			end_program(t_game *game);

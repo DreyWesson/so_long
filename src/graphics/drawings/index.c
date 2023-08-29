@@ -6,11 +6,12 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:28:12 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 17:14:59 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/29 23:02:25 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/so_long.h"
+
 
 static void	draw_image(t_game game)
 {
@@ -20,22 +21,13 @@ static void	draw_image(t_game game)
 	cell = game.current_cell;
 	pos = cell.position;
 	if (cell.type == WALL)
-		draw_wall(game);
+		draw_wall(game, pos);
 	else if (cell.type == EXIT)
-	{
-		if (game.collects != 0)
-			mlx_put_image_to_window(game.mlx, game.window,
-				game.door_open_img, pos.x, pos.y);
-		if (game.collects == 0)
-			mlx_put_image_to_window(game.mlx, game.window,
-				game.door_close_img, pos.x, pos.y);
-	}
+		draw_doors(game, pos);
 	else if (cell.type == COLLECTABLE)
-		mlx_put_image_to_window(game.mlx, game.window,
-			game.collects_imgs.current_img, pos.x, pos.y);
+		draw_collectible(game, pos);
 	else if (cell.type == PLAYER)
-		mlx_put_image_to_window(game.mlx, game.window,
-			game.player.current_img, pos.x, pos.y);
+		draw_player(game, pos);
 }
 
 static void	draw_effect(t_game game)
