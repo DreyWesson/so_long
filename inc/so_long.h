@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 17:23:57 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 18:11:59 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,7 +254,6 @@ void		free_grid(t_cell **grid, int row_nbr, int status);
 void		alt_free_grid(t_cell **grid, int row_nbr);
 void		free_all(char **ptr, t_cell **grid, t_nodes	**queue);
 int			input(int key, t_game *game);
-void		remove_player(t_game *game);
 int			build_graphics(t_game *game, t_cell **grid, t_details props);
 int			reset(t_game *game);
 int			update(t_game *game);

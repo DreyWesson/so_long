@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 17:51:03 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 18:19:14 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	free_exit(char **map)
 	ft_free2d(map);
 	exit(1);
 }
-
 
 t_cell	**validate_map(char **map, t_details *details, t_nodes **queue)
 {

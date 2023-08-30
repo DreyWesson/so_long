@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:30:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 09:28:32 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 18:11:20 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,4 @@ int	reset(t_game *game)
 	game->moves = 0;
 	game->collects = game->props.burger_nbr;
 	return (0);
-}
-
-void	remove_player(t_game *game)
-{
-	game->player.tile->type = EMPTY;
-	game->player.tile = NULL;
 }

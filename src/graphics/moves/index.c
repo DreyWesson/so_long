@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:32:27 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 09:33:01 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 18:11:03 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	to_collectible(t_game *game, t_cell *tile)
 void	to_exit(t_game *game, t_cell *tile)
 {
 	effect_anime(&game->effect, tile->position);
-	remove_player(game);
 	game->collects = -1;
 	print_end(game->moves);
 	end_program(game);
