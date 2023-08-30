@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 14:43:37 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 17:51:03 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@ void	cache_exit(t_details *details, char c, int x, int y)
 		details->cache_exit.y = y;
 	}
 }
+
+void	free_exit(char **map)
+{
+	ft_free2d(map);
+	exit(1);
+}
+
 
 t_cell	**validate_map(char **map, t_details *details, t_nodes **queue)
 {
@@ -36,14 +43,14 @@ t_cell	**validate_map(char **map, t_details *details, t_nodes **queue)
 		{
 			if (!validate_composition(map[y_axis][x_axis], &quant)
 			|| !validate_walls(map[y_axis], details->row_nbr, x_axis, y_axis))
-				return (NULL);
+				free_exit(map);
 			if (map[y_axis][x_axis] == 'P')
 				save_start(y_axis, x_axis, details);
 			cache_exit(details, map[y_axis][x_axis], x_axis, y_axis);
 			x_axis++;
 		}
 		if (!validate_shape(details, y_axis, x_axis))
-			return (NULL);
+			free_exit(map);
 		y_axis++;
 	}
 	check_quant(&quant, details);
