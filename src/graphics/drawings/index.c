@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:28:12 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 06:42:34 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 10:37:43 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ static void	draw_text(t_game game)
 	char	*str;
 
 	str = ft_itoa(game.moves);
+	str = ft_strjoin("Moves: ",str);
 	mlx_string_put(game.mlx, game.window,
-		game.window_size.x - IMG_SIZE / 2.3,
+		game.window_size.x - IMG_SIZE,
 		IMG_SIZE - IMG_SIZE / 1.5,
 		15921152, str);
 	free(str);
