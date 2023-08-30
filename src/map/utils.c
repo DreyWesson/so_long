@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:25:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 09:26:27 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:09:47 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ t_cell	**validate_paths(t_cell **grid, t_nodes **queue,
 	{
 		ft_error("Invalid path(s)");
 		free_grid(grid, details.row_nbr, 1);
-		// return (NULL);
 	}
 	return (grid);
 }
