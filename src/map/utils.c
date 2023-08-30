@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:25:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 12:47:42 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 14:38:22 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ int	is_valid(char *str)
 
 int	count_collected(t_nodes **queue)
 {
-	if (((*queue)->cell->val != SPACE && (*queue)->cell->val != BLOCK))
+	char	c;
+
+	c = (*queue)->cell->val;
+	if (c != SPACE && c != BLOCK && c != PLAYER)
 		return (1);
 	return (0);
 }
@@ -67,13 +70,23 @@ int	check_paths(t_cell **grid, t_nodes **queue, t_details details)
 t_cell	**validate_paths(t_cell **grid, t_nodes **queue,
 	t_details details, char **map)
 {
-	int	collectibles;
+	int		collectibles;
+	int		collected;
+	int		collected_tmp;
+	t_cell	**cache;
 
 	collectibles = special_char(map);
-	if (check_paths(grid, queue, details) != collectibles)
+	cache = create_grid(map, &details);
+	cache[details.cache_exit.y][details.cache_exit.x].val = '1';
+	collected_tmp = check_paths(cache, queue, details);
+	collected = check_paths(grid, queue, details);
+	if ((collected_tmp + 1) != collectibles || collected != collectibles)
 	{
 		ft_error("Invalid path(s)");
-		free_grid(grid, details.row_nbr, 1);
+		alt_free_grid(grid, details.row_nbr);
+		alt_free_grid(cache, details.row_nbr);
+		exit(1);
 	}
+	alt_free_grid(cache, details.row_nbr);
 	return (grid);
 }

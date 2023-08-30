@@ -6,11 +6,20 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 16:53:35 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 14:43:37 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/so_long.h"
+
+void	cache_exit(t_details *details, char c, int x, int y)
+{
+	if (c == 'E')
+	{
+		details->cache_exit.x = x;
+		details->cache_exit.y = y;
+	}
+}
 
 t_cell	**validate_map(char **map, t_details *details, t_nodes **queue)
 {
@@ -30,6 +39,7 @@ t_cell	**validate_map(char **map, t_details *details, t_nodes **queue)
 				return (NULL);
 			if (map[y_axis][x_axis] == 'P')
 				save_start(y_axis, x_axis, details);
+			cache_exit(details, map[y_axis][x_axis], x_axis, y_axis);
 			x_axis++;
 		}
 		if (!validate_shape(details, y_axis, x_axis))

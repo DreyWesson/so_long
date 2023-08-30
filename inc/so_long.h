@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 09:33:14 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 14:28:38 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ typedef struct s_details
 	int		col_nbr;
 	int		row_nbr;
 	int		burger_nbr;
+	int		cache_status;
+	t_axis	cache_exit;
 	t_axis	pos;
 }	t_details;
 
@@ -249,6 +251,7 @@ t_nodes		*create_node(t_cell *cell);
 int			count_row(char **grid);
 void		free_list(t_nodes **head_ref);
 void		free_grid(t_cell **grid, int row_nbr, int status);
+void	alt_free_grid(t_cell **grid, int row_nbr);
 void		free_all(char **ptr, t_cell **grid, t_nodes	**queue);
 // void		start(t_game *game, t_cell **grid, t_details props);
 int			input(int key, t_game *game);

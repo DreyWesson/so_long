@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:28:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 09:38:21 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 14:39:40 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,10 @@ void	handle_adjacency(t_cell **grid, t_nodes **queue)
 
 int	special_char(char **map)
 {
-	int	y_axis;
-	int	x_axis;
-	int	sum;
+	int		y_axis;
+	int		x_axis;
+	int		sum;
+	char	c;
 
 	y_axis = 0;
 	sum = 0;
@@ -72,7 +73,8 @@ int	special_char(char **map)
 		x_axis = 0;
 		while (map[y_axis][x_axis])
 		{
-			if (map[y_axis][x_axis] != BLOCK && map[y_axis][x_axis] != SPACE)
+			c = map[y_axis][x_axis];
+			if (c != BLOCK && c != SPACE && c != PLAYER)
 				sum++;
 			x_axis++;
 		}
