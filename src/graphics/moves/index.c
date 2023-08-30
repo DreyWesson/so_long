@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:32:27 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 22:30:11 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 09:33:01 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	to_exit(t_game *game, t_cell *tile)
 	effect_anime(&game->effect, tile->position);
 	remove_player(game);
 	game->collects = -1;
-	printf("Great job!\n");
+	print_end(game->moves);
 	end_program(game);
 }
 

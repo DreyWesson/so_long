@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 23:14:09 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 09:33:14 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef struct s_cell
 	int				y_axis;
 	char			status;
 	t_tiletype		type;
-	t_tiletype		mem_type;
+	t_tiletype		cache;
 	t_axis			position;
 	struct s_cell	*up;
 	struct s_cell	*down;
@@ -167,8 +167,17 @@ enum e_keycode
 	ESC = 53
 };
 
+typedef struct	s_pixel {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_pixel;
+
 typedef struct s_game
 {
+
 	void			*mlx;
 	void			*window;
 	int				collects;
@@ -215,6 +224,7 @@ t_cell		create_cell(char s, int x, int y);
 t_details	default_details(char *ptr);
 void		print_grid(t_cell **grid, t_details details);
 void		print_adjacent(t_details details, t_cell **grid);
+void		print_end(int moves);
 int			special_char(char **map);
 t_cell		**create_grid(char **map, t_details *details);
 void		handle_adjacency(t_cell **grid, t_nodes **queue);
@@ -238,12 +248,12 @@ t_nodes		*create_node(t_cell *cell);
 */
 int			count_row(char **grid);
 void		free_list(t_nodes **head_ref);
-void		free_grid(t_cell **grid, int row_nbr);
+void		free_grid(t_cell **grid, int row_nbr, int status);
 void		free_all(char **ptr, t_cell **grid, t_nodes	**queue);
-void		start(t_game *game, t_cell **grid, t_details props);
+// void		start(t_game *game, t_cell **grid, t_details props);
 int			input(int key, t_game *game);
 void		remove_player(t_game *game);
-void		build_graphics(t_game *game, t_cell **grid, t_details props);
+int			build_graphics(t_game *game, t_cell **grid, t_details props);
 int			reset(t_game *game);
 int			update(t_game *game);
 void		render(t_game game);
@@ -263,7 +273,7 @@ void		north_wall(t_game *game, int *x, int *y);
 void		player_imgs_error(t_game game);
 void		collectible_imgs_error(t_game game);
 void		door_imgs_error(t_game game);
-void		game_init(t_game *game, t_cell	**grid, t_details details);
+int			game_init(t_game *game, t_cell	**grid, t_details details);
 void		west_wall_error(t_wall_img wall);
 void		east_wall_error(t_wall_img wall);
 void		west_wall(t_game *game, int *x, int *y);

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:28:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 17:14:15 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 09:38:21 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,15 @@ int	special_char(char **map)
 		y_axis++;
 	}
 	return (sum);
+}
+
+void	print_end(int moves)
+{
+	printf(" *********************************\n");
+	printf("|                                 |\n");
+	printf("|            MOVES: ""\033[33m""%d""\033[0m""            |\n", moves);
+	printf("|                                 |\n");
+	printf("|           ""\033[32m""Great Job!""\033[0m""            |\n");
+	printf("|                                 |\n");
+	printf(" ********************************* \n");
 }

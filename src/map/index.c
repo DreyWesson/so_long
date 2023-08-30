@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 23:13:14 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 09:28:50 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,11 @@ void	handle_map(char **argv, t_game *game)
 	grid = validate_map(ptr, &props, &queue);
 	free(queue);
 	ft_free2d(ptr);
-	if (!grid)
-	{
-		free(grid);
-		exit(1);
-	}
-	build_graphics(game, grid, props);
+	if (!grid || !build_graphics(game, grid, props))
+		free_grid(grid, game->props.row_nbr, 1);
 }
 
-int	handle_validation(int argc, char **argv, t_game *game)
+int	validate_arg(int argc, char **argv)
 {
 	if (argc == 1)
 		return (ft_error("Too few argument"));
@@ -40,6 +36,13 @@ int	handle_validation(int argc, char **argv, t_game *game)
 		ft_warning("Processing the first argument only");
 	if (!is_valid(argv[1]))
 		return (ft_error("Expecting a .ber file"));
+	return (1);
+}
+
+int	handle_validation(int argc, char **argv, t_game *game)
+{
+	if (!validate_arg(argc, argv))
+		return (0);
 	handle_map(argv, game);
 	return (1);
 }

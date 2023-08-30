@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:24:00 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 15:14:43 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 07:23:44 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_cell	create_cell(char s, int x, int y)
 	cell.y_axis = y;
 	cell.val = s;
 	cell.type = s;
-	cell.mem_type = cell.type;
+	cell.cache = cell.type;
 	cell.position.x = x * IMG_SIZE;
 	cell.position.y = y * IMG_SIZE;
 	cell.up = NULL;

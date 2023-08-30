@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:30:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 22:25:00 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 09:28:32 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 int	end_program(t_game *game)
 {
-	free_grid(game->grid, game->props.row_nbr);
-	game->grid = NULL;
 	free(game->mlx);
+	free_grid(game->grid, game->props.row_nbr, 0);
 	exit(0);
 }
 
@@ -31,7 +30,7 @@ int	reset(t_game *game)
 		x = 0;
 		while (x < game->props.col_nbr)
 		{
-			game->grid[y][x].type = game->grid[y][x].mem_type;
+			game->grid[y][x].type = game->grid[y][x].cache;
 			if (game->grid[y][x].type == PLAYER)
 				game->player.tile = &game->grid[y][x];
 			x++;

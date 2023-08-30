@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:17:33 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 15:07:48 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 09:24:10 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-void	free_grid(t_cell **grid, int row_nbr)
+void	free_grid(t_cell **grid, int row_nbr, int status)
 {
 	int	i;
 
@@ -23,6 +23,7 @@ void	free_grid(t_cell **grid, int row_nbr)
 		i++;
 	}
 	free(grid);
+	exit(status);
 }
 
 void	free_list(t_nodes **head_ref)
@@ -51,7 +52,7 @@ int	count_row(char **grid)
 
 void	free_all(char **ptr, t_cell **grid, t_nodes **queue)
 {
-	free_grid(grid, count_row(ptr));
+	free_grid(grid, count_row(ptr), 0);
 	ft_free2d(ptr);
 	free_list(queue);
 }
