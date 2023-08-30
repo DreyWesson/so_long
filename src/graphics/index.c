@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:13:24 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 09:31:06 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 17:06:23 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,8 @@ static void	anim_init(t_game *game)
 
 int	build_graphics(t_game *game, t_cell **grid, t_details props)
 {
-	if (!game_init(game, grid, props))
+	if (!game_init(game, grid, props) || !load_images(game))
 		return (0);
-	load_images(game);
 	anim_init(game);
 	return (1);
 }

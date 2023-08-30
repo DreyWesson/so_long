@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 14:28:38 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 17:02:37 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,18 +270,18 @@ void		draw_wall(t_game game, t_axis pos);
 void		effect_anime(t_effect *effect, t_axis pos);
 void		action_anime(t_player *player);
 int			end_program(t_game *game);
-void		load_images(t_game *game);
-void		south_wall(t_game *game, int *x, int *y);
-void		north_wall(t_game *game, int *x, int *y);
-void		player_imgs_error(t_game game);
-void		collectible_imgs_error(t_game game);
-void		door_imgs_error(t_game game);
+int			load_images(t_game *game);
+int			south_wall(t_game *game, int *x, int *y);
+int			north_wall(t_game *game, int *x, int *y);
+int			player_imgs_error(t_game game);
+int			collectible_imgs_error(t_game game);
+int			door_imgs_error(t_game game);
 int			game_init(t_game *game, t_cell	**grid, t_details details);
-void		west_wall_error(t_wall_img wall);
-void		east_wall_error(t_wall_img wall);
-void		west_wall(t_game *game, int *x, int *y);
-void		east_wall(t_game *game, int *x, int *y);
-void		south_wall_error(t_wall_img wall);
-void		north_wall_error(t_wall_img wall);
+int			west_wall_error(t_wall_img wall);
+int			east_wall_error(t_wall_img wall);
+int			west_wall(t_game *game, int *x, int *y);
+int			east_wall(t_game *game, int *x, int *y);
+int			south_wall_error(t_wall_img wall);
+int			north_wall_error(t_wall_img wall);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 02:25:36 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 15:07:14 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 15:59:51 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-void	south_wall_error(t_wall_img wall)
+int	south_wall_error(t_wall_img wall)
 {
 	if (!wall.south_east)
 		printf("south_east.xpm file not opening\n");
@@ -21,10 +21,12 @@ void	south_wall_error(t_wall_img wall)
 	if (!wall.south_west)
 		printf("south_west.xpm file not opening\n");
 	if (!wall.south_east || !wall.south || !wall.south_west)
-		exit(1);
+		return (0);
+		// exit(1);
+	return (1);
 }
 
-void	north_wall_error(t_wall_img wall)
+int	north_wall_error(t_wall_img wall)
 {
 	if (!wall.block)
 		printf("wall.xpm file not opening\n");
@@ -35,23 +37,31 @@ void	north_wall_error(t_wall_img wall)
 	if (!wall.north_east)
 		printf("north_east.xpm file not opening\n");
 	if (!wall.block || !wall.north_west || !wall.north || !wall.north_east)
-		exit(1);
+		return (0);
+	return (1);
+
+		// exit(1);
 }
 
-void	east_wall_error(t_wall_img wall)
+int	east_wall_error(t_wall_img wall)
 {
 	if (!wall.east)
 	{
 		printf("east_wall.xpm file not opening\n");
-		exit(1);
+		return (0);
+		// exit(1);
 	}
+	return (1);
+
 }
 
-void	west_wall_error(t_wall_img wall)
+int	west_wall_error(t_wall_img wall)
 {
 	if (!wall.west)
 	{
 		printf("west_wall.xpm file not opening\n");
-		exit(1);
+		return (0);
+		// exit(1);
 	}
+	return (1);
 }
