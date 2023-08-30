@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:05:51 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 07:21:00 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 17:28:53 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,3 @@ int	main(int argc, char **argv)
 	mlx_loop(game.mlx);
 	return (0);
 }
-//	mlx_new_window
-//  mlx_xpm_file_to_image
-//	mlx_destroy_image
-//	mlx_clear_window
-//	mlx_put_image_to_window

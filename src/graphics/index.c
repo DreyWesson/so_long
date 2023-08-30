@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:13:24 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 17:06:23 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 17:13:42 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,11 @@ int	game_init(t_game *game, t_cell	**grid, t_details details)
 	game->player.tile = &grid[details.pos.y][details.pos.x];
 	game->collects = details.burger_nbr;
 	game->mlx = mlx_init();
-	if (!game->mlx)
-		return (0);
-	game->grid = grid;
 	col = game->window_size.x + IMG_SIZE / 2;
 	row = game->window_size.y + IMG_SIZE / 2;
 	game->window = mlx_new_window(game->mlx, col, row, "Ajala Travel");
-	if (!game->window)
+	game->grid = grid;
+	if (!game->window || !game->mlx)
 		return (0);
 	return (1);
 }

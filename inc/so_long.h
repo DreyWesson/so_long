@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 17:02:37 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 17:23:57 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,7 @@ int			handle_validation(int argc, char **argv, t_game *game);
 /**
  * MAP -> Reader
 */
-void		handle_map(char **argv, t_game *game);
+int			handle_map(char **argv, t_game *game);
 t_cell		**validate_map(char **map, t_details *details, t_nodes **queue);
 int			line_counter(char *file_name);
 size_t		ft_strlen_ln(const char *str);
@@ -251,9 +251,8 @@ t_nodes		*create_node(t_cell *cell);
 int			count_row(char **grid);
 void		free_list(t_nodes **head_ref);
 void		free_grid(t_cell **grid, int row_nbr, int status);
-void	alt_free_grid(t_cell **grid, int row_nbr);
+void		alt_free_grid(t_cell **grid, int row_nbr);
 void		free_all(char **ptr, t_cell **grid, t_nodes	**queue);
-// void		start(t_game *game, t_cell **grid, t_details props);
 int			input(int key, t_game *game);
 void		remove_player(t_game *game);
 int			build_graphics(t_game *game, t_cell **grid, t_details props);

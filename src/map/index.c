@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 13:08:05 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 17:28:15 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-void	handle_map(char **argv, t_game *game)
+int	handle_map(char **argv, t_game *game)
 {
 	char		**ptr;
 	t_details	props;
@@ -25,7 +25,8 @@ void	handle_map(char **argv, t_game *game)
 	free(queue);
 	ft_free2d(ptr);
 	if (!grid || !build_graphics(game, grid, props))
-		free_grid(grid, game->props.row_nbr, 1);
+		return (0);
+	return (1);
 }
 
 int	validate_arg(int argc, char **argv)
@@ -43,6 +44,11 @@ int	handle_validation(int argc, char **argv, t_game *game)
 {
 	if (!validate_arg(argc, argv))
 		return (0);
-	handle_map(argv, game);
+	if (!handle_map(argv, game))
+	{
+		if (game->grid)
+			free_grid(game->grid, game->props.row_nbr, 1);
+		return (0);
+	}
 	return (1);
 }

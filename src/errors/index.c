@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:05:13 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 17:00:53 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 17:22:41 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int	door_imgs_error(t_game game)
 	if (!game.door_open_img)
 		printf("door_close.xpm file not opening\n");
 	if (!game.door_close_img || !game.door_open_img)
-		{
-			free_grid(game.grid, game.props.row_nbr, 1);
-			return (0);
-		}
-		return (1);
+	{
+		free_grid(game.grid, game.props.row_nbr, 1);
+		return (0);
+	}
+	return (1);
 }
 
 int	collectible_imgs_error(t_game game)
@@ -49,11 +49,11 @@ int	collectible_imgs_error(t_game game)
 		printf("jump_plant.xpm file not opening\n");
 	if (!game.collects_imgs.img_0 || !game.collects_imgs.img_1
 		|| !game.effect.img)
-		{
-			free_grid(game.grid, game.props.row_nbr, 1);
-			return (0);
-		}
-		return (1);
+	{
+		free_grid(game.grid, game.props.row_nbr, 1);
+		return (0);
+	}
+	return (1);
 }
 
 int	player_imgs_error(t_game game)
@@ -66,9 +66,9 @@ int	player_imgs_error(t_game game)
 		printf("player_03.xpm file not opening\n");
 	if (!game.player.idle_img_0 || !game.player.idle_img_1
 		|| !game.player.action_img)
-		{
-			free_grid(game.grid, game.props.row_nbr, 1);
-			return (0);
-		}
-		return (1);
+	{
+		free_grid(game.grid, game.props.row_nbr, 1);
+		return (0);
+	}
+	return (1);
 }

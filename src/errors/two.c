@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 02:25:36 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 15:59:51 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 17:29:47 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	south_wall_error(t_wall_img wall)
 		printf("south_west.xpm file not opening\n");
 	if (!wall.south_east || !wall.south || !wall.south_west)
 		return (0);
-		// exit(1);
 	return (1);
 }
 
@@ -39,8 +38,6 @@ int	north_wall_error(t_wall_img wall)
 	if (!wall.block || !wall.north_west || !wall.north || !wall.north_east)
 		return (0);
 	return (1);
-
-		// exit(1);
 }
 
 int	east_wall_error(t_wall_img wall)
@@ -49,10 +46,8 @@ int	east_wall_error(t_wall_img wall)
 	{
 		printf("east_wall.xpm file not opening\n");
 		return (0);
-		// exit(1);
 	}
 	return (1);
-
 }
 
 int	west_wall_error(t_wall_img wall)
@@ -61,7 +56,6 @@ int	west_wall_error(t_wall_img wall)
 	{
 		printf("west_wall.xpm file not opening\n");
 		return (0);
-		// exit(1);
 	}
 	return (1);
 }
