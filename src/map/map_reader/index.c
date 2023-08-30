@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 07:45:52 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/20 20:41:55 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 22:29:28 by moduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ char	**map_reader(char *s, int row_nbr)
 		ptr[i] = ft_substr(str, 0, len);
 		ptr[i][len] = '\0';
 		i++;
+		free(str);
 	}
 	return (ptr);
 }

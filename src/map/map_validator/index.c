@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 18:19:14 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 22:47:51 by moduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	cache_exit(t_details *details, char c, int x, int y)
 
 void	free_exit(char **map)
 {
+	printf("here\n");
 	ft_free2d(map);
 	exit(1);
 }
@@ -52,6 +53,6 @@ t_cell	**validate_map(char **map, t_details *details, t_nodes **queue)
 			free_exit(map);
 		y_axis++;
 	}
-	check_quant(&quant, details);
+	check_quant(map, &quant, details);
 	return (validate_paths(create_grid(map, details), queue, *details, map));
 }

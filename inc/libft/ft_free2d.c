@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free2d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 13:02:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/18 13:15:43 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 22:51:52 by moduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ void	ft_free2d(char **ptr)
 
 	i = 0;
 	while (ptr[i])
-		free(ptr[i++]);
+	{
+		free(ptr[i]);
+		i++;
+	}
 	free(ptr);
 }

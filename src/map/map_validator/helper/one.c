@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   one.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:29:43 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/23 02:22:58 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 22:49:18 by moduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	validate_composition(char s, t_quant *quant)
 	set = "01CEP";
 	if (!ft_strchr(set, s))
 	{
+		free(quant);
 		ft_error("Invalid composition");
 		return (0);
 	}
@@ -63,11 +64,12 @@ void	save_start(int y, int x, t_details *details)
 	details->pos.x = x;
 }
 
-void	check_quant(t_quant *quant, t_details *details)
+void	check_quant(char **map, t_quant *quant, t_details *details)
 {
 	if (quant->collectibles < 1 || quant->exit != 1 || quant->player != 1)
 	{
 		ft_error("Invalid composition quantity");
+		ft_free2d(map);
 		exit(0);
 	}
 	details->burger_nbr = quant->collectibles;

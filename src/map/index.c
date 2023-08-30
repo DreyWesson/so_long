@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 17:28:15 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 22:33:05 by moduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

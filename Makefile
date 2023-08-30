@@ -3,12 +3,13 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
+#    By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:39:49 by doduwole          #+#    #+#              #
-#    Updated: 2023/08/29 07:27:42 by doduwole         ###   ########.fr        #
+#    Updated: 2023/08/30 21:20:00 by moduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 
 NAME = so_long
@@ -20,7 +21,7 @@ CFLAGS = -Werror -Wall -Wextra
 
 OBJS = $(SRC:.c=.o)
 
-CC = gcc -g -fsanitize=address 
+CC = gcc
 
 LIBFTDIR = ./inc/libft/
 
@@ -28,9 +29,10 @@ LIBFTA = ./inc/libft/libft.a
 
 MLX_DIR = ./mlx/
 
-MLX = ./mlx/libmlx.a
+MLX = ./mlx/libmlx_Linux.a
 
-LINK = -Lmlx -lmlx -framework OpenGL -framework AppKit
+# LINK = -Lmlx -lmlx -framework OpenGL -framework AppKit
+LINK = -L$(MLX) $(MLX) -L/usr/lib -I$(MLX) -lXext -lX11 -lm -lz
 
 NONE='\033[0m'
 GREEN='\033[32m'
@@ -40,7 +42,8 @@ CURSIVE='\033[3m'
 all: $(NAME)
 
 %.o: %.c $(LIBFTA)
-	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	$(CC) -Wall -Wextra -Werror -I/usr/include -Iminilibx-linux -O3 -c $< -o $@
+# 	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 
 $(NAME): $(LIBFTA) $(MLX) $(SRC) $(OBJS)
@@ -67,3 +70,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+

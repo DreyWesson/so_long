@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 18:11:59 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 22:48:17 by moduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,7 +220,7 @@ int			validate_composition(char s, t_quant *quant);
 int			validate_walls(char *s, int row_nbr, int j, int i);
 int			validate_shape(t_details *details, int i, int j);
 void		save_start(int x, int y, t_details *details);
-void		check_quant(t_quant *quant, t_details *details);
+void		check_quant(char **map, t_quant *quant, t_details *details);
 void		default_quant(t_quant *quant);
 t_cell		create_cell(char s, int x, int y);
 t_details	default_details(char *ptr);

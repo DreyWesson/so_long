@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:25:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 14:38:22 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/30 23:21:44 by moduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	is_valid(char *str)
 	int		res;
 
 	res = 0;
+	s = NULL; // added
 	len = ft_trim(str, "./");
 	while (str[len])
 	{
