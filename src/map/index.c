@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/31 12:21:19 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/31 23:16:37 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@ int	handle_map(char **argv, t_game *game)
 	t_nodes		*queue;
 	t_cell		**grid;
 
+	queue = NULL;
+	grid = NULL;
 	props = default_details(argv[1]);
 	ptr = map_reader(argv[1], props.row_nbr);
 	grid = validate_map(ptr, &props, &queue);
-	free(queue);
 	ft_free2d(ptr);
 	if (!grid || !build_graphics(game, grid, props))
-		return (0);
+		return (free_grid(grid, props.row_nbr, 1), 0);
 	return (1);
 }
 

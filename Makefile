@@ -6,10 +6,9 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:39:49 by doduwole          #+#    #+#              #
-#    Updated: 2023/08/29 07:27:42 by doduwole         ###   ########.fr        #
+#    Updated: 2023/08/31 22:50:40 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 NAME = so_long
 

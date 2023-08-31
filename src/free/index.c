@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:17:33 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 14:28:18 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/31 23:06:02 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ void	free_grid(t_cell **grid, int row_nbr, int status)
 	i = 0;
 	while (i < row_nbr)
 	{
+		free(grid[i]->up);
+		free(grid[i]->left);
+		free(grid[i]->right);
+		free(grid[i]->down);
 		free(grid[i]);
 		i++;
 	}
@@ -43,9 +47,13 @@ void	free_list(t_nodes **head_ref)
 {
 	t_nodes	*tmp;
 
-	if (!head_ref)
+	if (!*head_ref)
+	{
+		free(head_ref);
 		return ;
-	while (*head_ref)
+	}
+	tmp = *head_ref;
+	while (tmp)
 	{
 		tmp = (*head_ref)->next;
 		free(*head_ref);

@@ -6,11 +6,20 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:25:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 14:38:22 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/31 23:08:09 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
+
+void	check_len(int len)
+{
+	if (len == 4)
+	{
+		ft_error("File name doesn't exist");
+		exit(0);
+	}
+}
 
 int	is_valid(char *str)
 {
@@ -19,6 +28,7 @@ int	is_valid(char *str)
 	int		res;
 
 	res = 0;
+	s = NULL;
 	len = ft_trim(str, "./");
 	while (str[len])
 	{
@@ -32,11 +42,7 @@ int	is_valid(char *str)
 		}
 		len++;
 	}
-	if (len == 4)
-	{
-		ft_error("File name doesn't exist");
-		exit(0);
-	}
+	check_len(len);
 	free(s);
 	return (res);
 }
@@ -83,6 +89,7 @@ t_cell	**validate_paths(t_cell **grid, t_nodes **queue,
 	if ((collected_tmp + 1) != collectibles || collected != collectibles)
 	{
 		ft_error("Invalid path(s)");
+		ft_free2d(map);
 		alt_free_grid(grid, details.row_nbr);
 		alt_free_grid(cache, details.row_nbr);
 		exit(1);
