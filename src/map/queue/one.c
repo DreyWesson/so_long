@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   one.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 16:36:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/29 17:17:58 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/31 21:10:01 by moduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,13 @@ void	del_node(t_nodes **head)
 
 	if (!(*head)->next)
 	{
+		free(*head);
 		*head = NULL;
 		return ;
 	}
 	tmp = (*head)->next;
-	(*head)->prev = NULL;
-	(*head)->next = NULL;
+	free(*head);
+	tmp->prev = NULL;
 	*head = tmp;
 }
 

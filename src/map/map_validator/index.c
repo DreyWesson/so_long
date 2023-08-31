@@ -6,7 +6,7 @@
 /*   By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:44:42 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 22:47:51 by moduwole         ###   ########.fr       */
+/*   Updated: 2023/08/31 21:03:44 by moduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	cache_exit(t_details *details, char c, int x, int y)
 
 void	free_exit(char **map)
 {
-	printf("here\n");
 	ft_free2d(map);
 	exit(1);
 }

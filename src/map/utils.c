@@ -6,7 +6,7 @@
 /*   By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:25:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 23:21:44 by moduwole         ###   ########.fr       */
+/*   Updated: 2023/08/31 21:23:17 by moduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ t_cell	**validate_paths(t_cell **grid, t_nodes **queue,
 	if ((collected_tmp + 1) != collectibles || collected != collectibles)
 	{
 		ft_error("Invalid path(s)");
+		ft_free2d(map);
 		alt_free_grid(grid, details.row_nbr);
 		alt_free_grid(cache, details.row_nbr);
 		exit(1);

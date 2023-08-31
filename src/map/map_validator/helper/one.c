@@ -6,7 +6,7 @@
 /*   By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:29:43 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 22:49:18 by moduwole         ###   ########.fr       */
+/*   Updated: 2023/08/31 21:28:03 by moduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	validate_composition(char s, t_quant *quant)
 	set = "01CEP";
 	if (!ft_strchr(set, s))
 	{
-		free(quant);
 		ft_error("Invalid composition");
 		return (0);
 	}

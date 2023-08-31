@@ -6,7 +6,7 @@
 #    By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:39:49 by doduwole          #+#    #+#              #
-#    Updated: 2023/08/30 21:20:00 by moduwole         ###   ########.fr        #
+#    Updated: 2023/08/31 20:54:51 by moduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,24 +14,21 @@
 
 NAME = so_long
 
-SRC =	$(wildcard main.c src/*.c src/*/*.c src/*/*/*.c src/*/*/*/*.c)
+SRC = $(wildcard main.c src/*.c src/*/*.c src/*/*/*.c src/*/*/*/*.c)
+DEP = $(SRC:.c=.d) # Dependency files
 
-
-CFLAGS = -Werror -Wall -Wextra
+CFLAGS = -MMD -MP -Werror -Wall -Wextra
 
 OBJS = $(SRC:.c=.o)
 
 CC = gcc
 
 LIBFTDIR = ./inc/libft/
-
 LIBFTA = ./inc/libft/libft.a
 
 MLX_DIR = ./mlx/
-
 MLX = ./mlx/libmlx_Linux.a
 
-# LINK = -Lmlx -lmlx -framework OpenGL -framework AppKit
 LINK = -L$(MLX) $(MLX) -L/usr/lib -I$(MLX) -lXext -lX11 -lm -lz
 
 NONE='\033[0m'
@@ -42,13 +39,10 @@ CURSIVE='\033[3m'
 all: $(NAME)
 
 %.o: %.c $(LIBFTA)
-	$(CC) -Wall -Wextra -Werror -I/usr/include -Iminilibx-linux -O3 -c $< -o $@
-# 	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	$(CC) $(CFLAGS) -I/usr/include -Iminilibx-linux -O3 -c $< -o $@
 
-
-$(NAME): $(LIBFTA) $(MLX) $(SRC) $(OBJS)
+$(NAME): $(LIBFTA) $(MLX) $(OBJS)
 	@$(CC) $(OBJS) $(LIBFTA) $(LINK) -o $@
-	@$(RM) $(OBJS)
 	@echo $(GREEN)"- Compiled -"$(NONE)
 
 $(MLX):
@@ -62,6 +56,7 @@ $(LIBFTA):
 clean:
 	@echo $(CURSIVE)$(GRAY) "     - Removing object files..." $(NONE)
 	@$(MAKE) -C $(LIBFTDIR) fclean
+	@$(RM) $(OBJS) $(DEP)
 
 fclean: clean
 	@echo $(CURSIVE)$(GRAY) "     - Removing $(NAME)..." $(NONE)
@@ -69,5 +64,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+# Include dependency files if they exist
+-include $(DEP)
 
+.PHONY: all clean fclean re
