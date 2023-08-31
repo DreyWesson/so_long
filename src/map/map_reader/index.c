@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 07:45:52 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 22:29:28 by moduwole         ###   ########.fr       */
+/*   Updated: 2023/08/31 23:10:30 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/so_long.h"
+
+void	check_fd(int fd)
+{
+	if (fd < 0)
+	{
+		ft_error("Some error occurred");
+		exit(1);
+	}
+}
 
 char	**map_reader(char *s, int row_nbr)
 {
@@ -21,11 +30,7 @@ char	**map_reader(char *s, int row_nbr)
 	int		fd;
 
 	fd = open(s, O_RDONLY);
-	if (fd < 0)
-	{
-		ft_error("Some error occurred");
-		exit(1);
-	}
+	check_fd(fd);
 	ptr = (char **)ft_calloc(sizeof(char *), row_nbr + 1);
 	if (!ptr)
 		return (NULL);

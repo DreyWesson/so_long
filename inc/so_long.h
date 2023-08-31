@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 22:48:17 by moduwole         ###   ########.fr       */
+/*   Updated: 2023/08/31 22:58:44 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,8 @@ enum e_keycode
 	ESC = 53
 };
 
-typedef struct	s_pixel {
+typedef struct s_pixel
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -179,7 +180,6 @@ typedef struct	s_pixel {
 
 typedef struct s_game
 {
-
 	void			*mlx;
 	void			*window;
 	int				collects;

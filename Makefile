@@ -3,33 +3,33 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+         #
+#    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:39:49 by doduwole          #+#    #+#              #
-#    Updated: 2023/08/31 20:54:51 by moduwole         ###   ########.fr        #
+#    Updated: 2023/08/31 22:50:40 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-
 NAME = so_long
 
-SRC = $(wildcard main.c src/*.c src/*/*.c src/*/*/*.c src/*/*/*/*.c)
-DEP = $(SRC:.c=.d) # Dependency files
+SRC =	$(wildcard main.c src/*.c src/*/*.c src/*/*/*.c src/*/*/*/*.c)
 
-CFLAGS = -MMD -MP -Werror -Wall -Wextra
+
+CFLAGS = -Werror -Wall -Wextra
 
 OBJS = $(SRC:.c=.o)
 
-CC = gcc
+CC = gcc -g -fsanitize=address 
 
 LIBFTDIR = ./inc/libft/
+
 LIBFTA = ./inc/libft/libft.a
 
 MLX_DIR = ./mlx/
-MLX = ./mlx/libmlx_Linux.a
 
-LINK = -L$(MLX) $(MLX) -L/usr/lib -I$(MLX) -lXext -lX11 -lm -lz
+MLX = ./mlx/libmlx.a
+
+LINK = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 NONE='\033[0m'
 GREEN='\033[32m'
@@ -39,10 +39,12 @@ CURSIVE='\033[3m'
 all: $(NAME)
 
 %.o: %.c $(LIBFTA)
-	$(CC) $(CFLAGS) -I/usr/include -Iminilibx-linux -O3 -c $< -o $@
+	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
-$(NAME): $(LIBFTA) $(MLX) $(OBJS)
+
+$(NAME): $(LIBFTA) $(MLX) $(SRC) $(OBJS)
 	@$(CC) $(OBJS) $(LIBFTA) $(LINK) -o $@
+	@$(RM) $(OBJS)
 	@echo $(GREEN)"- Compiled -"$(NONE)
 
 $(MLX):
@@ -56,15 +58,11 @@ $(LIBFTA):
 clean:
 	@echo $(CURSIVE)$(GRAY) "     - Removing object files..." $(NONE)
 	@$(MAKE) -C $(LIBFTDIR) fclean
-	@$(RM) $(OBJS) $(DEP)
 
 fclean: clean
 	@echo $(CURSIVE)$(GRAY) "     - Removing $(NAME)..." $(NONE)
 	@$(RM) $(NAME)
 
 re: fclean all
-
-# Include dependency files if they exist
--include $(DEP)
 
 .PHONY: all clean fclean re

@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 06:25:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/31 21:23:17 by moduwole         ###   ########.fr       */
+/*   Updated: 2023/08/31 23:08:09 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
+
+void	check_len(int len)
+{
+	if (len == 4)
+	{
+		ft_error("File name doesn't exist");
+		exit(0);
+	}
+}
 
 int	is_valid(char *str)
 {
@@ -19,7 +28,7 @@ int	is_valid(char *str)
 	int		res;
 
 	res = 0;
-	s = NULL; // added
+	s = NULL;
 	len = ft_trim(str, "./");
 	while (str[len])
 	{
@@ -33,11 +42,7 @@ int	is_valid(char *str)
 		}
 		len++;
 	}
-	if (len == 4)
-	{
-		ft_error("File name doesn't exist");
-		exit(0);
-	}
+	check_len(len);
 	free(s);
 	return (res);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:17:33 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/31 20:56:59 by moduwole         ###   ########.fr       */
+/*   Updated: 2023/08/31 23:06:02 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,10 @@ void	free_list(t_nodes **head_ref)
 	tmp = *head_ref;
 	while (tmp)
 	{
-		// printf("here\n");
 		tmp = (*head_ref)->next;
 		free(*head_ref);
 		*head_ref = tmp;
 	}
-	// printf("here\n");
 }
 
 int	count_row(char **grid)

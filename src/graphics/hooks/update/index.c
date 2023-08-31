@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:29:39 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/31 22:24:35 by moduwole         ###   ########.fr       */
+/*   Updated: 2023/08/31 23:12:15 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	player_animation(t_player *player)
 {
-	// (void)player;
 	if (player->current_img == player->action_img
 		&& player->frame_count >= player->action_frames)
 		player->current_img = player->idle_img_1;

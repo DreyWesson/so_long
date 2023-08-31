@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free2d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 13:02:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 22:51:52 by moduwole         ###   ########.fr       */
+/*   Updated: 2023/08/31 22:56:21 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
