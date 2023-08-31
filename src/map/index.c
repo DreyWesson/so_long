@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:27:09 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 17:28:15 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/08/31 12:21:19 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	validate_arg(int argc, char **argv)
 	if (argc == 1)
 		return (ft_error("Too few argument"));
 	if (argc > 2)
-		ft_warning("Processing the first argument only");
+		return (ft_error("Too many argument"));
 	if (!is_valid(argv[1]))
 		return (ft_error("Expecting a .ber file"));
 	return (1);
