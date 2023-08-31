@@ -6,7 +6,7 @@
 /*   By: moduwole <moduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:13:24 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 23:59:44 by moduwole         ###   ########.fr       */
+/*   Updated: 2023/08/31 22:20:29 by moduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ int	game_init(t_game *game, t_cell	**grid, t_details details)
 /* Sets the frames of all animatios */
 static void	anim_init(t_game *game)
 {
+	game->player.frame_count = 0;
+	game->effect.counter = 0;
+	game->effect.frames = 0;
+	
 	game->player.idle_frames = 42;
 	game->player.action_frames = 21;
 	game->collects_imgs.anim_frames = 42;
