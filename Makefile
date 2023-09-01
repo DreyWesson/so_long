@@ -6,7 +6,7 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:39:49 by doduwole          #+#    #+#              #
-#    Updated: 2023/09/01 13:39:45 by doduwole         ###   ########.fr        #
+#    Updated: 2023/09/01 13:59:16 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,10 @@ RM = rm -rf
 
 CFLAGS = -Werror -Wall -Wextra
 
-OBJS = $(SRC:.c=.o)
+OBJ_DIR = obj
+SRC_DIR = src
+
+OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 CC = gcc -g -fsanitize=address 
 
@@ -51,13 +54,15 @@ CURSIVE='\033[3m'
 
 all: $(NAME)
 
-%.o: %.c $(LIBFTA)
-	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
-
-
 $(NAME): $(LIBFTA) $(MLX) $(SRC) $(OBJS)
 	@$(CC) $(OBJS) $(LIBFTA) $(LINK) -o $@
 	@echo $(GREEN)"- Compiled -"$(NONE)
+
+$(OBJ_DIR)/%.o: %.c $(LIBFTA)
+	@echo $(CURSIVE)$(GRAY) "     - Building $<" $(NONE)
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
+
 
 $(MLX):
 	@make -C $(MLX_DIR)
@@ -73,7 +78,7 @@ clean:
 
 fclean: clean
 	@echo $(CURSIVE)$(GRAY) "     - Removing $(NAME)..." $(NONE)
-	@$(RM) $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
