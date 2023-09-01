@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:32:27 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/30 18:11:03 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/09/01 17:11:47 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,11 @@ void	to_empty(t_game *game, t_cell *tile)
 int	move_player(t_game *game, t_cell *tile)
 {
 	if (tile->type == EMPTY)
-		to_empty(game, tile);
+		return (to_empty(game, tile), 1);
 	else if (tile->type == COLLECTABLE)
-		to_collectible(game, tile);
+		return (to_collectible(game, tile), 0);
 	else if (tile->type == EXIT && game->collects <= 0)
-		to_exit(game, tile);
+		return (to_exit(game, tile), 1);
 	else
 		return (0);
-	return (1);
 }

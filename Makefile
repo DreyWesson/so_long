@@ -6,7 +6,7 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:39:49 by doduwole          #+#    #+#              #
-#    Updated: 2023/09/01 16:03:14 by doduwole         ###   ########.fr        #
+#    Updated: 2023/09/01 16:49:49 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ NONE='\033[0m'
 GREEN='\033[32m'
 GRAY='\033[2;37m'
 CURSIVE='\033[3m'
+WARNING='\033[33m'
 
 all: $(NAME)
 
@@ -70,12 +71,12 @@ $(LIBFTA):
 	@make all -C $(LIBFTDIR)
 
 clean:
-	@echo $(CURSIVE)$(GRAY) "     - Removing object files..." $(NONE)
 	@$(RM) $(OBJS)
+	@echo $(CURSIVE)$(GRAY) "     - Object files removed" $(NONE)
 
 fclean: clean
-	@echo $(CURSIVE)$(GRAY) "     - Removing $(NAME)..." $(NONE)
 	@rm -f $(NAME)
+	@echo $(CURSIVE)$(GRAY) "     - $(NAME) removed" $(NONE)
 
 re: fclean all
 
