@@ -6,7 +6,7 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:39:49 by doduwole          #+#    #+#              #
-#    Updated: 2023/08/31 22:50:40 by doduwole         ###   ########.fr        #
+#    Updated: 2023/09/01 13:17:27 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = so_long
 
 SRC =	$(wildcard main.c src/*.c src/*/*.c src/*/*/*.c src/*/*/*/*.c)
 
-
+RM = rm -rf
 CFLAGS = -Werror -Wall -Wextra
 
 OBJS = $(SRC:.c=.o)
@@ -44,7 +44,6 @@ all: $(NAME)
 
 $(NAME): $(LIBFTA) $(MLX) $(SRC) $(OBJS)
 	@$(CC) $(OBJS) $(LIBFTA) $(LINK) -o $@
-	@$(RM) $(OBJS)
 	@echo $(GREEN)"- Compiled -"$(NONE)
 
 $(MLX):
@@ -57,7 +56,7 @@ $(LIBFTA):
 
 clean:
 	@echo $(CURSIVE)$(GRAY) "     - Removing object files..." $(NONE)
-	@$(MAKE) -C $(LIBFTDIR) fclean
+	@$(RM) $(OBJS)
 
 fclean: clean
 	@echo $(CURSIVE)$(GRAY) "     - Removing $(NAME)..." $(NONE)
