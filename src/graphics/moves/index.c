@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 07:32:27 by doduwole          #+#    #+#             */
-/*   Updated: 2023/09/01 17:11:47 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/09/01 17:18:25 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	to_exit(t_game *game, t_cell *tile)
 {
 	effect_anime(&game->effect, tile->position);
 	game->collects = -1;
-	print_end(game->moves);
+	print_end(++game->moves);
 	end_program(game);
 }
 
@@ -44,6 +44,5 @@ int	move_player(t_game *game, t_cell *tile)
 		return (to_collectible(game, tile), 0);
 	else if (tile->type == EXIT && game->collects <= 0)
 		return (to_exit(game, tile), 1);
-	else
-		return (0);
+	return (0);
 }
