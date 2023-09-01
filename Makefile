@@ -6,7 +6,7 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:39:49 by doduwole          #+#    #+#              #
-#    Updated: 2023/09/01 13:59:16 by doduwole         ###   ########.fr        #
+#    Updated: 2023/09/01 16:03:14 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,14 +63,11 @@ $(OBJ_DIR)/%.o: %.c $(LIBFTA)
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
-
 $(MLX):
 	@make -C $(MLX_DIR)
-	@make clean -C $(MLX_DIR)
 
 $(LIBFTA):
 	@make all -C $(LIBFTDIR)
-	@make clean -C $(LIBFTDIR)
 
 clean:
 	@echo $(CURSIVE)$(GRAY) "     - Removing object files..." $(NONE)
