@@ -6,7 +6,7 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:39:49 by doduwole          #+#    #+#              #
-#    Updated: 2023/09/01 13:17:27 by doduwole         ###   ########.fr        #
+#    Updated: 2023/09/01 13:39:45 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,21 +15,34 @@ NAME = so_long
 SRC =	$(wildcard main.c src/*.c src/*/*.c src/*/*/*.c src/*/*/*/*.c)
 
 RM = rm -rf
+
 CFLAGS = -Werror -Wall -Wextra
 
 OBJS = $(SRC:.c=.o)
 
 CC = gcc -g -fsanitize=address 
 
-LIBFTDIR = ./inc/libft/
+LIBFTDIR = ./inc/libft
 
-LIBFTA = ./inc/libft/libft.a
+LIBFTA = $(LIBFTDIR)/libft.a
 
-MLX_DIR = ./mlx/
 
-MLX = ./mlx/libmlx.a
+# Detect the operating system
+UNAME_S := $(shell uname -s)
 
-LINK = -Lmlx -lmlx -framework OpenGL -framework AppKit
+# macOS
+ifeq ($(UNAME_S),Darwin)
+MLX_DIR = ./mlx
+MLX = $(MLX_DIR)/libmlx.a
+LINK = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+
+# Linux
+else
+MLX_DIR = ./minilibx-linux
+MLX = $(MLX_DIR)/libmlx.a
+LINK = -L$(MLX_DIR) -lmlx -lX11 -lXext -lm
+endif
+# endif marks the end of a conditional block in a Makefile
 
 NONE='\033[0m'
 GREEN='\033[32m'
