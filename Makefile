@@ -6,7 +6,7 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:39:49 by doduwole          #+#    #+#              #
-#    Updated: 2023/09/01 16:49:49 by doduwole         ###   ########.fr        #
+#    Updated: 2023/09/02 11:48:43 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,11 @@ RM = rm -rf
 
 CFLAGS = -Werror -Wall -Wextra
 
+DEPS = $(wildcard $(INC_DIR)/*.h)
+
 OBJ_DIR = obj
 SRC_DIR = src
+INC_DIR = inc
 
 OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
