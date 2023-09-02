@@ -6,7 +6,7 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:39:49 by doduwole          #+#    #+#              #
-#    Updated: 2023/09/02 11:48:43 by doduwole         ###   ########.fr        #
+#    Updated: 2023/09/02 13:02:38 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,6 @@ SRC =	$(wildcard main.c src/*.c src/*/*.c src/*/*/*.c src/*/*/*/*.c)
 RM = rm -rf
 
 CFLAGS = -Werror -Wall -Wextra
-
-DEPS = $(wildcard $(INC_DIR)/*.h)
 
 OBJ_DIR = obj
 SRC_DIR = src
@@ -74,12 +72,12 @@ $(LIBFTA):
 	@make all -C $(LIBFTDIR)
 
 clean:
-	@$(RM) $(OBJS)
+	@$(RM) $(OBJS) $(LIBFTDIR)/$(OBJ_DIR)
 	@echo $(CURSIVE)$(GRAY) "     - Object files removed" $(NONE)
 
 fclean: clean
-	@rm -f $(NAME)
-	@echo $(CURSIVE)$(GRAY) "     - $(NAME) removed" $(NONE)
+	@rm -f $(NAME) $(LIBFTA)
+	@echo $(CURSIVE)$(GRAY) "     - $(NAME) & $(LIBFTA) removed" $(NONE)
 
 re: fclean all
 
