@@ -6,7 +6,7 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:39:49 by doduwole          #+#    #+#              #
-#    Updated: 2023/09/04 21:27:36 by doduwole         ###   ########.fr        #
+#    Updated: 2023/09/04 21:30:22 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo $(CURSIVE)$(GRAY) "     - $(NAME) & $(LIBFTA) removed" $(NONE)
+	@echo $(CURSIVE)$(GRAY) "     - $(NAME) removed" $(NONE)
 
 re: fclean all
 
