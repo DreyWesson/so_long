@@ -6,7 +6,7 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:39:49 by doduwole          #+#    #+#              #
-#    Updated: 2023/09/04 21:30:22 by doduwole         ###   ########.fr        #
+#    Updated: 2023/09/04 22:24:59 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,10 +73,13 @@ $(LIBFTA):
 
 clean:
 	@$(RM) $(OBJS) $(OBJ_DIR)
+	@make -C $(LIBFTDIR) clean
+	@make -C $(MLX_DIR) clean
 	@echo $(CURSIVE)$(GRAY) "     - Object files removed" $(NONE)
 
 fclean: clean
 	@rm -f $(NAME)
+	@make -C $(LIBFTDIR) fclean
 	@echo $(CURSIVE)$(GRAY) "     - $(NAME) removed" $(NONE)
 
 re: fclean all
