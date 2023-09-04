@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:13:24 by doduwole          #+#    #+#             */
-/*   Updated: 2023/08/31 23:11:56 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/09/04 20:43:56 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	anim_init(t_game *game)
 	game->player.idle_frames = 42;
 	game->player.action_frames = 21;
 	game->collects_imgs.anim_frames = 42;
-	game->effect.frames = 11;
+	game->effect.frames = 7;
 }
 
 int	build_graphics(t_game *game, t_cell **grid, t_details props)

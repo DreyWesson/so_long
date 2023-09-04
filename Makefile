@@ -6,7 +6,7 @@
 #    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 16:39:49 by doduwole          #+#    #+#              #
-#    Updated: 2023/09/02 13:02:38 by doduwole         ###   ########.fr        #
+#    Updated: 2023/09/04 21:27:36 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,11 +72,11 @@ $(LIBFTA):
 	@make all -C $(LIBFTDIR)
 
 clean:
-	@$(RM) $(OBJS) $(LIBFTDIR)/$(OBJ_DIR)
+	@$(RM) $(OBJS) $(OBJ_DIR)
 	@echo $(CURSIVE)$(GRAY) "     - Object files removed" $(NONE)
 
 fclean: clean
-	@rm -f $(NAME) $(LIBFTA)
+	@rm -f $(NAME)
 	@echo $(CURSIVE)$(GRAY) "     - $(NAME) & $(LIBFTA) removed" $(NONE)
 
 re: fclean all

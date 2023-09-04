@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 09:31:50 by doduwole          #+#    #+#             */
-/*   Updated: 2023/09/01 15:53:58 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/09/04 20:52:19 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define SO_LONG_H
 
 // MLX_LIB
-
 # ifdef __APPLE__
 #  include "../mlx/mlx.h"
 # else
@@ -191,11 +190,6 @@ enum e_keycode
 	RESET = R,
 	ESC = X
 };
-# ifdef __APPLE__
-#  include "../mlx/mlx.h"
-# else
-#  include "../minilibx-linux/mlx.h"
-# endif
 
 typedef struct s_pixel
 {
@@ -231,12 +225,12 @@ typedef struct s_game
 int			ft_error(char *message);
 void		ft_warning(char *message);
 int			ft_trim(char const *s1, char const *set);
-int			handle_validation(int argc, char** argv, t_game *game);
+int			handle_validation(int argc, char **argv, t_game *game);
 /**
  * MAP -> Reader
 */
-int			handle_map(char** argv, t_game *game);
-t_cell		**validate_map(char** map, t_details *details, t_nodes** queue);
+int			handle_map(char **argv, t_game *game);
+t_cell		**validate_map(char **map, t_details *details, t_nodes **queue);
 int			line_counter(char *file_name);
 size_t		ft_strlen_ln(const char *str);
 char		**map_reader(char *s, int row_nbr);
@@ -245,43 +239,43 @@ char		**map_reader(char *s, int row_nbr);
 */
 int			is_valid(char *str);
 int			validate_composition(char s, t_quant *quant);
-int			validate_walls(char* s, int row_nbr, int j, int i);
+int			validate_walls(char *s, int row_nbr, int j, int i);
 int			validate_shape(t_details *details, int i, int j);
 void		save_start(int x, int y, t_details *details);
-void		check_quant(char** map, t_quant *quant, t_details *details);
+void		check_quant(char **map, t_quant *quant, t_details *details);
 void		default_quant(t_quant *quant);
 t_cell		create_cell(char s, int x, int y);
 t_details	default_details(char *ptr);
-void		print_grid(t_cell** grid, t_details details);
-void		print_adjacent(t_details details, t_cell** grid);
+void		print_grid(t_cell **grid, t_details details);
+void		print_adjacent(t_details details, t_cell **grid);
 void		print_end(int moves);
-int			special_char(char** map);
-t_cell		**create_grid(char** map, t_details *details);
-void		handle_adjacency(t_cell** grid, t_nodes** queue);
-t_cell		**validate_paths(t_cell** grid, t_nodes** queue,
-	t_details	details, char** map);
-int			check_paths(t_cell** grid, t_nodes** queue, t_details details);
-t_cell* adjacency_math(t_cell** grid,
-	t_nodes** queue, int y, int x);
+int			special_char(char **map);
+t_cell		**create_grid(char **map, t_details *details);
+void		handle_adjacency(t_cell **grid, t_nodes **queue);
+t_cell		**validate_paths(t_cell **grid, t_nodes **queue,
+				t_details	details, char **map);
+int			check_paths(t_cell **grid, t_nodes **queue, t_details details);
+t_cell		*adjacency_math(t_cell **grid,
+				t_nodes **queue, int y, int x);
 /**
  * QUEUE
 */
-void		add_head_node(t_nodes** old, t_nodes *new);
+void		add_head_node(t_nodes **old, t_nodes *new);
 void		print_node(t_nodes *head, int col_nbr);
-void		add_tail_node(t_nodes** old, t_nodes *new);
-void		del_node(t_nodes** head);
-t_nodes* last_node(t_nodes *head);
-t_nodes* create_node(t_cell *cell);
+void		add_tail_node(t_nodes **old, t_nodes *new);
+void		del_node(t_nodes **head);
+t_nodes		*last_node(t_nodes *head);
+t_nodes		*create_node(t_cell *cell);
 /**
  * FREE
 */
-int			count_row(char** grid);
-void		free_list(t_nodes** head_ref);
-void		free_grid(t_cell** grid, int row_nbr, int status);
-void		alt_free_grid(t_cell** grid, int row_nbr);
-void		free_all(char** ptr, t_cell** grid, t_nodes** queue);
+int			count_row(char **grid);
+void		free_list(t_nodes **head_ref);
+void		free_grid(t_cell **grid, int row_nbr, int status);
+void		alt_free_grid(t_cell **grid, int row_nbr);
+void		free_all(char **ptr, t_cell **grid, t_nodes **queue);
 int			input(int key, t_game *game);
-int			build_graphics(t_game *game, t_cell** grid, t_details props);
+int			build_graphics(t_game *game, t_cell **grid, t_details props);
 int			reset(t_game *game);
 int			update(t_game *game);
 void		render(t_game game);
@@ -296,17 +290,20 @@ void		effect_anime(t_effect *effect, t_axis pos);
 void		action_anime(t_player *player);
 int			end_program(t_game *game);
 int			load_images(t_game *game);
-int			south_wall(t_game *game, int* x, int *y);
-int			north_wall(t_game *game, int* x, int *y);
+int			south_wall(t_game *game, int *x, int *y);
+int			north_wall(t_game *game, int *x, int *y);
 int			player_imgs_error(t_game game);
 int			collectible_imgs_error(t_game game);
 int			door_imgs_error(t_game game);
-int			game_init(t_game *game, t_cell** grid, t_details details);
+int			game_init(t_game *game, t_cell **grid, t_details details);
 int			west_wall_error(t_wall_img wall);
 int			east_wall_error(t_wall_img wall);
 int			west_wall(t_game *game, int *x, int *y);
 int			east_wall(t_game *game, int *x, int *y);
 int			south_wall_error(t_wall_img wall);
 int			north_wall_error(t_wall_img wall);
+void		to_collectible(t_game *game, t_cell *tile);
+void		to_exit(t_game *game, t_cell *tile);
+void		to_empty(t_game *game, t_cell *tile);
 
 #endif
